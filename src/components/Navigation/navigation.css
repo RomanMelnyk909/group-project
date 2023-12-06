@@ -1,0 +1,40 @@
+.navigation{
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+position: relative;
+}
+.nav-item{
+    padding: 10px;
+    margin: 10px;
+    border-bottom: 1px solid #000;
+    display: flex;
+    position: relative;
+}
+
+.navigation a{
+   text-decoration: none;
+   color: black;
+}
+
+.nav-arrow_down{
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    content: '&darr;';
+}
+ .navigatin-categiries-item{
+    border-bottom: 1px solid #000;
+    text-align-last: left;
+    padding: 5px;
+}
+.navigatin-categiries{
+position: absolute;
+left: 0;
+top: 40px;
+width: 100%;
+z-index: 5;
+background:#fff;
+
+}
+

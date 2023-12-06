@@ -11,24 +11,28 @@ const Navigation = (props) => {
 
    const navElements = [
       {
+		key:``,
          text: 'Home page',
          isUppercasetext: true,
          path: HOME_PATH,
 		 isCategiries:false,
       },
       {
-         text: 'Second',
+		key:``,
+         text: 'Coctail`s categories',
          isUppercasetext: true,
-         path: COCTAIL_CATEGIRIES_PATH,
+         path: null,
 		 isCategiries:true,
       },
       {
+		key:``,
          text: 'Blog',
          isUppercasetext: true,
           path: BLOG_PATH,
 		  isCategiries:false,
       },
       {
+		key:``,
          text: 'About us',
          isUppercasetext: true,
 		 path: ABOUT_PATH,
@@ -44,22 +48,15 @@ const Navigation = (props) => {
             {
                navElements.map((element) => {
                   return (
-					<div className='common'>
 					<Link to={element.path}>
 						<NavigationItem
                         key={element.text}
                         text={element.text}
                         isUppercasetext={element.isUppercasetext}
+						isCategiries={element.isCategiries}
                         />
 					</Link>
-					</div>
-                    
-					
-					
-					
-					
-					
-					
+				
                   )
                })
             }
