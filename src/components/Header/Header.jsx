@@ -1,11 +1,12 @@
+import Navigation from "../Navigation";
 import Logo from "../Logo";
-import PageWrapper from "../PageWrapper";
-
+import "./header.css";
 const Header = () => {
 	return (
-		<PageWrapper>
+		<div className="header">
 			<Logo />
-		</PageWrapper>
+			<Navigation />
+		</div>
 	)
 };
 

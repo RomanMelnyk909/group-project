@@ -3,9 +3,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PageWrapper from "./components/PageWrapper";
 import Logo from "./components/Logo";
-import Navigation from './components/Navigation';
+
 import { Routes, Route } from "react-router";
-import { ABOUT_PATH, BLOG_PATH, HOME_PATH } from "./constants/constants";
+import { ABOUT_PATH, BLOG_PATH, HOME_PATH, CONTACT_PATH, HELP_PATH } from "./constants/constants";
 
 const lor = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad deserunt
 veritatis excepturi dolores adipisci, quae facere sapiente odio saepe
@@ -191,15 +191,21 @@ enim esse.`;
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Navigation/>
+
+
       <Routes>
-          <Route path={HOME_PATH} element={HOME_PATH} />
-          <Route path={ABOUT_PATH} element={ABOUT_PATH} />
-          <Route path={BLOG_PATH} element={BLOG_PATH} />
-          {/* <Route path={COCTAIL_CATEGIRIES_PATH} element={``} /> */}
+        <Route path={CONTACT_PATH} element={CONTACT_PATH} />
+        <Route path={HOME_PATH} element={HOME_PATH} />
+        <Route path={ABOUT_PATH} element={ABOUT_PATH} />
+        <Route path={BLOG_PATH} element={BLOG_PATH} />
+        <Route path={HELP_PATH} element={HELP_PATH} />
+        {/* <Route path={COCTAIL_CATEGIRIES_PATH} element={``} /> */}
       </Routes>
-      <PageWrapper>{lor}</PageWrapper>
+      <PageWrapper>
+        <Header />
+        {lor}
+
+      </PageWrapper>
       <Footer />
     </div>
   );
