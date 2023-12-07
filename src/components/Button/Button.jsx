@@ -16,8 +16,8 @@ const Button = (props) => {
         <button 
             type={type}
             className={buttonClass}
-            // onClick={() => onClickFunction}
-            >
+            onClick={() => onClickFunction  || null }
+        >
             { title }
         </button>
     )
