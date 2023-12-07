@@ -31,12 +31,12 @@ const NavigationItem = (props) => {
       },
 
    ];
- 
+
 
    return (
 
-      <div  className='nav-item'>
-         {isUppercasetext ? text.toUpperCase() : text}
+      <div className='nav-item'>
+         {!isUppercasetext ? text.toUpperCase() : text}
          {isCategiries &&
             (
 
@@ -46,13 +46,13 @@ const NavigationItem = (props) => {
                   <div className='navigatin-categiries hidden'  >
                      {
                         categories.map((element) => {
-                          
+
                            return (
 
-                              <Link  key={element.id} to={element.path}>
-                                
-                                 <div   className="navigatin-categiries-item">
-                                
+                              <Link key={element.id} to={element.path}>
+
+                                 <div className="navigatin-categiries-item">
+
                                     {/* <NavigationItem
                                     key={element.id}
                                     text={element.text}
