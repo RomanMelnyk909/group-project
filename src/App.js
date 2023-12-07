@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import PageWrapper from "./components/PageWrapper";
 import Logo from "./components/Logo";
 import Navigation from './components/Navigation';
+import Categories from './components/Categories'
 import { Routes, Route } from "react-router";
 import { ABOUT_PATH, BLOG_PATH, HOME_PATH } from "./constants/constants";
 
@@ -200,6 +201,7 @@ function App() {
           <Route path={BLOG_PATH} element={BLOG_PATH} />
           {/* <Route path={COCTAIL_CATEGIRIES_PATH} element={``} /> */}
       </Routes>
+      <Categories />
       <PageWrapper>{lor}</PageWrapper>
       <Footer />
     </div>

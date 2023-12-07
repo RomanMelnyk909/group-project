@@ -1,0 +1,13 @@
+.common {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(123, 120, 126, 0.89);
+    background-image: url(../../images/crunchy-whole-grain-chocolate-chip-cookies_1021.jpg) ;
+}
+
+.common h3 {
+    text-align: left;
+}
