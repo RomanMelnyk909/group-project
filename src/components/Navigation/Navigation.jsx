@@ -2,7 +2,7 @@ import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { ABOUT_PATH, BLOG_PATH,  HOME_PATH } from "../../constants/constants";
+import { ABOUT_PATH, BLOG_PATH,  HOME_PATH, PRODUCTS_PATH } from "../../constants/constants";
 
 
 const Navigation = () => {
@@ -22,6 +22,13 @@ const Navigation = () => {
          isUppercasetext: true,
          path: null,
          isCategiries: true,
+      },
+      {
+         id: uuidv4(),
+         text: 'Products',
+         isUppercasetext: true,
+         path: PRODUCTS_PATH,
+         isCategiries: false,
       },
       {
          id: uuidv4(),
