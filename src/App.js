@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PageWrapper from "./components/PageWrapper";
+import Logo from "./components/Logo";
 
 const lor = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad deserunt
 veritatis excepturi dolores adipisci, quae facere sapiente odio saepe
@@ -188,6 +189,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Logo />
       <PageWrapper>{lor}</PageWrapper>
       <Footer />
     </div>
