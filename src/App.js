@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import PageWrapper from "./components/PageWrapper";
 import Logo from "./components/Logo";
 import Navigation from './components/Navigation';
-import Test from './components/Test';
+
 import { Routes, Route } from "react-router";
 import { ABOUT_PATH, BLOG_PATH, COCTAIL_CATEGIRIES_PATH, HOME_PATH } from "./constants/constants";
 
