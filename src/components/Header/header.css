@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    min-height: 96px;
+    padding: var(--spacing-7, 28px) 90px;
+    align-items: center;
+    align-content: center;
+    gap: var(--spacing-3, 12px) 80px;
+    align-self: stretch;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: rgb(226, 224, 224);
+
+}

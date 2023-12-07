@@ -191,8 +191,8 @@ enim esse.`;
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Logo />
+
+
       <Routes>
         <Route path={CONTACT_PATH} element={CONTACT_PATH} />
         <Route path={HOME_PATH} element={HOME_PATH} />
@@ -201,7 +201,11 @@ function App() {
         <Route path={HELP_PATH} element={HELP_PATH} />
         {/* <Route path={COCTAIL_CATEGIRIES_PATH} element={``} /> */}
       </Routes>
-      <PageWrapper>{lor}</PageWrapper>
+      <PageWrapper>
+        <Header />
+        {lor}
+
+      </PageWrapper>
       <Footer />
     </div>
   );
