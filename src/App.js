@@ -193,7 +193,6 @@ function App() {
     <div className="App">
       <Header />
       <Navigation/>
-      <Logo />
       <Routes>
           <Route path={HOME_PATH} element={HOME_PATH} />
           <Route path={ABOUT_PATH} element={ABOUT_PATH} />
