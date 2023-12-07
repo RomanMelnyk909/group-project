@@ -5,7 +5,7 @@ import PageWrapper from "./components/PageWrapper";
 import Logo from "./components/Logo";
 
 import { Routes, Route } from "react-router";
-import { ABOUT_PATH, BLOG_PATH, HOME_PATH, CONTACT_PATH } from "./constants/constants";
+import { ABOUT_PATH, BLOG_PATH, HOME_PATH, CONTACT_PATH, HELP_PATH } from "./constants/constants";
 
 const lor = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad deserunt
 veritatis excepturi dolores adipisci, quae facere sapiente odio saepe
