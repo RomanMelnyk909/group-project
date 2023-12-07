@@ -1,6 +1,5 @@
 import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
-import { useContext } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
 import { ABOUT_PATH, BLOG_PATH,  HOME_PATH } from "../../constants/constants";
