@@ -194,8 +194,14 @@ function App() {
     <div className="App">
       <Header />
       <Button
-        title='Log In'
+        title='button'
         type='button' />
+        <Button
+        title='submit'
+        type='submit' />
+        <Button
+        title='reset'
+        type='reset' />
       <Navigation/>
       <Logo />
       <Routes>
