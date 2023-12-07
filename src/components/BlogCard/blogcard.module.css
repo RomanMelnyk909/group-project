@@ -1,3 +1,19 @@
 .common {
-    
+  display: inline-grid;
+  margin: 0 10px 20px 10px;
+  border: 1px solid silver;
+  max-width: 20%; 
+  width: fit-content;
+  padding: 20px 10px;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  border-radius: 20px;
+}
+.upper{
+  text-transform: capitalize;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: serif;
+  font-weight: bold;
 }

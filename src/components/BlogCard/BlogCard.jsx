@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "./Button";
 
 import styles from './blogCard.module.css'
 
@@ -58,20 +57,20 @@ const BlogCard = ({
 
       {showDetails && (
         <>
-          <h2>{name}</h2>
-          <p>{text}</p>
-          <p>{`Published on: ${dateTimePublish}`}</p>
+          <h2 className={styles["upper"]}>{name}</h2>
+          <p className={styles["upper"]}>{text}</p>
+          <p className={styles["upper"]}>{`Published on: ${dateTimePublish}`}</p>
         </>
       )}
-     <Button variant="primary" onClick={handleAddCard}>
+     <button variant="primary" onClick={handleAddCard}>
         Add Card
-      </Button>
-      <Button variant="error" onClick={handleDeleteCard}>
-        Delete Card
-      </Button>
-      <Button variant="secondary" onClick={handleToggleDetails}>
+      </button>
+      <button variant="error" onClick={handleDeleteCard}>
+        Delete
+      </button>
+      <button variant="secondary" onClick={handleToggleDetails}>
         {showDetails ? "Hide Details" : "Show Details"}
-      </Button>
+      </button>
     </div>
   );
 };

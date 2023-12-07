@@ -1,6 +1,11 @@
+import Logo from "../Logo";
+import PageWrapper from "../PageWrapper";
+
 const Header = () => {
 	return (
-		<div className="header">Header</div>
+		<PageWrapper>
+			<Logo />
+		</PageWrapper>
 	)
 };
 
