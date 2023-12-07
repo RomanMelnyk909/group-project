@@ -1,4 +1,5 @@
 button {
+    width: 140px;
     border: none;
     color: #fff;
     padding: 10px 30px;
@@ -14,10 +15,10 @@ button {
 .button {
     background-color: #4172DC;
 }
-.submitButton{
+.submit{
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #4172DC;
 }
-.resetButton {
+.reset {
     background-color: #434343;
 }
 

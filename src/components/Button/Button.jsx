@@ -1,21 +1,18 @@
 import styles from './button.module.css';
+import classNames from 'classnames';
 
 const Button = (props) => {
     const { type, title, onClickFunction } = props;
 
-    let buttonClass;
-    if(type === 'submit'){
-        buttonClass = styles.submitButton;
-    } else if(type === 'reset'){
-        buttonClass = styles.resetButton;
-    } else {
-        buttonClass = styles.button;
-    }
+    const buutonClassname = classNames(styles['button'], {
+        [styles['submit']] : type === 'submit',
+        [styles['reset']] : type === 'reset',
+    })
     
     return (
         <button 
             type={type}
-            className={buttonClass}
+            className={buutonClassname}
             onClick={() => onClickFunction  || null }
         >
             { title }
