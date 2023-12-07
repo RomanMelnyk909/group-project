@@ -1,0 +1,21 @@
+button {
+    border: none;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    text-transform: uppercase;
+}
+.button {
+    background-color: #4172DC;
+}
+.submitButton{
+
+}
+.resetButton {
+
+}

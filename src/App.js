@@ -6,6 +6,7 @@ import Logo from "./components/Logo";
 import Navigation from './components/Navigation';
 import { Routes, Route } from "react-router";
 import { ABOUT_PATH, BLOG_PATH, HOME_PATH } from "./constants/constants";
+import Button from "./components/Button";
 
 const lor = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad deserunt
 veritatis excepturi dolores adipisci, quae facere sapiente odio saepe
@@ -192,6 +193,9 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Button
+        title='Log In'
+        type='button' />
       <Navigation/>
       <Logo />
       <Routes>
