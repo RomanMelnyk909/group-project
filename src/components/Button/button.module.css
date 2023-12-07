@@ -1,0 +1,38 @@
+button {
+    width: 140px;
+    border: none;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.button {
+    background-color: #4172DC;
+}
+.submit{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #4172DC;
+}
+.reset {
+    background-color: #434343;
+}
+
+
+.button1 { 
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%), #4172DC;
+}
+.disabled{
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%),#C4C4C4;
+}
+.button3 {
+    border: 1px solid #434343;
+    color: #555;
+}
+.button4{
+    background: #7B7B7B;
+}
