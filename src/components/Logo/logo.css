@@ -1,0 +1,15 @@
+.common {
+    display: flex;
+    align-items: center;
+}
+.common-span {
+    font-family: Lato;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+}
+.svg{
+    margin-right: 7px;
+    cursor: pointer;
+    fill: red;
+}
