@@ -1,32 +1,37 @@
 import './navigationitem.css';
 import { Link } from "react-router-dom";
-import { ABOUT_PATH, BLOG_PATH, COCTAIL_CATEGIRIES_PATH, HOME_PATH } from "../../constants/constants";
-import { useState } from 'react';
+// import { ABOUT_PATH, BLOG_PATH, HOME_PATH } from "../../constants/constants";
+// import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const NavigationItem = (props) => {
-   const { text, isUppercasetext, isCategiries, key } = props
+   const { text, isUppercasetext, isCategiries } = props
    let categories = [
       {
          id: uuidv4(),
-         text: 'Home page',
+         title: 'Item',
          isUppercasetext: true,
-         path: HOME_PATH,
+         // urlSlug: HOME_PATH,
          isCategiries: false,
       },
-
+      // {
+      //    "title": "string",
+      //    "priority": 0,
+      //    "urlSlug": "string",
+      //    "image": "string"
+      //  },
       {
          id: uuidv4(),
-         text: 'Blog',
+         title: 'Item',
          isUppercasetext: true,
-         path: BLOG_PATH,
+         // urlSlug: BLOG_PATH,
          isCategiries: false,
       },
       {
          id: uuidv4(),
-         text: 'About us',
+         title: 'Item',
          isUppercasetext: true,
-         path: ABOUT_PATH,
+         // urlSlug: ABOUT_PATH,
          isCategiries: false,
       },
 
@@ -49,17 +54,10 @@ const NavigationItem = (props) => {
 
                            return (
 
-                              <Link key={element.id} to={element.path}>
+                              <Link key={element.id} to={element.urlSlug}>
 
                                  <div className="navigatin-categiries-item">
-
-                                    {/* <NavigationItem
-                                    key={element.id}
-                                    text={element.text}
-                                    isUppercasetext={element.isUppercasetext}
-                                    isCategiries={element.isCategiries}
-                                    />*/}
-                                    {element.text}
+                                    {element.title}
                                  </div>
                               </Link>
 

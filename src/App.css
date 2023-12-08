@@ -22,5 +22,6 @@
 
 .header,
 .footer {
-  background-color: rgb(44, 43, 43);
+  background: rgb(226, 224, 224);
+  padding: 10px;
 }

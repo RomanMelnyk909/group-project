@@ -7,8 +7,10 @@ const Header = () => {
 	return (
 		<div className="header">
 			<PageWrapper>
+				<div className="head">
 				<Logo />
 				<Navigation />
+				</div>
 			</PageWrapper>
 		</div>
 	)
