@@ -1,0 +1,46 @@
+.common {
+    width: 250px;
+    height: 129px;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
+    /* background: silver url(../../images/sub-banner-1.jpg); */
+    background-color: silver;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    font-family: 'Open Sans', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* margin: 0 auto; */
+}
+
+.common h3 {
+    width: 110px;
+    text-align: left;
+    letter-spacing: 0;
+    /* line-height: 25px; */
+    font-size: 16px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+
+/* Демо для лiнкiв */
+.demo-link {
+    display: inline-block;
+    color: #ee7560;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    transition: color 0.3s ease-in-out;
+}
+.demo-link:hover {
+    text-decoration: none;
+    color: rgb(33, 33, 33);
+}
+.demo-link:active {
+    color: rgb(118, 61, 61);
+}
