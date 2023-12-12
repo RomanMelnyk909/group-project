@@ -9,7 +9,7 @@ import AddProducts from "./components/AddProducts";
 import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, WEATHER_PATH } from "./constants/pathNames";
 import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_LIST_ENDPOINT } from "./constants/endpoints";
-import Weather from "./components/Weather";
+
 
 
 
@@ -24,7 +24,7 @@ function App() {
         <Route path={BLOG_PATH} element={<Blog />} />
         <Route path={CATEGIRIES_PATH} element={<Categories />} />
         <Route path={PRODUCTS_PATH} element={<Products />} />
-        <Route path={WEATHER_PATH} element={<Weather />} />
+
       </Routes>
       <Footer />
     </div>

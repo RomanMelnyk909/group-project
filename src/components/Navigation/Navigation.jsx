@@ -38,13 +38,13 @@ const Navigation = () => {
          path: ADD_PRODUCTS_PATH,
          isCategiries: false,
       },
-      {
-         id: uuidv4(),
-         text: 'Weather',
-         isUppercasetext: true,
-         path: WEATHER_PATH,
-         isCategiries: false,
-      },
+      // {
+      //    id: uuidv4(),
+      //    text: 'Weather',
+      //    isUppercasetext: true,
+      //    path: WEATHER_PATH,
+      //    isCategiries: false,
+      // },
 
       // {
       //    id: uuidv4(),
