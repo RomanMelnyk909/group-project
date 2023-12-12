@@ -45,3 +45,12 @@ const Blog = () => {
 };
 
 export default Blog;
+
+// {
+//     "name": "Lena Blog",
+//     "text": "In this place will be Lenas blog text",
+//     "image": "string",
+//     "slug": "LenaBlog",
+//     "isShow": true,
+//     "dateTimePublish": "12.12.2023"
+//   }
