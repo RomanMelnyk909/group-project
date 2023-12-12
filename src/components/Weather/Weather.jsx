@@ -1,15 +1,13 @@
-import './navigationitem.css';
+import './weather.css';
 import { Link } from "react-router-dom";
-// import { ABOUT_PATH, BLOG_PATH, HOME_PATH } from "../../constants/constants";
-// import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState, createContext } from 'react';
 import { createRequestPath } from "../../helpers/helpers";
-import { CARTEGORIES_LIST_ENDPOINT } from "../../constants/endpoints";
+import { WEATHER_BASE_URL } from "../../constants/endpoints";
 
 export let DataCategoriesContext = createContext()
 
-const NavigationItem = (props) => {
+const Weather = (props) => {
    const { text, isUppercasetext, isCategiries } = props
 
    const [data, setData] = useState([])
@@ -17,7 +15,7 @@ const NavigationItem = (props) => {
    const [fetchError, setFetchError] = useState(null);
    useEffect(function () {
       setFetching(true)
-      fetch(createRequestPath(CARTEGORIES_LIST_ENDPOINT))
+      fetch(WEATHER_BASE_URL)
          .then(response => response.json())
          .then(resp => {
             setFetching(false)
@@ -32,44 +30,15 @@ const NavigationItem = (props) => {
          });
    }, [])
 
+   console.log(data);
 
 
-   let categories = [
-      {
-         id: uuidv4(),
-         title: 'Item',
-         isUppercasetext: true,
-         // urlSlug: HOME_PATH,
-         isCategiries: false,
-      },
-      // {
-      //    "title": "string",
-      //    "priority": 0,
-      //    "urlSlug": "string",
-      //    "image": "string"
-      //  },
-      {
-         id: uuidv4(),
-         title: 'Item',
-         isUppercasetext: true,
-         // urlSlug: BLOG_PATH,
-         isCategiries: false,
-      },
-      {
-         id: uuidv4(),
-         title: 'Item',
-         isUppercasetext: true,
-         // urlSlug: ABOUT_PATH,
-         isCategiries: false,
-      },
-
-   ];
 
 
    return (
 
       <div className='nav-item'>
-         {!isUppercasetext ? text.toUpperCase() : text}
+         {isUppercasetext ? text.toUpperCase() : text}
          {isCategiries &&
             (
 
@@ -101,4 +70,4 @@ const NavigationItem = (props) => {
    )
 }
 
-export default NavigationItem;
+export default Weather;

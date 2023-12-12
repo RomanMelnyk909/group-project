@@ -2,20 +2,14 @@ import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH } from "../../constants/pathNames";
-
-
+import { WEATHER_PATH, PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH } from "../../constants/pathNames";
+// export let dataCategories = createContext()
 const Navigation = () => {
 
 
+   // const navElements = data
    const navElements = [
-      {
-         id: uuidv4(),
-         text: 'Product',
-         isUppercasetext: true,
-         path: PRODUCTS_PATH,
-         isCategiries: false,
-      },
+
       {
          id: uuidv4(),
          text: 'Categoties',
@@ -32,18 +26,25 @@ const Navigation = () => {
       },
       {
          id: uuidv4(),
+         text: 'Product',
+         isUppercasetext: true,
+         path: PRODUCTS_PATH,
+         isCategiries: false,
+      },
+      {
+         id: uuidv4(),
          text: 'Add products',
          isUppercasetext: true,
          path: ADD_PRODUCTS_PATH,
          isCategiries: false,
       },
-      // {
-      //    id: uuidv4(),
-      //    text: 'Contact us',
-      //    isUppercasetext: true,
-      //    path: CONTACT_PATH,
-      //    isCategiries: false,
-      // },
+      {
+         id: uuidv4(),
+         text: 'Weather',
+         isUppercasetext: true,
+         path: WEATHER_PATH,
+         isCategiries: false,
+      },
 
       // {
       //    id: uuidv4(),
@@ -63,15 +64,15 @@ const Navigation = () => {
       <nav className='navigation'>
          {
             navElements.map((element) => {
-                  return <Link key={element.id} to={element.path}>
-                     <NavigationItem
-                        text={element.text}
-                        isUppercasetext={element.isUppercasetext}
-                        isCategiries={element.isCategiries}
-                     />
-                  </Link>
+               return <Link key={element.id} to={element.path}>
+                  <NavigationItem
+                     text={element.text}
+                     isUppercasetext={element.isUppercasetext}
+                     isCategiries={element.isCategiries}
+                  />
+               </Link>
 
-               
+
             })
          }
       </nav>
