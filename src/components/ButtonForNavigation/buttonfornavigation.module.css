@@ -1,0 +1,15 @@
+button {
+	width: 140px;
+    border: none;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+	background-color: #4172DC;
+}
