@@ -30,17 +30,18 @@
 
 
 /* Демо для лiнкiв */
-.demo-link {
+a.demo-link {
     display: inline-block;
     color: #ee7560;
     padding-left: 10px;
     padding-bottom: 5px;
+    text-decoration: underline;
     transition: color 0.3s ease-in-out;
 }
-.demo-link:hover {
+a.demo-link:hover {
     text-decoration: none;
     color: rgb(33, 33, 33);
 }
-.demo-link:active {
+a.demo-link:active {
     color: rgb(118, 61, 61);
 }
