@@ -44,12 +44,10 @@ const Products = () => {
 		fetch(createRequestPath(PRODUCTS_LIST_ENDPOINT))
 		.then(response => response.json())
 		.then(resp => {
-			console.log(resp);
 			setFetching(false);
 			setData(resp);
 		})
 		.catch(err => {
-			console.log('err => ', err);
 			setFetching(false);
 			setError(err);
 		})
