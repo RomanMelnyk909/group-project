@@ -7,6 +7,8 @@ import Navigation from './components/Navigation';
 import { Routes, Route } from "react-router";
 import { ABOUT_PATH, BLOG_PATH, HOME_PATH } from "./constants/constants";
 
+import Login from "./components/LoginPage/LoginPage";
+
 const lor = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad deserunt
 veritatis excepturi dolores adipisci, quae facere sapiente odio saepe
 voluptate, officiis voluptatibus sequi minima vel labore numquam maxime
@@ -201,6 +203,8 @@ function App() {
           {/* <Route path={COCTAIL_CATEGIRIES_PATH} element={``} /> */}
       </Routes>
       <PageWrapper>{lor}</PageWrapper>
+
+      <Login/>
       <Footer />
     </div>
   );
