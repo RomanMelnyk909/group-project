@@ -2,7 +2,7 @@ import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH } from "../../constants/constants";
+import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH } from "../../constants/pathNames";
 
 
 const Navigation = () => {
