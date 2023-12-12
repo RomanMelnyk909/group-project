@@ -54,9 +54,6 @@ const Products = () => {
 			setError(err);
 		})
 	}, []);
-
-
-	// const [desserts] = useState(DEFAULT_DESSERTS);
   
 	return (
 		<PageWrapper>

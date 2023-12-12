@@ -1,5 +1,7 @@
 import styles from './productcard.module.css';
 
+import Button from '../Button';
+
 const ProductCard = (props) => {
     const { image, name, description, price, id } = props;
 
@@ -9,9 +11,12 @@ const ProductCard = (props) => {
 			<h3>{name}</h3>
 			<p>{description}</p>
 			<p className={styles['price']}>Ціна: ${price.toFixed(2)}</p>
-			<button className={styles['order-button']} onClick={ () =>{}}>
+			{/* <button className={styles['order-button']} onClick={ () =>{}}>
 				Order
-			</button>
+			</button> */}
+            <Button
+                type='button'
+                title='order' />
 	    </div>
     )
 }
