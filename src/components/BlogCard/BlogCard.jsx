@@ -1,81 +1,124 @@
+// BlogCard.js
+
 import React, { useState } from "react";
+import styles from "./blogcard.module.css";
 
-import styles from './blogCard.module.css'
-
-const BlogCard = ({ 
-    name: initialName, 
-    text: initialText, 
-    isShow: initialIsShow, 
-    dateTimePublish: initialDateTimePublish, 
-    onAdd, onDelete }) => {
-        
+const BlogCard = ({
+  name: initialName,
+  text: initialText,
+  image: initialImage,
+  isShow: initialIsShow,
+  dateTimePublish: initialDateTimePublish,
+  onAdd,
+  onDelete,
+  index, // Додаємо індекс
+}) => {
   const [name, setName] = useState(initialName);
   const [text, setText] = useState(initialText);
+  const [image, setImage] = useState(initialImage);
   const [isShow, setIsShow] = useState(initialIsShow);
-  const [dateTimePublish, setDateTimePublish] = useState(initialDateTimePublish);
+  const [dateTimePublish, setDateTimePublish] = useState(
+    initialDateTimePublish
+  );
   const [showDetails, setShowDetails] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   const handleToggleDetails = () => {
     setShowDetails(!showDetails);
+    setShowForm(false);
   };
-    const handleAddCard = () => {
-    // Умови додавання картки
-    if (name && text && dateTimePublish) {
-      onAdd({ name, text, isShow, dateTimePublish });
-      // Очистити поля 
+
+  const handleAddCard = () => {
+    if (name && text && image && dateTimePublish) {
+      onAdd({ name, text, image, isShow, dateTimePublish });
       setName("");
       setText("");
-      setIsShow(false);
+      setImage("");
+      setIsShow(true);
       setDateTimePublish("");
+      setShowForm(true);
     } else {
-      // повідомлення про помилку 
+      alert("Заповніть всі поля");
     }
   };
 
   const handleDeleteCard = () => {
-    onDelete();
+    onDelete(index);
   };
 
   return (
-    <div className={styles["common"]}>
-      <label>
-        Name:
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      </label>
-      <label>
-        Text:
-        <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-      </label>
-      <label>
-        Is Show:
-        <input type="checkbox" checked={isShow} onChange={() => setIsShow(!isShow)} />
-      </label>
-      <label>
-        Date Time Publish:
-        <input type="text" value={dateTimePublish} onChange={(e) => setDateTimePublish(e.target.value)} />
-      </label>
-
+    <div className={styles.blogCard}>
+      {showForm && !initialName && (
+        <div className={styles.cardContent}>
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            className={styles.list}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+      )}
+      {showForm && !initialImage && (
+        <div className={styles.cardContent}>
+          <input
+            type="text"
+            placeholder="Image URL"
+            value={image}
+            className={styles.list}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </div>
+      )}
+      {showForm && !initialDateTimePublish && (
+        <div className={styles.cardContent}>
+          <input
+            type="date"
+            placeholder="Date Time Publish"
+            value={dateTimePublish}
+            className={styles.list}
+            onChange={(e) => setDateTimePublish(e.target.value)}
+          />
+        </div>
+      )}
+      {showForm && !initialText && (
+        <div className={styles.cardContent}>
+          <textarea
+            placeholder="Text"
+            value={text}
+            className={styles.list}
+            onChange={(e) => setText(e.target.value)}
+          ></textarea>
+        </div>
+      )}
+      <div className={styles.cardActions}>
+        {showForm && !initialName && (
+          <div className={styles.cardContent}>
+            <button onClick={handleAddCard}>Add Card</button>
+          </div>
+        )}
+        <button
+          className={styles.deleteBtn}
+          onClick={handleDeleteCard}
+          
+        >
+          Delete Card
+        </button>
+        <button type="submit" onClick={handleToggleDetails}>
+          {showDetails ? "Hide Details" : "Show Details"}
+        </button>
+      </div>
       {showDetails && (
         <>
-          <h2 className={styles["upper"]}>{name}</h2>
-          <p className={styles["upper"]}>{text}</p>
-          <p className={styles["upper"]}>{`Published on: ${dateTimePublish}`}</p>
+          {initialImage && <img src={initialImage} alt={initialName} />}
+          {initialText && <p>Text: {initialText}</p>}
+          {initialDateTimePublish && (
+            <p>Published on: {initialDateTimePublish}</p>
+          )}
         </>
       )}
-     <button variant="primary" onClick={handleAddCard}>
-        Add Card
-      </button>
-      <button variant="error" onClick={handleDeleteCard}>
-        Delete
-      </button>
-      <button variant="secondary" onClick={handleToggleDetails}>
-        {showDetails ? "Hide Details" : "Show Details"}
-      </button>
     </div>
   );
 };
 
-
 export default BlogCard;
-
-
