@@ -4,19 +4,52 @@ import Footer from "./components/Footer";
 import Blog from "./components/Blog";
 import Categories from "./components/Categories";
 import Products from "./components/Products";
-import { Routes, Route } from "react-router";
+import { Routes, Route, useNavigate } from "react-router";
 import AddProducts from "./components/AddProducts";
 import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, WEATHER_PATH } from "./constants/pathNames";
 import { createRequestPath } from "./helpers/helpers";
-import { PRODUCTS_LIST_ENDPOINT } from "./constants/endpoints";
+import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 
 
 
 
 function App() {
-  console.log(createRequestPath(PRODUCTS_LIST_ENDPOINT))
+
+  const navigator = useNavigate();
+
+  const mockProduct = {
+    name: "Тестовий",
+    priority: 1,
+    categoryId: 2,
+    price: 200,
+    description: "Тестовий Тест Тортовий!",
+    ids: [
+      1
+    ]
+  }
+
+  const onSubmitDataToApi = () => {
+    const apiEndpoint = createRequestPath(PRODUCTS_ADD_ENDPOINT);
+
+    fetch(apiEndpoint, {
+      method: "POST",
+      body: JSON.stringify(mockProduct),
+      headers: { "Content-Type": "application/json" },
+     })
+     .then(resp => { 
+      console.log('response => ', resp);
+      return resp;
+    })
+     .then(resp => resp.json())
+     .then(resp => console.log('response Parsed => ', resp))
+     .then(() => navigator(PRODUCTS_PATH))
+     .catch(err => console.log('error => ', err))
+  }
+  
+  
   return (
     <div className="App">
+      <button  onClick={onSubmitDataToApi}>Add Product</button>
       <Header />
       <Routes>
         <Route path={ADD_PRODUCTS_PATH} element={<AddProducts />} />
