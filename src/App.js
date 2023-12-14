@@ -3,10 +3,11 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Blog from "./components/Blog";
 import Categories from "./components/Categories";
+import CategoriesValentine from "./components/CategoriesValentine";
 import Products from "./components/Products";
 import { Routes, Route, useNavigate } from "react-router";
 import AddProducts from "./components/AddProducts";
-import {ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH } from "./constants/pathNames";
+import {ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH } from "./constants/pathNames";
 import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 
@@ -55,6 +56,7 @@ function App() {
         {/* <Route path={ABOUT_PATH} element={ABOUT_PATH} /> */}
         <Route path={BLOG_PATH} element={<Blog/>} />
         <Route path={CATEGIRIES_PATH} element={<Categories/>} />
+        <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
         <Route path={PRODUCTS_PATH} element={<Products/>} />
       </Routes>
       <Footer />
