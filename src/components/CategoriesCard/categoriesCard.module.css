@@ -45,3 +45,7 @@ a.demo-link:hover {
 a.demo-link:active {
     color: rgb(118, 61, 61);
 }
+button{
+    background: grey;
+    color:black
+}

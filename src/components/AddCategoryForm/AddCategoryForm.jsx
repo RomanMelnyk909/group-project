@@ -1,7 +1,7 @@
 import Input from "../Input";
 import './addCategoryForm.css';
 import CategoriesCard from '../CategoriesCard';
-import { useEffect, useState, useNavigate, useContext} from 'react';
+import { useEffect, useState, useNavigate, useContext } from 'react';
 import { createRequestPath } from "../../helpers/helpers";
 import { CARTEGORIES_ADD_ENDPOINT } from "../../constants/endpoints";
 // import { ADD_CATEGORIES_FORM_PATH } from "../../constants/pathNames";
@@ -21,29 +21,31 @@ const AddCategoryForm = () => {
 	const [getIdForSave, setGetIdForSave] = useState();
 	// const navigator = useNavigate();
 
-	
-  
+
+
 	const onSubmitDataToApi = (category) => {
-		
-	  const apiEndpoint = createRequestPath(CARTEGORIES_ADD_ENDPOINT);
-  	  fetch(apiEndpoint, {
-		method: "POST",
-		body: JSON.stringify(category),
-		headers: { "Content-Type": "application/json" },
-	   })
-	   .then(resp => { 
-		console.log('response => ', resp);
-		return resp;
-	  })
-	  .then( resp => resp.json())
-	  .then(resp => console.log('response Parsed => ', resp))
-	//   .then(() => navigator(ADD_CATEGORIES_FORM_PATH))
-	   .catch(err => console.log('error => ', err))
+
+
+
+		const apiEndpoint = createRequestPath(CARTEGORIES_ADD_ENDPOINT);
+		fetch(apiEndpoint, {
+			method: "POST",
+			body: JSON.stringify(category),
+			headers: { "Content-Type": "application/json" },
+		})
+			.then(resp => {
+				console.log('response => ', resp);
+				return resp;
+			})
+			.then(resp => resp.json())
+			.then(resp => console.log('response Parsed => ', resp))
+			//   .then(() => navigator(ADD_CATEGORIES_FORM_PATH))
+			.catch(err => console.log('error => ', err))
 	}
 
 
 
-	function onAddcategory  () {
+	function onAddcategory() {
 		const category = {
 			title,
 			image,
@@ -58,7 +60,7 @@ const AddCategoryForm = () => {
 			seturlSlug('');
 			setredClassFlag(false)
 			onSubmitDataToApi(category)
-			// setflagToRender(i++)
+
 		}
 		else {
 			setredClassFlag(true)
@@ -143,7 +145,7 @@ const AddCategoryForm = () => {
 	// 	}
 	// }
 
-	const editcategoryTitle = ({}) => {
+	const editcategoryTitle = ({ }) => {
 		let title
 		categories.map((category) => {
 			if (category.id === getIdForSave) {
@@ -159,29 +161,29 @@ const AddCategoryForm = () => {
 
 	return (
 		<PageWrapper>
-		<div className='add-new-category'>
-			{
-				buttonSavecategoryFlag ? <h2 className="edit-category">Edit category - {editcategoryTitle()} </h2> : <h2>Add new category</h2>
-			}
-			<div className="add-new-category-panel">
-				<Input classNameFlag={redClassFlag} label="name: " placeholder="Enter category's name" onChangeFunction={onGetName} value={title} />
-				<Input classNameFlag={redClassFlag} label="image: " placeholder="Enter category's image url" onChangeFunction={onGetImage} value={image} />
-				<Input classNameFlag={redClassFlag} label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priority} />
-				<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug}  value={urlSlug} />
+			<div className='add-new-category'>
+				{
+					buttonSavecategoryFlag ? <h2 className="edit-category">Edit category - {editcategoryTitle()} </h2> : <h2>Add new category</h2>
+				}
+				<div className="add-new-category-panel">
+					<Input classNameFlag={redClassFlag} label="name: " placeholder="Enter category's name" onChangeFunction={onGetName} value={title} />
+					<Input classNameFlag={redClassFlag} label="image: " placeholder="Enter category's image url" onChangeFunction={onGetImage} value={image} />
+					<Input classNameFlag={redClassFlag} label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priority} />
+					<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlug} />
 
-			</div>
-			{
-				buttonSavecategoryFlag ? 
-				<div>
-					<button className="add-category-item" type="button" onClick={onSavecategory}>save category</button> 
-					<button className="add-category-item" type="button" onClick={returnToAdd}>return to add mode</button>
-				</div> : 
-				<button className="add-category-item" type="button" onClick={onAddcategory}>add</button>
-			}
-			<hr />
-			
-			<Categories flagReverse={true} />
-		</div >
+				</div>
+				{
+					buttonSavecategoryFlag ?
+						<div>
+							<button className="add-category-item" type="button" onClick={onSavecategory}>save category</button>
+							<button className="add-category-item" type="button" onClick={returnToAdd}>return to add mode</button>
+						</div> :
+						<button className="add-category-item" type="button" onClick={onAddcategory}>add</button>
+				}
+				<hr />
+
+				<Categories flagReverse={true} />
+			</div >
 		</PageWrapper>
 	);
 };
