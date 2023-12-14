@@ -50,18 +50,6 @@ function App() {
     <div className="App">
       <button  onClick={onSubmitDataToApi}>Add Product</button>
       <Header />
-      <Routes>
-        {/* <Route path={CONTACT_PATH} element={CONTACT_PATH} />
-        <Route path={HOME_PATH} element={HOME_PATH} />
-        <Route path={ABOUT_PATH} element={ABOUT_PATH} />
-        <Route path={BLOG_PATH} element={BLOG_PATH} />
-        <Route path={HELP_PATH} element={HELP_PATH} /> */}
-        {/* <Route path={COCTAIL_CATEGIRIES_PATH} element={``} /> */}
-      </Routes>
-      {/* <PageWrapper>
-        <Header />
-
-      </PageWrapper> */}
       <Footer />
     </div>
   );
