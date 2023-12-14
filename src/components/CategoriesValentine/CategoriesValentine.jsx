@@ -1,5 +1,5 @@
 import styles from './categoriesValentine.module.css';
-import CategoriesCard from '../CategoriesCard';
+import CategoriesCardValentine from '../CategoriesCardValentine';
 import { useEffect, useState } from 'react';
 import { CARTEGORIES_LIST_ENDPOINT } from '../../constants/endpoints';
 import { createRequestPath } from '../../helpers/helpers';
@@ -35,7 +35,7 @@ const CategoriesValentine = () => {
             {data.map((prod, id)=> {
                 const {title, image, priority } = prod;
                 return (
-                    <CategoriesCard
+                    <CategoriesCardValentine
                     title={title}
                     image={image}
                     priority={priority}
