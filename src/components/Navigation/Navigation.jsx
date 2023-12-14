@@ -2,7 +2,7 @@ import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { WEATHER_PATH, PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH } from "../../constants/pathNames";
+import { ADD_CATEGORIES_FORM_PATH, PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH } from "../../constants/pathNames";
 // export let dataCategories = createContext()
 const Navigation = () => {
 
@@ -19,6 +19,13 @@ const Navigation = () => {
       },
       {
          id: uuidv4(),
+         text: 'Add Categories',
+         isUppercasetext: true,
+         path: ADD_CATEGORIES_FORM_PATH,
+         isCategiries: false,
+      },
+      {
+         id: uuidv4(),
          text: 'Blog',
          isUppercasetext: true,
          path: BLOG_PATH,
@@ -31,6 +38,7 @@ const Navigation = () => {
          path: PRODUCTS_PATH,
          isCategiries: false,
       },
+      
       {
          id: uuidv4(),
          text: 'Add products',

@@ -6,7 +6,9 @@ import { CARTEGORIES_LIST_ENDPOINT } from "../../constants/endpoints";
 
 export let dataCategories = createContext()
 
-const Categories = () => {
+const Categories = (props) => {
+    const { flagReverse } = props;
+  
     const [data, setData] = useState([])
     const [fetching, setFetching] = useState(false)
     const [fetchError, setFetchError] = useState(null);
@@ -27,21 +29,25 @@ const Categories = () => {
             });
     }, [])
 
+
+    let flagToReverse=flagReverse || false 
+
     return (
 
-        <div className={styles['common']}>
+        <div className={styles['categories']}>
 
-            {
-
-                data.map((el) => {
-                    console.log(el.title);
-                    return <CategoriesCard title={el.title} image={el.image} string={el.urlSlug} />
-                })
-
-            }
-
+           {
+            flagToReverse?
+            data.slice(0).reverse().map((el) => {
+                return <CategoriesCard id={el.id} title={el.title} image={el.image} string={el.urlSlug} />
+            }):
+            data.map((el) => {
+                return <CategoriesCard id={el.id} title={el.title} image={el.image} string={el.urlSlug} />
+            })
+           }
+        
         </div>
-
+      
     )
 };
 
