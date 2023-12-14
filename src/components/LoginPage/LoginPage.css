@@ -1,0 +1,58 @@
+/* html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.login-main-container{
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+    border: solid 2px #000;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form>div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+label{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+button{
+    width: 200px;
+    height: 40px;
+    text-transform: uppercase;
+    color: #fff;
+    border: solid 2px #fff;
+    background-color: rgb(44, 59, 223);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover{
+    border: solid 2px rgb(44, 59, 223);
+    background-color: rgb(53, 70, 255);
+}

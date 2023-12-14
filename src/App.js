@@ -1,21 +1,67 @@
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Blog from "./components/Blog";
+import Categories from "./components/Categories";
+import Products from "./components/Products";
+import { Routes, Route, useNavigate } from "react-router";
+import AddProducts from "./components/AddProducts";
+import {ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH } from "./constants/pathNames";
+import { createRequestPath } from "./helpers/helpers";
+import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 
-import { Routes, Route } from "react-router";
-import { ABOUT_PATH, BLOG_PATH, HOME_PATH } from "./constants/constants";
 
 
 function App() {
+
+  const navigator = useNavigate();
+
+  const mockProduct = {
+    name: "Тестовий",
+    priority: 1,
+    categoryId: 2,
+    price: 200,
+    description: "Тестовий Тест Тортовий!",
+    ids: [
+      1
+    ]
+  }
+
+  const onSubmitDataToApi = () => {
+    const apiEndpoint = createRequestPath(PRODUCTS_ADD_ENDPOINT);
+
+    fetch(apiEndpoint, {
+      method: "POST",
+      body: JSON.stringify(mockProduct),
+      headers: { "Content-Type": "application/json" },
+     })
+     .then(resp => { 
+      console.log('response => ', resp);
+      return resp;
+    })
+     .then(resp => resp.json())
+     .then(resp => console.log('response Parsed => ', resp))
+     .then(() => navigator(PRODUCTS_PATH))
+     .catch(err => console.log('error => ', err))
+  }
+  
+  
   return (
     <div className="App">
+      <button  onClick={onSubmitDataToApi}>Add Product</button>
       <Header />
       <Routes>
+        {/* <Route path={CONTACT_PATH} element={CONTACT_PATH} />
         <Route path={HOME_PATH} element={HOME_PATH} />
         <Route path={ABOUT_PATH} element={ABOUT_PATH} />
         <Route path={BLOG_PATH} element={BLOG_PATH} />
+        <Route path={HELP_PATH} element={HELP_PATH} /> */}
         {/* <Route path={COCTAIL_CATEGIRIES_PATH} element={``} /> */}
       </Routes>
+      {/* <PageWrapper>
+        <Header />
+
+      </PageWrapper> */}
       <Footer />
     </div>
   );

@@ -1,4 +1,5 @@
 import styles from './button.module.css';
+
 import classNames from 'classnames';
 
 const Button = (props) => {
@@ -7,7 +8,7 @@ const Button = (props) => {
     const buutonClassname = classNames(styles['button'], {
         [styles['submit']] : type === 'submit',
         [styles['reset']] : type === 'reset',
-    })
+    });
     
     return (
         <button 
@@ -17,8 +18,7 @@ const Button = (props) => {
         >
             { title }
         </button>
-    )
-
+    );
 }
 
 export default Button;

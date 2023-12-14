@@ -2,7 +2,7 @@ import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { ABOUT_PATH, BLOG_PATH, CONTACT_PATH, HELP_PATH } from "../../constants/constants";
+import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH } from "../../constants/pathNames";
 
 
 const Navigation = () => {
@@ -11,10 +11,17 @@ const Navigation = () => {
    const navElements = [
       {
          id: uuidv4(),
-         text: 'About us',
+         text: 'Product',
          isUppercasetext: true,
-         path: ABOUT_PATH,
+         path: PRODUCTS_PATH,
          isCategiries: false,
+      },
+      {
+         id: uuidv4(),
+         text: 'Categoties',
+         isUppercasetext: true,
+         path: CATEGIRIES_PATH,
+         isCategiries: true,
       },
       {
          id: uuidv4(),
@@ -25,19 +32,26 @@ const Navigation = () => {
       },
       {
          id: uuidv4(),
-         text: 'Contact us',
+         text: 'Add products',
          isUppercasetext: true,
-         path: CONTACT_PATH,
+         path: ADD_PRODUCTS_PATH,
          isCategiries: false,
       },
+      // {
+      //    id: uuidv4(),
+      //    text: 'Contact us',
+      //    isUppercasetext: true,
+      //    path: CONTACT_PATH,
+      //    isCategiries: false,
+      // },
 
-      {
-         id: uuidv4(),
-         text: 'Help & support',
-         isUppercasetext: true,
-         path: HELP_PATH,
-         isCategiries: false,
-      },
+      // {
+      //    id: uuidv4(),
+      //    text: 'Help & support',
+      //    isUppercasetext: true,
+      //    path: HELP_PATH,
+      //    isCategiries: false,
+      // },
 
 
 
@@ -49,16 +63,6 @@ const Navigation = () => {
       <nav className='navigation'>
          {
             navElements.map((element) => {
-               if (element.isCategiries) {
-                  return <div key={element.id}  >
-                     <NavigationItem
-                        text={element.text}
-                        isUppercasetext={element.isUppercasetext}
-                        isCategiries={element.isCategiries}
-                     />
-                  </div>
-               }
-               else {
                   return <Link key={element.id} to={element.path}>
                      <NavigationItem
                         text={element.text}
@@ -67,7 +71,7 @@ const Navigation = () => {
                      />
                   </Link>
 
-               }
+               
             })
          }
       </nav>
