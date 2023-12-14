@@ -8,14 +8,12 @@ const DEFAULT_DESSERTS = [
     id: 4,
     name: "Lena Blog",
     text: "In this place will be Lena's blog text",
-    // image: "pnbv3qpd.dwo.jpeg",
     dateTimePublish: "12.12.2023",
   },
   {
     id: 2,
     name: "Roman Blog",
     text: "In this place will be Roman's blog text",
-    // image: "5js355ns.zxy.jpeg",
     dateTimePublish: "12.12.2023",
   },
 ];
