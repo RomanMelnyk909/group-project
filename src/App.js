@@ -57,6 +57,8 @@ function App() {
         <Route path={CATEGIRIES_PATH} element={<Categories/>} />
         <Route path={PRODUCTS_PATH} element={<Products/>} />
       </Routes>
+
+      
       <Footer />
     </div>
   );
