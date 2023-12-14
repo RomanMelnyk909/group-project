@@ -61,6 +61,8 @@ function App() {
         <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
 
       </Routes>
+
+      
       <Footer />
     </div>
   );
