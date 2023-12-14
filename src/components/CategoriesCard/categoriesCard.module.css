@@ -1,14 +1,15 @@
 .common {
-    width: 250px;
-    height: 129px;
-    padding: 10px;
+    width: 385px;
+    height: 199px;
+    padding: 15px;
+    margin-top: 50px;
     border-radius: 2px;
     box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
     /* background: silver url(../../images/sub-banner-1.jpg); */
     background-color: silver;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     font-family: 'Open Sans', sans-serif;
 
     display: flex;
@@ -22,8 +23,8 @@
     width: 110px;
     text-align: left;
     letter-spacing: 0;
-    /* line-height: 25px; */
-    font-size: 16px;
+    line-height: 29px;
+    font-size: 24px;
     padding-top: 5px;
     padding-left: 10px;
 }
@@ -37,6 +38,8 @@ a.demo-link {
     padding-bottom: 5px;
     text-decoration: underline;
     transition: color 0.3s ease-in-out;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 a.demo-link:hover {
     text-decoration: none;
