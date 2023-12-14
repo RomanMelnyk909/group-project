@@ -1,51 +1,53 @@
 import styles from './categories.module.css';
 import CategoriesCard from '../CategoriesCard';
-import { useEffect, useState } from 'react';
-import { CARTEGORIES_LIST_ENDPOINT } from '../../constants/endpoints';
-import { createRequestPath } from '../../helpers/helpers';
-import PageWrapper from '../PageWrapper'
+import { useEffect, useState, createContext } from 'react';
+import { createRequestPath } from "../../helpers/helpers";
+import { CARTEGORIES_LIST_ENDPOINT } from "../../constants/endpoints";
 
+export let dataCategories = createContext()
 
-const Categories = () => {
-    const [data, setData]=useState([]);
-    const [fetching, setFetching]=useState(false);
+const Categories = (props) => {
+    const { flagReverse } = props;
+  
+    const [data, setData] = useState([])
+    const [fetching, setFetching] = useState(false)
     const [fetchError, setFetchError] = useState(null);
-    console.log("data", data)
-
-    useEffect(() => {
-        setFetching(true);
+    useEffect(function () {
+        setFetching(true)
         fetch(createRequestPath(CARTEGORIES_LIST_ENDPOINT))
-        .then(response => response.json())
-        .then(resp => {
-            setData(resp)
-            setFetching(false)
-            console.log(resp)
-        })
-        .catch(err => {
-            setFetching(false)
-            setFetchError(err)
-        });
-    },[])
+            .then(response => response.json())
+            .then(resp => {
+                setFetching(false)
+                setData(resp)
 
+
+            })
+            .catch(err => {
+
+                setFetching(false)
+                setFetchError(err)
+            });
+    }, [])
+
+
+    let flagToReverse=flagReverse || false 
 
     return (
-        <PageWrapper>
-            <div className={styles['common']}>
-            {/* <CategoriesCard /> */}
-            {data.map((prod, id)=> {
-                const {title, image, priority } = prod;
-                return (
-                    <CategoriesCard
-                    title={title}
-                    image={image}
-                    priority={priority}
-                    // id={id}
-                    key={id}
-                    />
-                )
-            })}
+
+        <div className={styles['categories']}>
+
+           {
+            flagToReverse?
+            data.slice(0).reverse().map((el) => {
+                return <CategoriesCard id={el.id} title={el.title} image={el.image} string={el.urlSlug} />
+            }):
+            data.map((el) => {
+                return <CategoriesCard id={el.id} title={el.title} image={el.image} string={el.urlSlug} />
+            })
+           }
+        
         </div>
-        </PageWrapper>
+      
     )
 };
 

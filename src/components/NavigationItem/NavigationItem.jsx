@@ -3,9 +3,37 @@ import { Link } from "react-router-dom";
 // import { ABOUT_PATH, BLOG_PATH, HOME_PATH } from "../../constants/constants";
 // import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useEffect, useState, createContext } from 'react';
+import { createRequestPath } from "../../helpers/helpers";
+import { CARTEGORIES_LIST_ENDPOINT } from "../../constants/endpoints";
+
+export let DataCategoriesContext = createContext()
 
 const NavigationItem = (props) => {
    const { text, isUppercasetext, isCategiries } = props
+
+   const [data, setData] = useState([])
+   const [fetching, setFetching] = useState(false)
+   const [fetchError, setFetchError] = useState(null);
+   useEffect(function () {
+      setFetching(true)
+      fetch(createRequestPath(CARTEGORIES_LIST_ENDPOINT))
+         .then(response => response.json())
+         .then(resp => {
+            setFetching(false)
+            setData(resp)
+
+
+         })
+         .catch(err => {
+
+            setFetching(false)
+            setFetchError(err)
+         });
+   }, [])
+
+
+
    let categories = [
       {
          id: uuidv4(),
@@ -50,11 +78,11 @@ const NavigationItem = (props) => {
                      &#9660;</div>
                   <div className='navigatin-categiries hidden'  >
                      {
-                        categories.map((element) => {
+                        data.map((element) => {
 
                            return (
 
-                              <Link key={element.id} to={element.urlSlug}>
+                              <Link key={uuidv4()} to={element.urlSlug}>
 
                                  <div className="navigatin-categiries-item">
                                     {element.title}
