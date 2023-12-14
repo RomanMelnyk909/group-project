@@ -10,6 +10,7 @@ import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, ADD_CATEG
 import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
+import AddProductForm from "./components/AddProductFormLera/AddProductForm";
 
 
 
@@ -53,7 +54,7 @@ function App() {
       <button  onClick={onSubmitDataToApi}>Add Product</button>
       <Header />
       <Routes>
-        <Route path={ADD_PRODUCTS_PATH} element={<AddProducts />} />
+        <Route path={ADD_PRODUCTS_PATH} element={<AddProductForm />} />
         {/* <Route path={ABOUT_PATH} element={ABOUT_PATH} /> */}
         <Route path={BLOG_PATH} element={<Blog />} />
         <Route path={CATEGIRIES_PATH} element={<Categories />} />
