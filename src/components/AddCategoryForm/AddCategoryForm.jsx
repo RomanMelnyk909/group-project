@@ -180,7 +180,7 @@ const AddCategoryForm = () => {
 			}
 			<hr />
 			
-			<Categories flagReverse={true} flagRender={flagToRender}/>
+			<Categories flagReverse={true} />
 		</div >
 		</PageWrapper>
 	);
