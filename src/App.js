@@ -10,12 +10,13 @@ import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, ADD_CATEG
 import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
+import { createContext, useState } from 'react';
 
-
+export let ChangeIdContext = createContext()
 
 
 function App() {
-
+	const [refetchId, setRefetchId] = useState(null);
   const navigator = useNavigate();
 
   const mockProduct = {
@@ -52,6 +53,7 @@ function App() {
     <div className="App">
       <button  onClick={onSubmitDataToApi}>Add Product</button>
       <Header />
+      <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
       <Routes>
         <Route path={ADD_PRODUCTS_PATH} element={<AddProducts />} />
         {/* <Route path={ABOUT_PATH} element={ABOUT_PATH} /> */}
@@ -59,9 +61,8 @@ function App() {
         <Route path={CATEGIRIES_PATH} element={<Categories />} />
         <Route path={PRODUCTS_PATH} element={<Products />} />
         <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
-
       </Routes>
-
+      </ChangeIdContext.Provider>
       
       <Footer />
     </div>

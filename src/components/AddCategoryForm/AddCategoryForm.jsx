@@ -1,32 +1,24 @@
 import Input from "../Input";
 import './addCategoryForm.css';
-import CategoriesCard from '../CategoriesCard';
-import { useEffect, useState, useNavigate, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { createRequestPath } from "../../helpers/helpers";
 import { CARTEGORIES_ADD_ENDPOINT } from "../../constants/endpoints";
-// import { ADD_CATEGORIES_FORM_PATH } from "../../constants/pathNames";
-import { v4 as uuidv4 } from 'uuid';
 import Categories from "../Categories";
 import PageWrapper from "../PageWrapper";
-import * as ReactDOM from 'react-dom';
+import { v4 as uuidv4 } from 'uuid'; 
+import {ChangeIdContext} from "../../App"
+
+
 const AddCategoryForm = () => {
-	const [categories, setCategories] = useState();
-	const [flagToRender, setflagToRender] = useState();
+	let {refetchId, setRefetchId}=useContext(ChangeIdContext) 
+
 	const [title, settitle] = useState();
 	const [image, setImage] = useState();
 	const [priority, setpriority] = useState();
 	const [urlSlug, seturlSlug] = useState();
 	const [redClassFlag, setredClassFlag] = useState(false);
-	const [buttonSavecategoryFlag, setbuttonSavecategoryFlag] = useState(false);
-	const [getIdForSave, setGetIdForSave] = useState();
-	// const navigator = useNavigate();
-
-
 
 	const onSubmitDataToApi = (category) => {
-
-
-
 		const apiEndpoint = createRequestPath(CARTEGORIES_ADD_ENDPOINT);
 		fetch(apiEndpoint, {
 			method: "POST",
@@ -35,15 +27,15 @@ const AddCategoryForm = () => {
 		})
 			.then(resp => {
 				console.log('response => ', resp);
-				return resp;
+				if (resp.status) {
+					setRefetchId(uuidv4())	
+                }
 			})
-			.then(resp => resp.json())
-			.then(resp => console.log('response Parsed => ', resp))
-			//   .then(() => navigator(ADD_CATEGORIES_FORM_PATH))
-			.catch(err => console.log('error => ', err))
 	}
 
-
+	function onAddedIDChanged(){
+		return uuidv4()
+	}
 
 	function onAddcategory() {
 		const category = {
@@ -52,7 +44,7 @@ const AddCategoryForm = () => {
 			priority,
 			urlSlug,
 		};
-
+		onAddedIDChanged()
 		if (category.title && category.image && category.priority) {
 			settitle(``);
 			setImage('');
@@ -60,21 +52,13 @@ const AddCategoryForm = () => {
 			seturlSlug('');
 			setredClassFlag(false)
 			onSubmitDataToApi(category)
-
+		
 		}
 		else {
 			setredClassFlag(true)
 		}
 	}
 
-
-	const onGetIdForSave = (value) => {
-		setGetIdForSave(value)
-	};
-
-	const onGetbuttonSavecategoryFlag = (value) => {
-		setbuttonSavecategoryFlag(value)
-	};
 	const onGetName = (value) => {
 		settitle(value)
 	};
@@ -90,80 +74,13 @@ const AddCategoryForm = () => {
 		seturlSlug(value)
 	};
 
-	// const onDeletecategory = (id) => {
-	// 	setCategories(categories.filter((category) => category.id !== id))
-	// }
-	const returnToAdd = (id) => {
-		settitle(``);
-		setImage('');
-		setpriority('');
-		seturlSlug('');
-		setbuttonSavecategoryFlag(false)
-	}
-	const onSavecategory = () => {
-		categories.map((category) => {
-			if (category.id === getIdForSave) {
-				category.title = title;
-				category.image = image;
-				category.priority = priority;
-				category.urlSlug = urlSlug;
-
-				return
-			}
-
-		})
-
-		setCategories(categories)
-		onGetName('');
-		onGetImage('');
-		onGetpriority('');
-		onGeturlSlug('');
-		setredClassFlag('')
-
-	}
-
-	// const onUpdatecategory = (el) => {
-	// 	let newUp = categories.filter((category) => {
-
-	// 		if (category.id === el) {
-	// 			onGetbuttonSavecategoryFlag(true)
-	// 			return category;
-	// 		}
-
-	// 	});
-	// 	if (newUp.length > 0) {
-	// 		console.log(newUp[0].id);
-	// 		onGetName(newUp[0].title)
-	// 		onGetImage(newUp[0].image)
-	// 		onGetpriority(newUp[0].priority)
-	// 		onGeturlSlug(newUp[0].urlSlug)
-	// 		onGetIdForSave(el)
-	// 		// console.log(title);
-	// 	}
-	// 	else {
-	// 		return
-	// 	}
-	// }
-
-	const editcategoryTitle = ({ }) => {
-		let title
-		categories.map((category) => {
-			if (category.id === getIdForSave) {
-				title = category.title
-				return
-			}
-		})
-		return title
-	}
-
-
-
 
 	return (
 		<PageWrapper>
+			
 			<div className='add-new-category'>
 				{
-					buttonSavecategoryFlag ? <h2 className="edit-category">Edit category - {editcategoryTitle()} </h2> : <h2>Add new category</h2>
+					 <h2>Add new category</h2>
 				}
 				<div className="add-new-category-panel">
 					<Input classNameFlag={redClassFlag} label="name: " placeholder="Enter category's name" onChangeFunction={onGetName} value={title} />
@@ -172,18 +89,11 @@ const AddCategoryForm = () => {
 					<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlug} />
 
 				</div>
-				{
-					buttonSavecategoryFlag ?
-						<div>
-							<button className="add-category-item" type="button" onClick={onSavecategory}>save category</button>
-							<button className="add-category-item" type="button" onClick={returnToAdd}>return to add mode</button>
-						</div> :
-						<button className="add-category-item" type="button" onClick={onAddcategory}>add</button>
-				}
+				<button className="add-category-item" type="button" onClick={onAddcategory}>add</button>
 				<hr />
-
-				<Categories flagReverse={true} />
+				<Categories flagReverse={true} buttonFlag={true}/>
 			</div >
+			
 		</PageWrapper>
 	);
 };
