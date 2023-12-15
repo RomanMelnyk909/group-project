@@ -30,13 +30,6 @@ const Navigation = () => {
       },
       {
          id: uuidv4(),
-         text: 'CategotiesValentine',
-         isUppercasetext: true,
-         path: CATEGIRIES_VALENTINE_PATH,
-         isCategiries: true,
-      },
-      {
-         id: uuidv4(),
          text: 'Blog',
          isUppercasetext: true,
          path: BLOG_PATH,

@@ -1,6 +1,5 @@
 .common {
-    width: 250px;
-   
+    width: 250px; 
     padding: 10px;
     border-radius: 2px;
     box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
@@ -9,17 +8,17 @@
     background-position: center;
     background-size: cover;
     font-family: 'Open Sans', sans-serif;
-
     display: flex;
     flex-direction: column;
     align-self:stretch;
-justify-content: space-between;
-   
- 
-
+    justify-content: space-between;
+    box-shadow: 2px 2px 14px grey;
     /* margin: 0 auto; */
 }
-
+.common:hover{
+    transform: scale3d(0.9);
+    transition: 500ms;
+}
 .common h3 {
     width: 110px;
     text-align: left;
