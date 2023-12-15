@@ -52,7 +52,6 @@ function App() {
   
   return (
     <div className="App">
-      <button  onClick={onSubmitDataToApi}>Add Product</button>
       <Header />
       <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
       <Routes>
