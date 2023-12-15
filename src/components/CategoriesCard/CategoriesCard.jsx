@@ -30,6 +30,7 @@ const CategoriesCard = (props) => {
 
 
     return (
+
         // Коли картинка буде з api тодi замiнемо backgroundImage на props => image
         <div className={styles['common']} style={{ backgroundImage: `url(${ backgroundImage})` }} id={id}>
             <div><h3>{title || `The title will be here`}</h3></div>
