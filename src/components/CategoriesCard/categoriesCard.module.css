@@ -1,24 +1,24 @@
 .common {
-    width: 385px;
-    height: 199px;
-    padding: 15px;
-    margin-top: 50px;
+    width: 250px; 
+    padding: 10px;
     border-radius: 2px;
     box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
-    /* background: silver url(../../images/sub-banner-1.jpg); */
-    background-color: silver;
+    background: silver url(../../images/sub-banner-1.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     font-family: 'Open Sans', sans-serif;
-
     display: flex;
     flex-direction: column;
+    align-self:stretch;
     justify-content: space-between;
-
+    box-shadow: 2px 2px 14px grey;
     /* margin: 0 auto; */
 }
-
+.common:hover{
+    transform: scale3d(0.9);
+    transition: 500ms;
+}
 .common h3 {
     width: 110px;
     text-align: left;
@@ -47,4 +47,14 @@ a.demo-link:hover {
 }
 a.demo-link:active {
     color: rgb(118, 61, 61);
+}
+.common button {
+    background: rgb(218, 215, 215);
+    color:black;
+    border: 1px solid grey;
+    text-transform: capitalize;
+    padding: 7px;
+    font-size: 16px;
+    line-height: 16px;
+    width: min-content;
 }
