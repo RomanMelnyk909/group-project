@@ -9,103 +9,131 @@ import { useNavigate } from "react-router";
 import { PRODUCTS_ADD_ENDPOINT } from "../../constants/endpoints";
 import { PRODUCTS_PATH } from "../../constants/pathNames";
 import { createRequestPath } from "../../helpers/helpers";
+import PageWrapper from '../PageWrapper';
 
 
 const AddProductForm = () => {
     const navigator = useNavigate();
 
-    const mockProduct = {
-        name: "П'яна вишня",
-        priority: 3,
-        categoryId: 2,
-        price: 50,
-        description: "Мммммм....",
-        ids: [
-          5
-        ]
-      }
-    
-    const onSubmitDataToApi = () => {
+	const [name, setName] = useState('');
+	const [priority, setPriority] = useState('');
+	const [categoryId, setCategoryId] = useState('');
+	const [price, setPrice] = useState('');
+	const [description, setDescription] = useState('');
+	const [ids, setIds] = useState([]);
+
+	const [error, setError] = useState(true);
+
+    const onSubmitDataToApi = (product) => {
         const apiEndpoint = createRequestPath(PRODUCTS_ADD_ENDPOINT);
         fetch(apiEndpoint, {
             method: "POST",
-            body: JSON.stringify(mockProduct),
+            body: JSON.stringify(product),
             headers: { "Content-Type": "application/json" },
         })
         .then(resp => { 
-            console.log('response => ', resp);
+			console.log(resp.status);
             return resp;
         })
-        .then(resp => resp.json())
-        .then(resp => console.log('response Parsed => ', resp))
         .then(() => navigator(PRODUCTS_PATH))
         .catch(err => console.log('error => ', err))
     }
 
-    const [formData, setFormData] = useState({
-        name: '',
-        priority: '',
-        categoryId: '',
-        price: '',
-        description: '',
-        ids: '',
-    });
-    console.log(formData.name);
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    }
+	const onAddProduct = (e) => {
+		// e.preventDefault();
+		console.log('click');
+		const product = {
+			name,
+			priority: parseInt(priority),
+			categoryId: parseInt(categoryId),
+			price: parseInt(price),
+			description,
+			ids: [parseInt(ids)],
+		};
+		console.log(product);
+		if (product.name && product.priority && product.categoryId && product.price && product.description && product.ids.length > 0) {
+			setName('');
+			setPriority('');
+			setCategoryId('');
+			setPrice('');
+			setDescription('');
+			setIds('');
+			onSubmitDataToApi(product);
+		}
+	}
+
+	const onGetName = (value) => {
+		setName(value);
+	}
+	const onGetPriority = (value) => {
+		setPriority(value);
+	}
+	const onGetCategoryId = (value) => {
+		setCategoryId(value);
+	}
+	const onGetPrice = (value) => {
+		setPrice(value);
+	}
+	const onGetDescription = (value) => {
+		setDescription(value);
+	}
+	const onGetIds = (value) => {
+		setIds(value);
+	}
 
     return (
-        <div className={styles["products"]}>
-            <Input
-                label="Product:"
-                placeholder="Enter product name"
-                onChangeFunction={handleInputChange}
-                value={formData.name}
-                type="text"
-                name='name' />
-            <Input
-                label="Priority:"
-                placeholder="Enter product priority"
-                onChangeFunction={handleInputChange}
-                value={formData.priority}
-                type="text"
-                name='priority' />
-            <Input
-                label="Category Id:"
-                placeholder="Enter category id"
-                onChangeFunction={handleInputChange}
-                value={formData.categoryId}
-                type="text"
-                name='categoryId' />
-            <Input
-                label="Price:"
-                placeholder="Enter price"
-                onChangeFunction={handleInputChange}
-                value={formData.price}
-                type="number"
-                name='price' />
-            <Input
-                label="Description:"
-                placeholder="Enter description"
-                onChangeFunction={handleInputChange}
-                value={formData.description}
-                type="number"
-                name='description' />
-            <Input
-                label="Ids:"
-                placeholder="Enter ids"
-                onChangeFunction={handleInputChange}
-                value={formData.ids}
-                type="number"
-                name='ids' />
-            <Button
-                className="addProducts"
-                type="button"
-                onClickFunction={onSubmitDataToApi}
-                title='Add' />
-        </div>
+		<PageWrapper>
+			<form action="" onSubmit={onAddProduct}>
+				<div className={styles["products"]}>
+					<h2>Add Product</h2>
+					<Input
+						label="Product Name:"
+						placeholder="Enter product name"
+						onChangeFunction={onGetName}
+						value={name}
+						validation={error} />
+					<Input
+						label="Priority:"
+						placeholder="Enter product priority"
+						onChangeFunction={onGetPriority}
+						value={priority}
+						type="number"
+						validation={error} />
+					<Input
+						label="Category Id:"
+						placeholder="Enter category id"
+						onChangeFunction={onGetCategoryId}
+						value={categoryId}
+						type="number"
+						validation={error} />
+					<Input
+						label="Price:"
+						placeholder="Enter price"
+						onChangeFunction={onGetPrice}
+						value={price}
+						type="number"
+						validation={error} />
+					<Input
+						label="Description:"
+						placeholder="Enter description"
+						onChangeFunction={onGetDescription}
+						value={description}
+						validation={error} />
+					<Input
+						label="Ids:"
+						placeholder="Enter ids"
+						onChangeFunction={onGetIds}
+						value={ids}
+						type="number"
+						validation={error} />
+					<Button
+						className="addProducts"
+						type="submit"
+						// onClickFunction={onAddProduct}
+						title='Add' />
+				</div>
+			</form>
+		</PageWrapper>
     );
 };
 
