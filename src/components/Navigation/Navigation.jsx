@@ -2,7 +2,7 @@ import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH,ADD_CATEGORIES_FORM_PATH } from "../../constants/pathNames";
+import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH,ADD_CATEGORIES_FORM_PATH,ADD_VLAD_BLOGS_PATH, } from "../../constants/pathNames";
 
 const Navigation = () => {
 
@@ -33,6 +33,13 @@ const Navigation = () => {
          text: 'Blog',
          isUppercasetext: true,
          path: BLOG_PATH,
+         isCategiries: false,
+      },
+      {
+         id: uuidv4(),
+         text: 'Add Blogs',
+         isUppercasetext: true,
+         path: ADD_VLAD_BLOGS_PATH,
          isCategiries: false,
       },
       {
