@@ -77,7 +77,6 @@ const AddCategoryForm = () => {
 
 	return (
 		<PageWrapper>
-			
 			<div className='add-new-category'>
 				{
 					 <h2>Add new category</h2>
@@ -87,13 +86,11 @@ const AddCategoryForm = () => {
 					<Input classNameFlag={redClassFlag} label="image: " placeholder="Enter category's image url" onChangeFunction={onGetImage} value={image} />
 					<Input classNameFlag={redClassFlag} label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priority} />
 					<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlug} />
-
 				</div>
 				<button className="add-category-item" type="button" onClick={onAddcategory}>add</button>
 				<hr />
 				<Categories flagReverse={true} buttonFlag={true}/>
 			</div >
-			
 		</PageWrapper>
 	);
 };
