@@ -50,7 +50,7 @@ const CategoriesCardValentine = (props) => {
 
             <a className={styles["demo-link"]} href="#">{string || "There will be a link here"}</a>
             {/* <img src={image} alt={`${image}`} /> */}
-            <button className='button' onClick={onDeleteDataToApi}>delete</button>
+            <button className={styles["btn-card"]} onClick={onDeleteDataToApi}>delete</button>
         </div>
     )
 };
