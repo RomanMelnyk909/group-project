@@ -1,7 +1,6 @@
 export const HOME_PATH = "/";
 export const CATEGIRIES_PATH = "/categories";
 export const CATEGIRIES_VALENTINE_PATH = "/categoriesValentine";
-export const ADD_CATEGORIES_FORM_PATH = "/categoriesValentine";
 export const BLOG_PATH = "/blog";
 export const ABOUT_PATH = "/about";
 export const PRODUCTS_PATH = "/products";
