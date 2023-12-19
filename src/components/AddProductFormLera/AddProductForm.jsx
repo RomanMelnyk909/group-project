@@ -15,6 +15,17 @@ import PageWrapper from '../PageWrapper';
 const AddProductForm = () => {
     const navigator = useNavigate();
 
+	const mockProduct = {
+		name: "Name of Cake",
+		priority: 2,
+		categoryId: 1,
+		price: 50,
+		description: "super tasty cake",
+		ids: [
+		  5
+		]
+	};
+
 	const [name, setName] = useState('');
 	const [priority, setPriority] = useState('');
 	const [categoryId, setCategoryId] = useState('');
@@ -32,6 +43,7 @@ const AddProductForm = () => {
             headers: { "Content-Type": "application/json" },
         })
         .then(resp => { 
+			console.log(resp);
 			console.log(resp.status);
             return resp;
         })
@@ -40,7 +52,7 @@ const AddProductForm = () => {
     }
 
 	const onAddProduct = (e) => {
-		// e.preventDefault();
+		e.preventDefault();
 		console.log('click');
 		const product = {
 			name,
@@ -57,7 +69,7 @@ const AddProductForm = () => {
 			setCategoryId('');
 			setPrice('');
 			setDescription('');
-			setIds('');
+			setIds([]);
 			onSubmitDataToApi(product);
 		}
 	}

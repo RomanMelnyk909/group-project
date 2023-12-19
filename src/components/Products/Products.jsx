@@ -38,6 +38,7 @@ const Products = () => {
 	const [data, setData] = useState([]);
 	const [fetching, setFetching] = useState(false);
 	const [error, setError] = useState(null);
+	const [refetchId, setRefetchId] = useState();
 
 	useEffect(function(){
 		setFetching(true);
@@ -51,7 +52,7 @@ const Products = () => {
 			setFetching(false);
 			setError(err);
 		})
-	}, []);
+	}, [refetchId]);
   
 	return (
 		<PageWrapper>
