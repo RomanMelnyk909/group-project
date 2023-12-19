@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BLOGS_LIST_ENDPOINT } from "../../constants/endpoints";
 import { createRequestPath } from "../../helpers/helpers";
 import styles from "./blog.module.css";
-
+import BlogCardR from "../BlogCardR/BlogCardR";
 
 const Blog = () => {
   const [data, setData] = useState([]);
@@ -41,31 +41,24 @@ const Blog = () => {
   };
 
   return (
-      <div className={styles.blogContainer}>
+    <div className={styles.blogContainer}>
       {fetching && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {!fetching && !error && (
         <div>
-          {data.map((blogPost) => (
-            <div key={blogPost.id} className={styles.blogPost}>
-              <img src="https://thelongfortgroup.com/public/img/default/no-image-icon.jpg" alt="" />
-              <h2>{blogPost.name}</h2>
-              <p>{blogPost.text}</p>
-              <p>Date: {blogPost.dateTimePublish}</p>
-              <button type="submit">Order</button>
-            </div>
-          ))}
+          {data.map((blogPost) => {
+            const { id, name, text, dateTimePublish } = blogPost;
+            return (
+              <BlogCardR
+                id={id}
+                name={name}
+                text={text}
+                dateTimePublish={dateTimePublish}
+              />
+            );
+          })}
         </div>
       )}
-
-      {/* <div className={styles.newBlogFields}>
-        <img src="https://thelongfortgroup.com/public/img/default/no-image-icon.jpg" alt="" />
-        <h2>{newBlog.name}</h2>
-        <p>{newBlog.text}</p>
-        <p>Date: {newBlog.dateTimePublish}</p>
-      </div> */}
-
-    <button onClick={handleAddBlog}>Add New Blog</button>
     </div>
   );
 };
