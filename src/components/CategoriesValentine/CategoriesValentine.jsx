@@ -10,7 +10,6 @@ const CategoriesValentine = () => {
     const [data, setData]=useState([]);
     const [fetching, setFetching]=useState(false);
     const [fetchError, setFetchError] = useState(null);
-    console.log("data", data)
 
     useEffect(() => {
         setFetching(true);
@@ -19,7 +18,7 @@ const CategoriesValentine = () => {
         .then(resp => {
             setData(resp)
             setFetching(false)
-            console.log(resp)
+            // console.log(resp)
         })
         .catch(err => {
             setFetching(false)
@@ -31,19 +30,22 @@ const CategoriesValentine = () => {
     return (
         <PageWrapper>
             <div className={styles['common']}>
-            {/* <CategoriesCard /> */}
-            {data.map((prod, id)=> {
-                const {title, image, priority } = prod;
+
+            {data.map((prod, index)=> {
+                // console.log("DATA=>", data)
+                const {title, image, priority, urlSlug, id} = prod;
                 return (
                     <CategoriesCardValentine
                     title={title}
                     image={image}
                     priority={priority}
-                    // id={id}
-                    key={id}
+                    string={urlSlug}
+                    id={id}
+                    key={index}
                     />
-                )
+                    )
             })}
+
         </div>
         </PageWrapper>
     )

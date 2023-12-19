@@ -2,15 +2,13 @@ import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { ADD_CATEGORIES_FORM_PATH, PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH } from "../../constants/pathNames";
+import { ADD_CATEGORIES_FORM_PATH, PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH, ADD_CATEGORIES_FORM_VALENTINE_PATH } from "../../constants/pathNames";
+
 
 // export let dataCategories = createContext()
 const Navigation = () => {
 
-
-   // const navElements = data
    const navElements = [
-
       {
          id: uuidv4(),
          text: 'Categoties',
@@ -34,10 +32,10 @@ const Navigation = () => {
       },
       {
          id: uuidv4(),
-         text: 'CategotiesValentine',
+         text: 'AddCategoriesValentine',
          isUppercasetext: true,
-         path: CATEGIRIES_VALENTINE_PATH,
-         isCategiries: true,
+         path: ADD_CATEGORIES_FORM_VALENTINE_PATH,
+         isCategiries: false,
       },
       {
          id: uuidv4(),
@@ -61,29 +59,10 @@ const Navigation = () => {
          path: ADD_PRODUCTS_PATH,
          isCategiries: false,
       },
-      // {
-      //    id: uuidv4(),
-      //    text: 'Weather',
-      //    isUppercasetext: true,
-      //    path: WEATHER_PATH,
-      //    isCategiries: false,
-      // },
-
-      // {
-      //    id: uuidv4(),
-      //    text: 'Help & support',
-      //    isUppercasetext: true,
-      //    path: HELP_PATH,
-      //    isCategiries: false,
-      // },
-
-
-
+     
    ];
 
-
    return (
-
       <nav className='navigation'>
          {
             navElements.map((element) => {
@@ -94,8 +73,6 @@ const Navigation = () => {
                      isCategiries={element.isCategiries}
                   />
                </Link>
-
-
             })
          }
       </nav>
