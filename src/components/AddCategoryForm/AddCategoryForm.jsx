@@ -33,10 +33,6 @@ const AddCategoryForm = () => {
 			})
 	}
 
-	function onAddedIDChanged(){
-		return uuidv4()
-	}
-
 	function onAddcategory() {
 		const category = {
 			title,
@@ -44,7 +40,6 @@ const AddCategoryForm = () => {
 			priority,
 			urlSlug,
 		};
-		onAddedIDChanged()
 		if (category.title && category.image && category.priority) {
 			settitle(``);
 			setImage('');
@@ -73,7 +68,6 @@ const AddCategoryForm = () => {
 	const onGeturlSlug = (value) => {
 		seturlSlug(value)
 	};
-
 
 	return (
 		<PageWrapper>
