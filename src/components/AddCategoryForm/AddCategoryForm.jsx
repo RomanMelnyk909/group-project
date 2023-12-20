@@ -36,30 +36,27 @@ const AddBlogForm = () => {
     return uuidv4()
   }
 
-  function onAddBlog() {
-    const blog = {
-      name,
-      text,
-      image,
-      isShow,
-      dateTimePublish,
-    };
-    onAddedIDChanged()
-    if (blog.name && blog.text && blog.image && blog.dateTimePublish) {
-      setName('');
-      setText('');
-      setImage('');
-      setDateTimePublish('');
-      setRedClassFlag(false)
-      onSubmitDataToApi(blog)
-    } else {
-      setRedClassFlag(true)
-    }
-  }
 
-  const onGetName = (value) => {
-    setName(value)
-  };
+	function onAddcategory() {
+		const category = {
+			title,
+			image,
+			priority,
+			urlSlug,
+		};
+		if (category.title && category.image && category.priority) {
+			settitle(``);
+			setImage('');
+			setpriority('');
+			seturlSlug('');
+			setredClassFlag(false)
+			onSubmitDataToApi(category)
+		
+		}
+		else {
+			setredClassFlag(true)
+		}
+	}
 
   const onGetText = (value) => {
     setText(value)
@@ -73,22 +70,24 @@ const AddBlogForm = () => {
     setDateTimePublish(value)
   };
 
-  return (
-    <PageWrapper>
-      <div className='add-new-blog'>
-        <h2>Add new blog</h2>
-        <div className="add-new-blog-panel">
-          <Input classNameFlag={redClassFlag} label="Name: " placeholder="Enter blog name" onChangeFunction={onGetName} value={name} />
-          <Input classNameFlag={redClassFlag} label="Text: " placeholder="Enter blog text" onChangeFunction={onGetText} value={text} />
-          <Input classNameFlag={redClassFlag} label="Image: " placeholder="Enter blog image url" onChangeFunction={onGetImage} value={image} />
-          <Input classNameFlag={redClassFlag} label="Date Time Publish: " placeholder="Enter blog publish date and time" onChangeFunction={onGetDateTimePublish} value={dateTimePublish} />
-        </div>
-        <button className="add-blog-item" type="button" onClick={onAddBlog}>Add</button>
-        <hr />
-        <Blog />
-      </div>
-    </PageWrapper>
-  );
+	return (
+		<PageWrapper>
+			<div className='add-new-category'>
+				{
+					 <h2>Add new category</h2>
+				}
+				<div className="add-new-category-panel">
+					<Input classNameFlag={redClassFlag} label="name: " placeholder="Enter category's name" onChangeFunction={onGetName} value={title} />
+					<Input classNameFlag={redClassFlag} label="image: " placeholder="Enter category's image url" onChangeFunction={onGetImage} value={image} />
+					<Input classNameFlag={redClassFlag} label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priority} />
+					<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlug} />
+				</div>
+				<button className="add-category-item" type="button" onClick={onAddcategory}>add</button>
+				<hr />
+				<Categories flagReverse={true} buttonFlag={true}/>
+			</div >
+		</PageWrapper>
+	);
 };
 
 export default AddBlogForm;

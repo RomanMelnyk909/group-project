@@ -8,6 +8,8 @@ export const PRODUCTS_ADD_ENDPOINT = 'Products/add'
 export const CARTEGORIES_LIST_ENDPOINT = 'Categories/list';
 export const CARTEGORIES_ADD_ENDPOINT = 'Categories/add'
 export const CARTEGORIES_DELETE_ENDPOINT = 'Categories/delete'
+export const CARTEGORIES_EDITE_ENDPOINT = 'Categories/edit';
+export const CARTEGORIES_GET_ENDPOINT = 'Categories/get'
 
 // Blogs Endpoints
 export const BLOGS_LIST_ENDPOINT = 'Blogs/list';
