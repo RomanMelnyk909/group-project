@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    
+}
+
+.container {
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+}
+.blogPanel {
+    margin: 0 auto;
+    display: inline-table;
+    width: 150px;
+}
+.list {
+    width: 250px;
+}
+button {
+    margin-bottom: 15px;
+}
+.card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #b5b5b5c7;
+}
+.card h2 {
+  color: #333;
+}
+
+.card p {
+  margin: 10px 0;
+  color: black;
+}
+.card img {
+  width: 250px;
+  margin: 5px;
+}
