@@ -54,6 +54,7 @@ const CategoriesCard = (props) => {
 			urlSlug:urlSlugEdit,
 		};
         onEditDataToApi(category)
+        setShowFlag(false)
     }
 
     const onGetName = (value) => {
@@ -86,7 +87,8 @@ const CategoriesCard = (props) => {
             {/* <img src={image} alt={`${image}`} /> */}
             <div>
             {buttonFlag?<button className='button' onClick={onDeleteDataToApi}>delete</button>:``}
-            {<button className='button' onClick={onShow}>Edit</button>}</div>
+            {buttonFlag?<button className='button' onClick={onShow}>Edit</button>:``}
+           </div>
             
             <div className={showFlag?styles['edit-card']:styles['hidden']}>  
                 <h2>Edite caregory</h2>
