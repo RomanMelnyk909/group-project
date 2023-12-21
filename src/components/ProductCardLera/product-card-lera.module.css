@@ -4,7 +4,7 @@
     align-items: center; 
     border: 1px silver solid;
     border-radius: 5px;
-    height: 400px;
+    /* height: 400px; */
     width: 300px;
     padding: 20px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);

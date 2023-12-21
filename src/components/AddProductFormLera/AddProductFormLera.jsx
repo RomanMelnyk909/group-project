@@ -4,12 +4,12 @@ import Input from "../Input";
 import Button from '../Button';
 import PageWrapper from '../PageWrapper';
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { v4 as uuidv4 } from 'uuid'; 
 
 import { PRODUCTS_ADD_ENDPOINT } from "../../constants/endpoints";
-import { PRODUCTS_PATH } from "../../constants/pathNames";
+import { PRODUCTS_LERA_PATH } from "../../constants/pathNames";
 import { createRequestPath } from "../../helpers/helpers";
 import { ChangeIdContext } from "../../App";
 
@@ -27,7 +27,7 @@ const AddProductFormLera = () => {
 		description: "super tasty cake",
 		ids: [
 		  5
-		]
+		],
 	};
 
 	const [name, setName] = useState('');
@@ -47,18 +47,15 @@ const AddProductFormLera = () => {
             headers: { "Content-Type": "application/json" },
         })
         .then(resp => { 
-			console.log('response => ', resp);
 			if(resp.status){
 				setRefetchId(uuidv4());
 			}
         })
-        .then(() => navigator(PRODUCTS_PATH))
+        .then(() => navigator(PRODUCTS_LERA_PATH))
         .catch(err => console.log('error => ', err))
     }
 
 	const onAddProduct = (e) => {
-		e.preventDefault();
-		console.log('click');
 		const product = {
 			name,
 			priority: parseInt(priority),
@@ -67,7 +64,7 @@ const AddProductFormLera = () => {
 			description,
 			ids: [parseInt(ids)],
 		};
-		console.log(product);
+
 		if (product.name && product.priority && product.categoryId && product.price && product.description && product.ids.length > 0) {
 			setName('');
 			setPriority('');
@@ -146,7 +143,6 @@ const AddProductFormLera = () => {
 					<Button
 						className="addProducts"
 						type="submit"
-						// onClickFunction={onAddProduct}
 						title='Add' />
 				</div>
 			</form>
