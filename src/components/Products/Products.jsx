@@ -64,8 +64,7 @@ const Products = () => {
 							name={dessert.name}
 							description={dessert.description}
 							price={dessert.price}
-							id={dessert.id}
-							onSetDelitedId={setRefetchId} />
+							id={dessert.id} />
 					))}
 				</div>
 			</div>
