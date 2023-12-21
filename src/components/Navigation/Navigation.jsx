@@ -2,16 +2,20 @@ import "./navigation.css";
 import NavigationItem from "../NavigationItem/NavigationItem";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
+
 import {
     PRODUCTS_PATH,
     BLOG_PATH,
-    ADD_PRODUCTS_PATH,
     CATEGIRIES_PATH,
     CATEGIRIES_VALENTINE_PATH,
+    ADD_CATEGORIES_FORM_VALENTINE_PATH,
     ADD_VLAD_BLOGS_PATH,
     BLOG_LENA_PATH,
-    ADD_CATEGORIES_FORM_PATH, ADD_LERA_PRODUCTS_PATH, PRODUCTS_LERA_PATH } from "../../constants/pathNames";
+    ADD_CATEGORIES_FORM_PATH,
+    ADD_LERA_PRODUCTS_PATH,
+    PRODUCTS_LERA_PATH } from "../../constants/pathNames";
 
+// export let dataCategories = createContext()
 const Navigation = () => {
 
    const navElements = [
@@ -35,6 +39,13 @@ const Navigation = () => {
          isUppercasetext: true,
          path: CATEGIRIES_VALENTINE_PATH,
          isCategiries: true,
+      },
+      {
+         id: uuidv4(),
+         text: 'AddCategoriesValentine',
+         isUppercasetext: true,
+         path: ADD_CATEGORIES_FORM_VALENTINE_PATH,
+         isCategiries: false,
       },
       {
          id: uuidv4(),

@@ -6,24 +6,25 @@ import BlogLena from "./components/BlogLena";
 import Categories from "./components/Categories";
 import CategoriesValentine from "./components/CategoriesValentine";
 import Products from "./components/Products";
-import { Routes, Route, useNavigate } from "react-router";
-import AddProducts from "./components/AddProducts";
+import { Routes, Route } from "react-router";
 import {
-  ADD_PRODUCTS_PATH,
   BLOG_PATH,
   BLOG_LENA_PATH,
   PRODUCTS_PATH,
   CATEGIRIES_PATH,
   CATEGIRIES_VALENTINE_PATH,
   ADD_VLAD_BLOGS_PATH,
-  ADD_CATEGORIES_FORM_PATH, ADD_LERA_PRODUCTS_PATH, PRODUCTS_LERA_PATH
+  ADD_CATEGORIES_FORM_VALENTINE_PATH,
+  ADD_CATEGORIES_FORM_PATH,
+  ADD_LERA_PRODUCTS_PATH,
+  PRODUCTS_LERA_PATH
 } from "./constants/pathNames";
-import { createRequestPath } from "./helpers/helpers";
-import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
+
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
 import AddVladBlogs from "./components/AddVladBlogs";
 import AddProductFormLera from "./components/AddProductFormLera";
 import { createContext, useState } from 'react';
+import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/AddCategoriesFormValentine";
 import ProductsLera from "./components/ProductsLera";
 
 export let ChangeIdContext = createContext()
@@ -31,34 +32,6 @@ export let ChangeIdContext = createContext()
 
 function App() {
 	const [refetchId, setRefetchId] = useState(null);
-  const navigator = useNavigate();
-
-  const mockProduct = {
-    name: "Тестовий",
-    priority: 1,
-    categoryId: 2,
-    price: 200,
-    description: "Тестовий Тест Тортовий!",
-    ids: [1],
-  };
-
-  const onSubmitDataToApi = () => {
-    const apiEndpoint = createRequestPath(PRODUCTS_ADD_ENDPOINT);
-
-    fetch(apiEndpoint, {
-      method: "POST",
-      body: JSON.stringify(mockProduct),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((resp) => {
-        console.log("response => ", resp);
-        return resp;
-      })
-      .then((resp) => resp.json())
-      .then((resp) => console.log("response Parsed => ", resp))
-      .then(() => navigator(PRODUCTS_PATH))
-      .catch((err) => console.log("error => ", err));
-  };
 
   return (
     <div className="App">
@@ -78,6 +51,7 @@ function App() {
         <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
         <Route path={PRODUCTS_PATH} element={<Products />} />
         <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
+        <Route path={ADD_CATEGORIES_FORM_VALENTINE_PATH} element={<AddCategoriesFormValentine />} />
       </Routes>
       </ChangeIdContext.Provider>
 
