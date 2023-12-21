@@ -1,24 +1,28 @@
 import { useState } from 'react';
 import './modal.css'
 import { createPortal } from "react-dom";
+import Button from '../Button';
 
 let portalElement = document.querySelector('#portal')
 
-const Modal = () => {
-	const [showModal, setShowModal] = useState(true)
-	const onCloseModal = () => {
-		setShowModal(false)
-	}
+const Modal = ({ title, deleteCategory, setDeleteCategory }) => {
 	
+	const onCloseModal = () => {
+		setDeleteCategory(false)
+	}
+
 	let modalContent = (
+		<div>
+			<h3>Do you want delete `{title}` category? </h3>
 		<div className='commonportal'>
-			<div> Modal</div>
-			<button type='button' className='button-modal' onClick={onCloseModal}>close modal </button>
+			<Button title={`Delete`}/>
+			<Button title={`Cancel`} onClickFunction={onCloseModal}/>
+		</div>
 		</div>
 	)
 
 
-	return showModal ? createPortal(modalContent, portalElement) : null;
+	return deleteCategory ? createPortal(modalContent, portalElement) : null;
 }
 
 export default Modal;
