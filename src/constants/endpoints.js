@@ -4,6 +4,7 @@ export const BASE_URL = 'https://roman.itstep.click/api/';
 export const PRODUCTS_LIST_ENDPOINT = 'Products/list';
 export const PRODUCTS_ADD_ENDPOINT = 'Products/add';
 export const PRODUCTS_DELETE_ENDPOINT = 'Products/delete';
+export const PRODUCTS_EDIT_ENDPOINT = 'Products/edit';
 
 // Categories Endpoints
 export const CARTEGORIES_LIST_ENDPOINT = 'Categories/list';

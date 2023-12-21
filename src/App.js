@@ -12,6 +12,7 @@ import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
 import AddVladBlogs from "./components/AddVladBlogs";
+import AddProductForm from "./components/AddProductFormLera/AddProductForm";
 import { createContext, useState } from 'react';
 
 export let ChangeIdContext = createContext()

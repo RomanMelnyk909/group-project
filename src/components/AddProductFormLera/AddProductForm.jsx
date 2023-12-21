@@ -2,18 +2,22 @@ import styles from "./addproducts.module.css";
 
 import Input from "../Input";
 import Button from '../Button';
+import PageWrapper from '../PageWrapper';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
+import { v4 as uuidv4 } from 'uuid'; 
 
 import { PRODUCTS_ADD_ENDPOINT } from "../../constants/endpoints";
 import { PRODUCTS_PATH } from "../../constants/pathNames";
 import { createRequestPath } from "../../helpers/helpers";
-import PageWrapper from '../PageWrapper';
+import { ChangeIdContext } from "../../App";
 
 
 const AddProductForm = () => {
     const navigator = useNavigate();
+
+	let { refetchId, setRefetchId } = useContext(ChangeIdContext);
 
 	const mockProduct = {
 		name: "Name of Cake",
@@ -43,9 +47,10 @@ const AddProductForm = () => {
             headers: { "Content-Type": "application/json" },
         })
         .then(resp => { 
-			console.log(resp);
-			console.log(resp.status);
-            return resp;
+			console.log('response => ', resp);
+			if(resp.status){
+				setRefetchId(uuidv4());
+			}
         })
         .then(() => navigator(PRODUCTS_PATH))
         .catch(err => console.log('error => ', err))
