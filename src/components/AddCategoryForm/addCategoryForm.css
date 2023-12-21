@@ -66,6 +66,6 @@ color: green;
     padding: 7px;
     font-size: 16px;
     line-height: 16px;
-    width: 150px;
+    width: max-content;
     margin: 5px;
 }

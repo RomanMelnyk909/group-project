@@ -81,7 +81,7 @@ const AddCategoryForm = () => {
 					<Input classNameFlag={redClassFlag} label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priority} />
 					<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlug} />
 				</div>
-				<button className="add-category-item" type="button" onClick={onAddcategory}>add</button>
+				<button className="add-category-item" type="button" onClick={onAddcategory}>add new category</button>
 				<hr />
 				<Categories flagReverse={true} buttonFlag={true}/>
 			</div >
