@@ -7,7 +7,7 @@ import CategoriesValentine from "./components/CategoriesValentine";
 import Products from "./components/Products";
 import { Routes, Route, useNavigate } from "react-router";
 import AddProducts from "./components/AddProducts";
-import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH, ADD_VLAD_BLOGS_PATH } from "./constants/pathNames";
+import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH, ADD_VLAD_BLOGS_PATH, ADD_CATEGORIES_FORM_PATH} from "./constants/pathNames";
 import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
@@ -63,7 +63,7 @@ function App() {
         <Route path={CATEGIRIES_PATH} element={<Categories />} />
         <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
         <Route path={PRODUCTS_PATH} element={<Products />} />
-        {/* <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} /> */}
+        <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
       </Routes>
       </ChangeIdContext.Provider>
       
