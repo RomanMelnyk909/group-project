@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
 import { ADD_CATEGORIES_FORM_PATH, PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH, ADD_CATEGORIES_FORM_VALENTINE_PATH, ADD_VLAD_BLOGS_PATH } from "../../constants/pathNames";
 
-import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH,ADD_VLAD_BLOGS_PATH,ADD_CATEGORIES_FORM_PATH } from "../../constants/pathNames";
 
 // export let dataCategories = createContext()
 const Navigation = () => {
