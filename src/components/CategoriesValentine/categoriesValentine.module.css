@@ -1,11 +1,11 @@
 .common {
     height: 100%;
     padding-top: 100px;
-    /* padding: 10px 100px; */
+    padding: 10px 90px;
     display: flex;
     /* justify-content: space-around; */
     flex-wrap: wrap;
-    /* justify-content: center; */
+    justify-content: center;
     /* gap: 200px; */
     gap: 20px;
 }

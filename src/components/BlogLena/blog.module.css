@@ -1,0 +1,45 @@
+.formblog {
+  width: 650px;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 15px;
+  background: linear-gradient(
+    to left bottom,
+    rgb(223 235 245),
+    rgb(253 211 173 / 47%)
+  );
+  filter: drop-shadow(4px 4px 7px rgba(155, 182, 190, 0.75));
+}
+
+.formblog label {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.buttonBlog {
+  width: 100%;
+  color: #000;
+  display: block;
+}
+
+.blogs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 40px 0;
+  grid-gap: 20px;
+}
+
+.blogs div {
+  padding: 10px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 15px;
+  background: linear-gradient(
+    to left bottom,
+    rgb(223 235 245),
+    rgb(253 211 173 / 47%)
+  );
+  filter: drop-shadow(4px 4px 7px rgba(155, 182, 190, 0.75));
+}

@@ -1,0 +1,35 @@
+.products {
+	width: 70%;
+	margin: 20px auto;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 10px;
+	justify-items: center;
+	padding: 20px;
+	background: linear-gradient(
+    	to left bottom,
+   		rgb(223 235 245),
+    	rgb(253 211 173 / 47%)
+  	);
+	box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
+}
+h2 {
+	grid-column: span 2;
+	justify-self: center;
+	margin-bottom: 20px;
+}
+label {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+input {
+	margin-top: 5px;
+	height: 35px;
+	font-weight: normal;
+}
+button {
+	grid-column: span 2;
+	justify-self: end;
+	margin-top: 20px;
+}

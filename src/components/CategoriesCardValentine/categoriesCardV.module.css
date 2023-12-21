@@ -1,0 +1,70 @@
+.common {
+    /* width: 385px; */
+    width: 350px;
+    height: 199px;
+    padding: 15px;
+    margin-top: 50px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
+    /* background: silver url(../../images/sub-banner-1.jpg); */
+    background-color: silver;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* margin: 0 auto; */
+}
+
+.common h3 {
+    width: 110px;
+    text-align: left;
+    letter-spacing: 0;
+    line-height: 29px;
+    font-size: 24px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+
+/* Демо для лiнкiв */
+a.demo-link {
+    display: inline-block;
+    color: #ee7560;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+a.demo-link:hover {
+    text-decoration: none;
+    color: rgb(33, 33, 33);
+}
+a.demo-link:active {
+    color: rgb(118, 61, 61);
+}
+
+
+/* Button */
+.btn-card {
+    width: 76px;
+    padding: 0;
+    font-size: 16px;
+    background-color: rgba(28,28,28,0);
+    /* border: solid 1px #ee7560; */
+    color: #ee7560;
+    text-decoration-line: underline;
+    transition: color 0.3s ease-in-out, font-size 0.3s ease-in-out;
+}
+.btn-card:hover {
+    background-color: rgba(28,28,28,0);
+    text-decoration: none;
+    color: rgb(33, 33, 33);
+    font-size: 20px;
+}
