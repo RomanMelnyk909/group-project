@@ -14,7 +14,7 @@ import { createRequestPath } from "../../helpers/helpers";
 import { ChangeIdContext } from "../../App";
 
 
-const AddProductForm = () => {
+const AddProductFormLera = () => {
     const navigator = useNavigate();
 
 	let { refetchId, setRefetchId } = useContext(ChangeIdContext);
@@ -154,4 +154,4 @@ const AddProductForm = () => {
     );
 };
 
-export default AddProductForm;
+export default AddProductFormLera;

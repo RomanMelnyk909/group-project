@@ -2,7 +2,7 @@ import "./navigation.css";
 import NavigationItem from '../NavigationItem/NavigationItem';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH,ADD_VLAD_BLOGS_PATH,ADD_CATEGORIES_FORM_PATH } from "../../constants/pathNames";
+import { PRODUCTS_PATH, BLOG_PATH, ADD_PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH,ADD_VLAD_BLOGS_PATH,ADD_CATEGORIES_FORM_PATH, ADD_LERA_PRODUCTS_PATH, PRODUCTS_LERA_PATH } from "../../constants/pathNames";
 
 const Navigation = () => {
 
@@ -52,9 +52,16 @@ const Navigation = () => {
       
       {
          id: uuidv4(),
-         text: 'Add products',
+         text: 'Add products Lera',
          isUppercasetext: true,
-         path: ADD_PRODUCTS_PATH,
+         path: ADD_LERA_PRODUCTS_PATH,
+         isCategiries: false,
+      },
+      {
+         id: uuidv4(),
+         text: 'products Lera',
+         isUppercasetext: true,
+         path: PRODUCTS_LERA_PATH,
          isCategiries: false,
       },
      
