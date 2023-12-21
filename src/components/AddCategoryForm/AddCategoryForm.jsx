@@ -1,41 +1,37 @@
-import React, { useState, useContext } from "react";
 import Input from "../Input";
+import './addCategoryForm.css';
+import { useState, useContext } from 'react';
 import { createRequestPath } from "../../helpers/helpers";
-import { BLOGS_ADD_ENDPOINT } from "../../constants/endpoints";
-import Blog from "../Blog";  // Важливо імпортувати компоненту Blog
+import { CARTEGORIES_ADD_ENDPOINT } from "../../constants/endpoints";
+import Categories from "../Categories";
 import PageWrapper from "../PageWrapper";
 import { v4 as uuidv4 } from 'uuid'; 
-import { ChangeIdContext } from "../../App";
+import {ChangeIdContext} from "../../App"
 
-const AddBlogForm = () => {
-  let { refetchId, setRefetchId } = useContext(ChangeIdContext);
 
-  const [name, setName] = useState();
-  const [text, setText] = useState();
-  const [image, setImage] = useState();
-  const [isShow, setIsShow] = useState(true);
-  const [dateTimePublish, setDateTimePublish] = useState();
-  const [redClassFlag, setRedClassFlag] = useState(false);
+const AddCategoryForm = () => {
+	let {refetchId, setRefetchId}=useContext(ChangeIdContext) 
 
-  const onSubmitDataToApi = (blog) => {
-    const apiEndpoint = createRequestPath(BLOGS_ADD_ENDPOINT);
-    fetch(apiEndpoint, {
-      method: "POST",
-      body: JSON.stringify(blog),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then(resp => {
-        console.log('response => ', resp);
-        if (resp.status) {
-          setRefetchId(uuidv4())	
-        }
-      })
-  }
+	const [title, settitle] = useState();
+	const [image, setImage] = useState();
+	const [priority, setpriority] = useState();
+	const [urlSlug, seturlSlug] = useState();
+	const [redClassFlag, setredClassFlag] = useState(false);
 
-  function onAddedIDChanged() {
-    return uuidv4()
-  }
-
+	const onSubmitDataToApi = (category) => {
+		const apiEndpoint = createRequestPath(CARTEGORIES_ADD_ENDPOINT);
+		fetch(apiEndpoint, {
+			method: "POST",
+			body: JSON.stringify(category),
+			headers: { "Content-Type": "application/json" },
+		})
+			.then(resp => {
+				console.log('response => ', resp);
+				if (resp.status) {
+					setRefetchId(uuidv4())	
+                }
+			})
+	}
 
 	function onAddcategory() {
 		const category = {
@@ -58,17 +54,20 @@ const AddBlogForm = () => {
 		}
 	}
 
-  const onGetText = (value) => {
-    setText(value)
-  }
+	const onGetName = (value) => {
+		settitle(value)
+	};
 
-  const onGetImage = (value) => {
-    setImage(value)
-  }
+	const onGetImage = (value) => {
+		setImage(value)
+	}
 
-  const onGetDateTimePublish = (value) => {
-    setDateTimePublish(value)
-  };
+	const onGetpriority = (value) => {
+		setpriority(value)
+	}
+	const onGeturlSlug = (value) => {
+		seturlSlug(value)
+	};
 
 	return (
 		<PageWrapper>
@@ -82,7 +81,7 @@ const AddBlogForm = () => {
 					<Input classNameFlag={redClassFlag} label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priority} />
 					<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlug} />
 				</div>
-				<button className="add-category-item" type="button" onClick={onAddcategory}>add</button>
+				<button className="add-category-item" type="button" onClick={onAddcategory}>add new category</button>
 				<hr />
 				<Categories flagReverse={true} buttonFlag={true}/>
 			</div >
@@ -90,4 +89,4 @@ const AddBlogForm = () => {
 	);
 };
 
-export default AddBlogForm;
+export default AddCategoryForm;
