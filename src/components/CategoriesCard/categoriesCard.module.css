@@ -70,10 +70,9 @@ a.demo-link:active {
     gap: 20px;
     position: absolute;
     z-index: 15;
-    width: 20vw;
-    height: 40vh;
+    padding: 20px;
     border: 1px solid black;
-    top:30vh;
+    top:60vh;
     left: 40vw;
     background: rgb(231, 229, 229);
    

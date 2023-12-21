@@ -1,0 +1,16 @@
+.edit-card{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+   position: absolute;
+   z-index: 15;
+   width: 20vw;
+   height: 40vh;
+   border: 1px solid black;
+   top:30vh;
+   left: 40vw;
+   background: rgb(231, 229, 229);
+  
+}
