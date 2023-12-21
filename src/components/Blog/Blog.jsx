@@ -9,13 +9,6 @@ const Blog = () => {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(null);
 
-  const newBlog = {
-    id: 1,
-    name: "New Blog",
-    text: "This is a new blog",
-    dateTimePublish: "01.01.2024",
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       setFetching(true);
@@ -35,10 +28,6 @@ const Blog = () => {
 
     fetchData();
   }, []);
-
-  const handleAddBlog = () => {
-    setData([...data, newBlog]);
-  };
 
   return (
       <div className={styles.blogContainer}>
@@ -64,8 +53,6 @@ const Blog = () => {
         <p>{newBlog.text}</p>
         <p>Date: {newBlog.dateTimePublish}</p>
       </div> */}
-
-    <button onClick={handleAddBlog}>Add New Blog</button>
     </div>
   );
 };
