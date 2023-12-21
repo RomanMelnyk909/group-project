@@ -1,4 +1,5 @@
 .common {
+    
     width: 250px; 
     padding: 10px;
     border-radius: 2px;
@@ -56,5 +57,27 @@ a.demo-link:active {
     padding: 7px;
     font-size: 16px;
     line-height: 16px;
-    width: min-content;
+    width: max-content;
+    margin: 5px;
+
+}
+
+.edit-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    z-index: 15;
+    width: 20vw;
+    height: 40vh;
+    border: 1px solid black;
+    top:30vh;
+    left: 40vw;
+    background: rgb(231, 229, 229);
+   
+}
+.hidden{
+    display: none;
 }

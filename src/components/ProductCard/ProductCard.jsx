@@ -32,6 +32,10 @@ const ProductCard = (props) => {
             <Button
                 type='button'
                 title='order' />
+			<Button
+                type='button'
+                title='delete'
+				onClickFunction={onDeleteDataToApi} />
 	    </div>
     )
 }

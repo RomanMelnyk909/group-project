@@ -1,6 +1,6 @@
 import styles from "./products.module.css"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import image1 from "../../images/1.jpg";
 import image2 from "../../images/2.png";
@@ -8,6 +8,7 @@ import image3 from "../../images/3.jpg";
 
 import { createRequestPath }  from '../../helpers/helpers';
 import { PRODUCTS_LIST_ENDPOINT } from '../../constants/endpoints';
+import { ChangeIdContext } from "../../App";
 
 import PageWrapper from '../PageWrapper';
 import ProductCard from "../ProductCard";
@@ -38,7 +39,7 @@ const Products = () => {
 	const [data, setData] = useState([]);
 	const [fetching, setFetching] = useState(false);
 	const [error, setError] = useState(null);
-	const [refetchId, setRefetchId] = useState();
+	let {refetchId, setRefetchId } = useContext(ChangeIdContext) 
 
 	useEffect(function(){
 		setFetching(true);
@@ -65,7 +66,8 @@ const Products = () => {
 							name={dessert.name}
 							description={dessert.description}
 							price={dessert.price}
-							id={dessert.id} />
+							id={dessert.id}
+							onSetDelitedId={setRefetchId} />
 					))}
 				</div>
 			</div>
