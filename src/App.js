@@ -2,12 +2,22 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Blog from "./components/Blog";
+import BlogLena from "./components/BlogLena";
 import Categories from "./components/Categories";
 import CategoriesValentine from "./components/CategoriesValentine";
 import Products from "./components/Products";
 import { Routes, Route, useNavigate } from "react-router";
 import AddProducts from "./components/AddProducts";
-import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH, ADD_VLAD_BLOGS_PATH, ADD_CATEGORIES_FORM_PATH} from "./constants/pathNames";
+import {
+  ADD_PRODUCTS_PATH,
+  BLOG_PATH,
+  BLOG_LENA_PATH,
+  PRODUCTS_PATH,
+  CATEGIRIES_PATH,
+  CATEGIRIES_VALENTINE_PATH,
+  ADD_VLAD_BLOGS_PATH,
+  ADD_CATEGORIES_FORM_PATH
+} from "./constants/pathNames";
 import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
@@ -27,10 +37,8 @@ function App() {
     categoryId: 2,
     price: 200,
     description: "Тестовий Тест Тортовий!",
-    ids: [
-      1
-    ]
-  }
+    ids: [1],
+  };
 
   const onSubmitDataToApi = () => {
     const apiEndpoint = createRequestPath(PRODUCTS_ADD_ENDPOINT);
@@ -39,18 +47,17 @@ function App() {
       method: "POST",
       body: JSON.stringify(mockProduct),
       headers: { "Content-Type": "application/json" },
-     })
-     .then(resp => { 
-      console.log('response => ', resp);
-      return resp;
     })
-     .then(resp => resp.json())
-     .then(resp => console.log('response Parsed => ', resp))
-     .then(() => navigator(PRODUCTS_PATH))
-     .catch(err => console.log('error => ', err))
-  }
-  
-  
+      .then((resp) => {
+        console.log("response => ", resp);
+        return resp;
+      })
+      .then((resp) => resp.json())
+      .then((resp) => console.log("response Parsed => ", resp))
+      .then(() => navigator(PRODUCTS_PATH))
+      .catch((err) => console.log("error => ", err));
+  };
+
   return (
     <div className="App">
       <Header />
@@ -59,6 +66,10 @@ function App() {
         <Route path={ADD_PRODUCTS_PATH} element={<AddProducts />} />
         {/* <Route path={ABOUT_PATH} element={ABOUT_PATH} /> */}
         <Route path={BLOG_PATH} element={<Blog />} />
+        <Route path={BLOG_LENA_PATH} element={<BlogLena />} />
+        <Route path={CATEGIRIES_PATH} element={<Categories />} />
+        <Route path={PRODUCTS_PATH} element={<Products />} />
+        <Route path={BLOG_PATH} element={<Blog />} />
         <Route path={ADD_VLAD_BLOGS_PATH} element={<AddVladBlogs />} />
         <Route path={CATEGIRIES_PATH} element={<Categories />} />
         <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
@@ -66,7 +77,7 @@ function App() {
         <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
       </Routes>
       </ChangeIdContext.Provider>
-      
+
       <Footer />
     </div>
   );
