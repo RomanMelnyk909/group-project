@@ -24,3 +24,10 @@
 .price{
     padding: 15px;
 }
+
+.hidden {
+	display: none;
+}
+.edit-card {
+	display: block;
+}
