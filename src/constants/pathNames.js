@@ -7,4 +7,4 @@ export const PRODUCTS_PATH = "/products";
 export const CONTACT_PATH = "/contact";
 export const HELP_PATH = "/help";
 export const ADD_PRODUCTS_PATH = "/add-products";
-export const ADD_CATEGORIES_FORM_PATH = "/add-categories-form";
+export const ADD_VLAD_BLOGS_PATH = "/add-vlad-blogs";
