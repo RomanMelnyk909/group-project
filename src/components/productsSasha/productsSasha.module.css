@@ -1,0 +1,12 @@
+.products{
+    font-size: 20px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(228,237,88,1) 0%, rgba(0,212,255,1) 100%);
+}
+.desserts-list{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    margin: 40px 0;
+    grid-gap: 20px;
+}

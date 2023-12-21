@@ -6,8 +6,9 @@ const Input = (props) => {
 
   const inputClass = validation ? "" : styles.errorInput;
   return (
+    <div>
     <label>
-      {label}
+      {label}</label>
       <input
         type={type || "text"}
         placeholder={placeholder}
@@ -15,7 +16,7 @@ const Input = (props) => {
         onChange={(event) => onChangeFunction(event.target.value)}
         className={inputClass}
       />
-    </label>
+    </div>
   );
 };
 
