@@ -52,14 +52,14 @@ const Navigation = () => {
       
       {
          id: uuidv4(),
-         text: 'Add products Lera',
+         text: 'AddProductsLera',
          isUppercasetext: true,
          path: ADD_LERA_PRODUCTS_PATH,
          isCategiries: false,
       },
       {
          id: uuidv4(),
-         text: 'products Lera',
+         text: 'ProductsLera',
          isUppercasetext: true,
          path: PRODUCTS_LERA_PATH,
          isCategiries: false,
