@@ -16,13 +16,15 @@ import {
   CATEGIRIES_PATH,
   CATEGIRIES_VALENTINE_PATH,
   ADD_VLAD_BLOGS_PATH,
-  ADD_CATEGORIES_FORM_PATH
+  ADD_CATEGORIES_FORM_PATH, ADD_LERA_PRODUCTS_PATH, PRODUCTS_LERA_PATH
 } from "./constants/pathNames";
 import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
 import AddVladBlogs from "./components/AddVladBlogs";
+import AddProductFormLera from "./components/AddProductFormLera";
 import { createContext, useState } from 'react';
+import ProductsLera from "./components/ProductsLera";
 
 export let ChangeIdContext = createContext()
 
@@ -63,7 +65,8 @@ function App() {
       <Header />
       <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
       <Routes>
-        <Route path={ADD_PRODUCTS_PATH} element={<AddProducts />} />
+        <Route path={ADD_LERA_PRODUCTS_PATH} element={<AddProductFormLera />} />
+        <Route path={PRODUCTS_LERA_PATH} element={<ProductsLera />} />
         {/* <Route path={ABOUT_PATH} element={ABOUT_PATH} /> */}
         <Route path={BLOG_PATH} element={<Blog />} />
         <Route path={BLOG_LENA_PATH} element={<BlogLena />} />

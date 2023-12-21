@@ -10,7 +10,7 @@ import {
     CATEGIRIES_VALENTINE_PATH,
     ADD_VLAD_BLOGS_PATH,
     BLOG_LENA_PATH,
-    ADD_CATEGORIES_FORM_PATH } from "../../constants/pathNames";
+    ADD_CATEGORIES_FORM_PATH, ADD_LERA_PRODUCTS_PATH, PRODUCTS_LERA_PATH } from "../../constants/pathNames";
 
 const Navigation = () => {
 
@@ -60,9 +60,16 @@ const Navigation = () => {
 
       {
          id: uuidv4(),
-         text: 'Add products',
+         text: 'AddProductsLera',
          isUppercasetext: true,
-         path: ADD_PRODUCTS_PATH,
+         path: ADD_LERA_PRODUCTS_PATH,
+         isCategiries: false,
+      },
+      {
+         id: uuidv4(),
+         text: 'ProductsLera',
+         isUppercasetext: true,
+         path: PRODUCTS_LERA_PATH,
          isCategiries: false,
       },
        {
