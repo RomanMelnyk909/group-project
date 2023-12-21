@@ -1,82 +1,59 @@
-import { useState, useEffect } from "react";
-import styles from "./blog.module.css";
-import { BASE_URL, BLOGS_LIST_ENDPOINT } from "../../constants/endpoints";
-import PageWrapper from "../PageWrapper";
-
-import { BLOG_PATH } from "../../constants/pathNames";
+import React, { useState, useEffect } from "react";
+import { BLOGS_LIST_ENDPOINT } from "../../constants/endpoints";
 import { createRequestPath } from "../../helpers/helpers";
-import { BLOGS_ADD_ENDPOINT } from "../../constants/endpoints";
+import styles from "./blog.module.css";
+
 
 const Blog = () => {
-  const [blogData, setBlogData] = useState([]);
-
-  const apiUrl = `${BASE_URL}${BLOGS_LIST_ENDPOINT}`;
+  const [data, setData] = useState([]);
+  const [fetching, setFetching] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      setFetching(true);
       try {
-        const response = await fetch(apiUrl);
-        const blog = await response.json();
-        setBlogData(blog);
-        console.log(blog);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+        const response = await fetch(createRequestPath(BLOGS_LIST_ENDPOINT));
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const responseData = await response.json();
+        setData(responseData);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setFetching(false);
       }
     };
 
     fetchData();
   }, []);
 
-  const currentDate = new Date();
-  const formattedDate = `${currentDate.getDate()}.${
-    currentDate.getMonth() + 1
-  }.${currentDate.getFullYear()}`;
-  const formattedTime = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
-
-  const mockBlog = {
-    name: "Lena Blog",
-    text: "In this place will be Lena`s blog text",
-    image: "image",
-    slug: "lenaBlog",
-    isShow: true,
-    dateTimePublish: `${formattedDate} ${formattedTime}`,
-  };
-
-  const onSubmitBlogDataToApi = () => {
-    const apiEndpoint = createRequestPath(BLOGS_ADD_ENDPOINT);
-
-    fetch(apiEndpoint, {
-      method: "POST",
-      body: JSON.stringify(mockBlog),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((resp) => {
-        console.log("response => ", resp);
-        return resp;
-      })
-      .then(() => navigator(BLOG_PATH))
-      .catch((err) => console.log("error => ", err));
-  };
-
   return (
-    <PageWrapper>
-      <button onClick={onSubmitBlogDataToApi}>Blog</button>
-      <h2>Blog</h2>
-      {blogData ? (
-        <div className={styles["blogs"]}>
-          {blogData.map((blog) => (
-            <div key={blog.id}>
-              <h1>{blog.name}</h1>
-              <img src={blog.image} alt="Blog image" />
-              <p>{blog.text}</p>
-              <span>{blog.dateTimePublish}</span>
+      <div className={styles.blogContainer}>
+      {fetching && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {!fetching && !error && (
+        <div>
+          {data.map((blogPost) => (
+            <div key={blogPost.id} className={styles.blogPost}>
+              <img src="https://thelongfortgroup.com/public/img/default/no-image-icon.jpg" alt="" />
+              <h2>{blogPost.name}</h2>
+              <p>{blogPost.text}</p>
+              <p>Date: {blogPost.dateTimePublish}</p>
+              <button type="submit">Order</button>
             </div>
           ))}
         </div>
-      ) : (
-        <p>Loading...</p>
       )}
-    </PageWrapper>
+
+      {/* <div className={styles.newBlogFields}>
+        <img src="https://thelongfortgroup.com/public/img/default/no-image-icon.jpg" alt="" />
+        <h2>{newBlog.name}</h2>
+        <p>{newBlog.text}</p>
+        <p>Date: {newBlog.dateTimePublish}</p>
+      </div> */}
+    </div>
   );
 };
 

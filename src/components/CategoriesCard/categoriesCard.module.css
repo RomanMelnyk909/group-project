@@ -1,29 +1,31 @@
 .common {
-    width: 250px;
-    height: 129px;
+    
+    width: 250px; 
     padding: 10px;
     border-radius: 2px;
     box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
-    /* background: silver url(../../images/sub-banner-1.jpg); */
-    background-color: silver;
+    background: silver url(../../images/sub-banner-1.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     font-family: 'Open Sans', sans-serif;
-
     display: flex;
     flex-direction: column;
+    align-self:stretch;
     justify-content: space-between;
-
+    box-shadow: 2px 2px 14px grey;
     /* margin: 0 auto; */
 }
-
+.common:hover{
+    transform: scale3d(0.9);
+    transition: 500ms;
+}
 .common h3 {
     width: 110px;
     text-align: left;
     letter-spacing: 0;
-    /* line-height: 25px; */
-    font-size: 16px;
+    line-height: 29px;
+    font-size: 24px;
     padding-top: 5px;
     padding-left: 10px;
 }
@@ -37,6 +39,8 @@ a.demo-link {
     padding-bottom: 5px;
     text-decoration: underline;
     transition: color 0.3s ease-in-out;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 a.demo-link:hover {
     text-decoration: none;
@@ -44,4 +48,36 @@ a.demo-link:hover {
 }
 a.demo-link:active {
     color: rgb(118, 61, 61);
+}
+.common button {
+    background: rgb(218, 215, 215);
+    color:black;
+    border: 1px solid grey;
+    text-transform: capitalize;
+    padding: 7px;
+    font-size: 16px;
+    line-height: 16px;
+    width: max-content;
+    margin: 5px;
+
+}
+
+.edit-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    z-index: 15;
+    width: 20vw;
+    height: 40vh;
+    border: 1px solid black;
+    top:30vh;
+    left: 40vw;
+    background: rgb(231, 229, 229);
+   
+}
+.hidden{
+    display: none;
 }
