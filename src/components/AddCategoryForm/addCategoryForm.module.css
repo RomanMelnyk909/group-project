@@ -1,3 +1,7 @@
+h2{
+	padding: 0;
+	margin-bottom: 30px;
+}
 .add-new-category {
 	display: flex;
 	flex-direction: column;
@@ -32,8 +36,8 @@ label{
 		padding: 0  20px;
 		display: flex;
 		justify-content: center;
-		align-items: center;
-		flex-wrap: wrap;
+		gap: 20px;
+		
 }
 .add-new-category-panel div{
 	margin: 10px;
@@ -43,7 +47,7 @@ label{
 	margin: 20px auto;
 	width: 200px;
 	padding: 5px;
-	color: #000;
+	
 	
 }
 
@@ -58,7 +62,7 @@ hr{
 color: green;
 }
 
-.add-new-category button{
+.categories button{
     background: rgb(218, 215, 215);
     color:black;
     border: 1px solid grey;
@@ -68,4 +72,9 @@ color: green;
     line-height: 16px;
     width: max-content;
     margin: 5px;
+}
+
+.add-new-category-panel input{
+width: 220px;
+padding: 10px;
 }

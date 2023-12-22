@@ -22,17 +22,17 @@ const CategoriesCard = (props) => {
     let { setRefetchId}=useContext(ChangeIdContext)
     let portalElement = document.querySelector('#portal') 
     const onDeleteDataToApi = () => {
-        setDeleteCategory(true) 
-        // const apiEndpoint = createRequestPath(CARTEGORIES_DELETE_ENDPOINT, id);
-        // fetch(apiEndpoint, { method: 'DELETE' })
-        //     .then(resp => {
-        //         console.log(resp);
-        //         if (resp.status) {
-        //             onSetDeletedId(id)
-        //         }
-        //         return resp;
-        //     })
-        //     .catch(err => console.log('error => ', err))
+        setDeleteCategory(false) 
+        const apiEndpoint = createRequestPath(CARTEGORIES_DELETE_ENDPOINT, id);
+        fetch(apiEndpoint, { method: 'DELETE' })
+            .then(resp => {
+                console.log(resp);
+                if (resp.status) {
+                    onSetDeletedId(id)
+                }
+                return resp;
+            })
+            .catch(err => console.log('error => ', err))
     }
 
     function onEditDataToApi(category){     
@@ -84,6 +84,11 @@ const CategoriesCard = (props) => {
         setShowModal(false)
        
     }
+    function onDelete(){
+        setDeleteCategory(true)
+       
+    }
+    
  	
 	let modalContent = (
         <div className={styles['edit-card']}>  
@@ -107,14 +112,14 @@ const CategoriesCard = (props) => {
             <div><a className={styles["demo-link"]} href="#">{string || `There will be a link here`}</a></div>
             {/* <img src={image} alt={`${image}`} /> */}
             <div>
-            {buttonFlag?<button className='button' onClick={onDeleteDataToApi}>delete</button>:``}
+            {buttonFlag?<button className='button' onClick={onDelete}>delete</button>:``}
             {buttonFlag?<button className='button' onClick={onShow}>Edit</button>:``}
            </div>
  
  
             {showModal ? createPortal(modalContent, portalElement) : null}
 
-          <Modal  title={title} deleteCategory={deleteCategory} setDeleteCategory={setDeleteCategory}/>
+          <Modal  title={title} deleteCategory={deleteCategory} setDeleteCategory={setDeleteCategory} onDeleteDataToApi={onDeleteDataToApi}/>
         </div>
     )
 };

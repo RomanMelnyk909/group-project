@@ -1,5 +1,5 @@
 import Input from "../Input";
-import './addCategoryForm.css';
+import styles from './addCategoryForm.module.css'
 import { useState, useContext } from 'react';
 import { createRequestPath } from "../../helpers/helpers";
 import { CARTEGORIES_ADD_ENDPOINT } from "../../constants/endpoints";
@@ -71,17 +71,17 @@ const AddCategoryForm = () => {
 
 	return (
 		<PageWrapper>
-			<div className='add-new-category'>
+			<div className={styles['add-new-category']}>
 				{
 					 <h2>Add new category</h2>
 				}
-				<div className="add-new-category-panel">
+				<div className={styles["add-new-category-panel"]}>
 					<Input classNameFlag={redClassFlag} label="name: " placeholder="Enter category's name" onChangeFunction={onGetName} value={title} />
 					<Input classNameFlag={redClassFlag} label="image: " placeholder="Enter category's image url" onChangeFunction={onGetImage} value={image} />
 					<Input classNameFlag={redClassFlag} label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priority} />
 					<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlug} />
 				</div>
-				<button className="add-category-item" type="button" onClick={onAddcategory}>add new category</button>
+				<button className={styles["add-category-item"]} type="button" onClick={onAddcategory}>add new category</button>
 				<hr />
 				<Categories flagReverse={true} buttonFlag={true}/>
 			</div >
