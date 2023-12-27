@@ -6,13 +6,7 @@
 }
 
 .blogPost {
-  border: 1px solid #ddd;
-  padding: 15px;
-  display: inline-block;
-  text-align: center;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  background-color: #fff;
+  margin: 20px;
 }
 
 .blogPost h2 {

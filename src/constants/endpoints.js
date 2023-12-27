@@ -10,6 +10,8 @@ export const CARTEGORIES_ADD_ENDPOINT = 'Categories/add'
 export const CARTEGORIES_DELETE_ENDPOINT = 'Categories/delete'
 
 // Blogs Endpoints
-export const BLOGS_LIST_ENDPOINT = 'Blogs/list';
-export const BLOGS_ADD_ENDPOINT = 'Blogs/add';
+export const BLOGS_LIST_ENDPOINT = "Blogs/list";
+export const BLOGS_ADD_ENDPOINT = "Blogs/add";
+export const BLOGS_DELETE_ENDPOINT = 'Blogs/delete';
+export const BLOGS_UPDATE_ENDPOINT = "Blogs/edit";
 

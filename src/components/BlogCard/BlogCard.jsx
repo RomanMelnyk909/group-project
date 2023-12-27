@@ -1,11 +1,26 @@
 import { useNavigate } from "react-router";
 
 import Button from "../Button";
-import styles from "../Blog/blog.module.css";
+import styles from "./blogcard.module.css";
 
-const BlogCard = ({ id, name, text, dateTimePublish }) => {
+import { createRequestPath } from "../../helpers/helpers";
+import { BLOGS_DELETE_ENDPOINT } from "../../constants/endpoints";
+
+const BlogCard = ({ id, name, text, dateTimePublish, onDelete }) => {
   const navigator = useNavigate();
 
+const handleDeleteCard = async () => {
+        const apiEndpoint = createRequestPath(BLOGS_DELETE_ENDPOINT, id);
+        fetch(apiEndpoint, { method: 'DELETE' })
+            .then(resp => {
+                console.log(resp);
+                if (resp.status) {
+                    onDelete(id)
+                }
+                return resp;
+            })
+            .catch(err => console.log('error => ', err))
+};
   return (
     <div key={id} className={styles.blogPost}>
       <img
@@ -19,10 +34,10 @@ const BlogCard = ({ id, name, text, dateTimePublish }) => {
         type="button"
         title="Edit"
         onClickFunction={() => {
-          navigator(`/update-blog-r/${id}`);
+          navigator(`/update-blog/${id}`);
         }}
       />
-      <Button type="reset"  title="Delete" />
+      <Button type='reset' title='Delete' onClickFunction={handleDeleteCard}/>
     </div>
   );
 };
