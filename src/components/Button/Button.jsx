@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 const Button = (props) => {
     const { type, title, onClickFunction } = props;
+    // const { type, title, onClickFunction, ...otherProps } = props;
 
     const buutonClassname = classNames(styles['button'], {
         [styles['submit']] : type === 'submit',
@@ -14,7 +15,7 @@ const Button = (props) => {
         <button 
             type={type}
             className={buutonClassname}
-            onClick={onClickFunction}
+            onClick={() => onClickFunction  && onClickFunction() }
         >
             { title }
         </button>

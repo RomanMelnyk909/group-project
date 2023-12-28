@@ -1,3 +1,3 @@
-import AddProductForm from './AddProductForm';
+import AddProductFormLera from './AddProductFormLera';
 
-export default AddProductForm;
+export default AddProductFormLera;
