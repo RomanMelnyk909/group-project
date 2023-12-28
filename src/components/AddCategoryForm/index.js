@@ -1,3 +1,3 @@
-import AddProducForm from "./AddCategoryForm";
+import AddCategoryForm from "./AddCategoryForm";
 
-export default AddProducForm;
+export default AddCategoryForm;

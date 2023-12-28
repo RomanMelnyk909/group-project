@@ -37,10 +37,10 @@ const Categories = (props) => {
             {
                 flagToReverse ?
                     data.slice(0).reverse().map((el) => {
-                        return <CategoriesCard id={el.id} title={el.title} image={el.image} string={el.urlSlug} onSetDeletedId={setRefetchId} buttonFlag={buttonFlag}/>
+                        return <CategoriesCard key={el.id} priority={el.priority} id={el.id} title={el.title} image={el.image} string={el.urlSlug} onSetDeletedId={setRefetchId} buttonFlag={buttonFlag}/>
                     }) :
                     data.map((el) => {
-                        return <CategoriesCard id={el.id} title={el.title} image={el.image} string={el.urlSlug} onSetDeletedId={setRefetchId} buttonFlag={buttonFlag}/>
+                        return <CategoriesCard key={el.id} priority={el.priority} id={el.id} title={el.title} image={el.image} string={el.urlSlug} onSetDeletedId={setRefetchId} buttonFlag={buttonFlag}/>
                     })
             }
 

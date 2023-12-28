@@ -35,7 +35,7 @@ const DEFAULT_DESSERTS = [
 
 
 const Products = () => {
-	const [data, setData] = useState(DEFAULT_DESSERTS);
+	const [data, setData] = useState([]);
 	const [fetching, setFetching] = useState(false);
 	const [error, setError] = useState(null);
 
