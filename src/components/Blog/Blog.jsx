@@ -7,6 +7,7 @@ import styles from "./blog.module.css";
 
 const Blog = () => {
   const [data, setData] = useState([]);
+  const [refetchId, setRefetchId] = useState();
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(null);
   
@@ -28,25 +29,23 @@ const Blog = () => {
     };
     
     fetchData();
-  }, []);
+  }, [refetchId]);
   
   const handleDeleteCard = async (id) => {
-    try {
       const apiEndpoint = createRequestPath(BLOGS_DELETE_ENDPOINT, id);
       const response = await fetch(apiEndpoint, { method: 'DELETE' });
 
-      if (!response.ok) {
-        throw new Error('Failed to delete blog post');
-      }
-
-      setFetching(true);
-      const update = data.filter((blogPost) => blogPost.id !== id);
-      setData(update);
-    } catch (error) {
-      console.error('Error deleting blog post:', error.message);
-    } finally {
-      setFetching(false);
-    }
+    fetch(apiEndpoint, { method: "DELETE" })
+      .then((resp) => {
+        console.log("Response status:", resp.status);
+        if (resp.status) {
+          setRefetchId(id);
+        }
+        return resp;
+      })
+      .catch((error) => {
+        console.error("Error deleting blog:", error);
+      });
   };
 
   return (
