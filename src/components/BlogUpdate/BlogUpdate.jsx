@@ -8,11 +8,13 @@ import {
   BLOGS_UPDATE_ENDPOINT,
 } from "../../constants/endpoints";
 import { BLOG_PATH } from "../../constants/pathNames";
-import styles from "./updateBlog.module.css";
+import styles from "./blogUpdate.module.css";
 
-const UpdateBlog = () => {
+const BlogUpdate = () => {
   const navigator = useNavigate();
   const { id } = useParams();
+
+  const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(null);
 
   const [name, setName] = useState("");
@@ -68,7 +70,6 @@ const UpdateBlog = () => {
   return (
     <PageWrapper>
       <div className={styles.addBlog}>
-        update Blog
         <div className={styles.container}>
           <div className={styles.blogPanel}>
             <label>
@@ -122,4 +123,4 @@ const UpdateBlog = () => {
   );
 };
 
-export default UpdateBlog;
+export default BlogUpdate;

@@ -7,12 +7,13 @@ import CategoriesValentine from "./components/CategoriesValentine";
 import Products from "./components/Products";
 import { Routes, Route, useNavigate } from "react-router";
 import AddProducts from "./components/AddProducts";
-import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH, ADD_VLAD_BLOGS_PATH } from "./constants/pathNames";
+import { ADD_PRODUCTS_PATH, BLOG_PATH, PRODUCTS_PATH, CATEGIRIES_PATH, CATEGIRIES_VALENTINE_PATH, ADD_VLAD_BLOGS_PATH, BLOG_UPDATE } from "./constants/pathNames";
 import { createRequestPath } from "./helpers/helpers";
 import { PRODUCTS_ADD_ENDPOINT } from "./constants/endpoints";
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
 import AddVladBlogs from "./components/AddVladBlogs";
 import { createContext, useState } from 'react';
+import BlogUpdate from "./components/BlogUpdate/BlogUpdate";
 
 export let ChangeIdContext = createContext()
 
@@ -60,6 +61,7 @@ function App() {
         {/* <Route path={ABOUT_PATH} element={ABOUT_PATH} /> */}
         <Route path={BLOG_PATH} element={<Blog />} />
         <Route path={ADD_VLAD_BLOGS_PATH} element={<AddVladBlogs />} />
+        <Route path={BLOG_UPDATE} element={<BlogUpdate />} />
         <Route path={CATEGIRIES_PATH} element={<Categories />} />
         <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
         <Route path={PRODUCTS_PATH} element={<Products />} />
