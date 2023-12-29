@@ -51,17 +51,18 @@ const ProductCardLera = (props) => {
 				setRefetchId(uuidv4());
 			}
 		})
+		.catch(err => console.log('error => ', err))
 	}
 
 	const onEditProduct = () => {
 		const product = {
 			id:id,
 			name: nameEdit,
-			priority: parseInt(priorityEdit),
-			categoryId: parseInt(categoryIdEdit),
-			price: parseInt(priceEdit),
+			priority: priorityEdit,
+			categoryId: categoryIdEdit,
+			price: priceEdit,
 			description: descriptionEdit,
-			ids: [parseInt(idsEdit)],
+			ids: [idsEdit],
 		};
 		onEditDataToApi(product);
 		setShowFlag(false);
@@ -100,9 +101,9 @@ const ProductCardLera = (props) => {
 				<h3>{name}</h3>
 				<p>{description}</p>
 				<p className={styles['price']}>Ціна: ${price.toFixed(2)}</p>
-				<Button
+				{/* <Button
 					type='button'
-					title='order' />
+					title='order' /> */}
 				<Button
 					type='button'
 					title='delete'
