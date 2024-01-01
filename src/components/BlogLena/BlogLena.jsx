@@ -127,7 +127,6 @@ const Blog = () => {
 
   const onDeleteDataToApi = (id) => {
     const apiEndpoint = createRequestPath(`${BLOGS_DELETE_ENDPOINT}/${id}`);
-    console.log(apiEndpoint);
 
     fetch(apiEndpoint, { method: "DELETE" })
       .then((resp) => {
@@ -211,7 +210,11 @@ const Blog = () => {
               </button> */}
               <button
                 className={styles["buttonBlog"]}
-                onClick={() => onDeleteDataToApi(blog.id)}
+                onClick={() => {
+                  console.log(blog.id);
+                  onDeleteDataToApi(blog.id);
+                }}
+                // onClick={() => console.log(blog.id)}
               >
                 Delete
               </button>
