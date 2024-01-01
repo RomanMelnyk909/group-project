@@ -6,7 +6,7 @@ import {ChangeIdContext} from "../../App"
 import backgroundImage from '../../images/sub-banner-1.jpg'
 import { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
-
+import { createPortal } from "react-dom";
 
 const CategoriesCard = (props) => {
     const { title, image, string, id, onSetDeletedId, buttonFlag, priority } = props;
@@ -14,10 +14,11 @@ const CategoriesCard = (props) => {
     const [imageEdit, setImageEdit] = useState(image);
     const [urlSlugEdit, setUrlSlugEdit] = useState(string);
     const [priorityEdit, setPriorityEdit] = useState(priority);
-    const [showFlag, setShowFlag] = useState(false);
     const [fetching, setFetching] = useState(false)
     const [fetchError, setFetchError] = useState(null);
-    let { setRefetchId}=useContext(ChangeIdContext) 
+    const [showModal, setShowModal] = useState(false)
+    let { setRefetchId}=useContext(ChangeIdContext)
+    let portalElement = document.querySelector('#portal') 
     const onDeleteDataToApi = () => {
         const apiEndpoint = createRequestPath(CARTEGORIES_DELETE_ENDPOINT, id);
         fetch(apiEndpoint, { method: 'DELETE' })
@@ -54,7 +55,7 @@ const CategoriesCard = (props) => {
 			urlSlug:urlSlugEdit,
 		};
         onEditDataToApi(category)
-        setShowFlag(false)
+        setShowModal(false)
     }
 
     const onGetName = (value) => {
@@ -73,11 +74,26 @@ const CategoriesCard = (props) => {
     };
 
     function onShow (){
-        setShowFlag(true)
+        setShowModal(true)
     }
     function onCancel(){
-        setShowFlag(false)
+        setShowModal(false)
     }
+ 	
+	let modalContent = (
+        <div className={styles['edit-card']}>  
+        <h2>Edite caregory</h2>
+            <Input label="name: " placeholder="Enter category's name" onChangeFunction={onGetName} value={titleEdit} />
+            <Input label="image: " placeholder="Enter category's image url" onChangeFunction={onGetImage} value={imageEdit} />
+            <Input label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priorityEdit} />
+            <Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlugEdit} />
+            <div>
+                 <button className="add-botton-changes" type="button" onClick={onEditecategory}>add changes</button>
+                <button className="add-botton-changes" type="button" onClick={onCancel}>cancel</button> 
+            </div>
+
+    </div>
+	)
     return (
         // Коли картинка буде з api тодi замiнемо backgroundImage на props => image
         <div className={styles['common']} style={{ backgroundImage: `url(${ backgroundImage})` }} id={id}>
@@ -90,18 +106,8 @@ const CategoriesCard = (props) => {
             {buttonFlag?<button className='button' onClick={onShow}>Edit</button>:``}
            </div>
             
-            <div className={showFlag?styles['edit-card']:styles['hidden']}>  
-                <h2>Edite caregory</h2>
-					<Input label="name: " placeholder="Enter category's name" onChangeFunction={onGetName} value={titleEdit} />
-					<Input label="image: " placeholder="Enter category's image url" onChangeFunction={onGetImage} value={imageEdit} />
-					<Input label="priority: " placeholder="Enter category's priority" onChangeFunction={onGetpriority} type='number' value={priorityEdit} />
-					<Input label="urlSlug: " placeholder="Enter category's urlSlug" onChangeFunction={onGeturlSlug} value={urlSlugEdit} />
-                    <div>
-                         <button className="add-botton-changes" type="button" onClick={onEditecategory}>add changes</button>
-                        <button className="add-botton-changes" type="button" onClick={onCancel}>cancel</button> 
-                    </div>
-
-            </div>
+ 
+            {showModal ? createPortal(modalContent, portalElement) : null}
         </div>
     )
 };
