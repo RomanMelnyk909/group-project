@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./blog.module.css";
 import {
   BASE_URL,
   BLOGS_LIST_ENDPOINT,
   BLOGS_ADD_ENDPOINT,
+  BLOGS_UPDATE_ENDPOINT,
   BLOGS_DELETE_ENDPOINT,
 } from "../../constants/endpoints";
 import PageWrapper from "../PageWrapper";
@@ -14,6 +15,16 @@ const Blog = () => {
   const [blogData, setBlogData] = useState([]);
   const [refetchId, setRefetchId] = useState();
   const [newBlog, setNewBlog] = useState({
+    name: "",
+    text: "",
+    image: "",
+    slug: "",
+    isShow: true,
+    dateTimePublish: "",
+  });
+
+  const [updateBlog, setUpdateBlog] = useState({
+    id: null,
     name: "",
     text: "",
     image: "",
@@ -76,6 +87,15 @@ const Blog = () => {
     validateFunction(value);
   };
 
+  const handleUpdateInputChange = (name, value, validateFunction) => {
+    setUpdateBlog((prevBlog) => ({
+      ...prevBlog,
+      [name]: value,
+    }));
+
+    validateFunction(value);
+  };
+
   const onSubmitBlogDataToApi = async () => {
     const isNameValid = validateName(newBlog.name);
     const isTextValid = validateText(newBlog.text);
@@ -103,7 +123,6 @@ const Blog = () => {
 
       if (response.ok) {
         const updatedBlogData = [...blogData, newBlog];
-        console.log(updatedBlogData);
         setBlogData(updatedBlogData);
         setNewBlog({
           name: "",
@@ -125,73 +144,189 @@ const Blog = () => {
     }
   };
 
-  const onDeleteDataToApi = (id) => {
-    const apiEndpoint = createRequestPath(`${BLOGS_DELETE_ENDPOINT}/${id}`);
+  const onDeleteDataToApi = async (id) => {
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this blog?"
+    );
 
-    fetch(apiEndpoint, { method: "DELETE" })
-      .then((resp) => {
-        console.log("Response status:", resp.status);
-        if (resp.status) {
-          setRefetchId(id);
-        }
-        return resp;
-      })
-      .catch((error) => {
-        console.error("Error deleting blog:", error);
+    if (!shouldDelete) {
+      return;
+    }
+
+    console.log(id);
+    const apiEndpoint = createRequestPath(`${BLOGS_DELETE_ENDPOINT}/${id}`);
+    console.log(apiEndpoint);
+
+    try {
+      const response = await fetch(apiEndpoint, { method: "DELETE" });
+
+      if (response.ok) {
+        setRefetchId(() => id);
+      } else {
+        console.log("Blog deletion failed");
+      }
+    } catch (error) {
+      console.error("Error deleting blog:", error);
+    }
+  };
+
+  const onUpdateDataToApi = async () => {
+    const isNameValid = validateName(updateBlog.name);
+    const isTextValid = validateText(updateBlog.text);
+    const isImageValid = validateImage(updateBlog.image);
+    const isDateTimePublishValid = validateDateTimePublish(
+      updateBlog.dateTimePublish
+    );
+
+    const isValid =
+      isNameValid && isTextValid && isImageValid && isDateTimePublishValid;
+
+    if (!isValid) {
+      console.log("Validation failed");
+      return;
+    }
+
+    const apiEndpoint = createRequestPath(BLOGS_UPDATE_ENDPOINT);
+
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: "PUT",
+        body: JSON.stringify(updateBlog),
+        headers: { "Content-Type": "application/json" },
       });
+
+      if (response.ok) {
+        const updatedBlogData = blogData.map((blog) =>
+          blog.id === updateBlog.id ? updateBlog : blog
+        );
+        setBlogData(updatedBlogData);
+        setUpdateBlog({
+          id: null,
+          name: "",
+          text: "",
+          image: "",
+          slug: "",
+          isShow: true,
+          dateTimePublish: "",
+        });
+      } else {
+        console.log("Blog update failed");
+      }
+    } catch (error) {
+      console.error("Error updating blog:", error);
+    }
   };
 
   return (
     <PageWrapper>
       <h2>Blog</h2>
       <form className={styles["formblog"]}>
-        <Input
-          label="Name:"
-          type="text"
-          value={newBlog.name}
-          validation={nameValid}
-          onChangeFunction={(value) =>
-            handleInputChange("name", value, validateName)
-          }
-        />
+        {!updateBlog.id ? (
+          <>
+            <Input
+              label="Name:"
+              type="text"
+              value={newBlog.name}
+              validation={nameValid}
+              onChangeFunction={(value) =>
+                handleInputChange("name", value, validateName)
+              }
+            />
 
-        <Input
-          label="Text:"
-          type="textarea"
-          value={newBlog.text}
-          validation={textValid}
-          onChangeFunction={(value) =>
-            handleInputChange("text", value, validateText)
-          }
-        />
+            <Input
+              label="Text:"
+              type="textarea"
+              value={newBlog.text}
+              validation={textValid}
+              onChangeFunction={(value) =>
+                handleInputChange("text", value, validateText)
+              }
+            />
 
-        <Input
-          label="Image:"
-          type="text"
-          value={newBlog.image}
-          validation={imageValid}
-          onChangeFunction={(value) =>
-            handleInputChange("image", value, validateImage)
-          }
-        />
+            <Input
+              label="Image:"
+              type="text"
+              value={newBlog.image}
+              validation={imageValid}
+              onChangeFunction={(value) =>
+                handleInputChange("image", value, validateImage)
+              }
+            />
 
-        <Input
-          label="Date and Time of publishing:"
-          type="text"
-          value={newBlog.dateTimePublish}
-          validation={dateTimePublishValid}
-          onChangeFunction={(value) =>
-            handleInputChange("dateTimePublish", value, validateDateTimePublish)
-          }
-        />
+            <Input
+              label="Date and Time of publishing:"
+              type="date"
+              value={newBlog.dateTimePublish}
+              validation={dateTimePublishValid}
+              onChangeFunction={(value) =>
+                handleInputChange(
+                  "dateTimePublish",
+                  value,
+                  validateDateTimePublish
+                )
+              }
+            />
 
-        <button
-          type="button"
-          onClick={onSubmitBlogDataToApi}
-          className={styles["buttonBlog"]}
-        >
-          Add Blog
-        </button>
+            <button
+              type="button"
+              onClick={onSubmitBlogDataToApi}
+              className={styles["buttonBlog"]}
+            >
+              Add Blog
+            </button>
+          </>
+        ) : (
+          <>
+            <Input
+              label="Update Name:"
+              type="text"
+              value={updateBlog.name}
+              validation={nameValid}
+              onChangeFunction={(value) =>
+                handleUpdateInputChange("name", value, validateName)
+              }
+            />
+            <Input
+              label="Update Text:"
+              type="textarea"
+              value={updateBlog.text}
+              validation={textValid}
+              onChangeFunction={(value) =>
+                handleUpdateInputChange("text", value, validateText)
+              }
+            />
+            <Input
+              label="Update Image:"
+              type="text"
+              value={updateBlog.image}
+              validation={imageValid}
+              onChangeFunction={(value) =>
+                handleUpdateInputChange("image", value, validateImage)
+              }
+            />
+            <Input
+              label="Update Date and Time of publishing:"
+              type="text"
+              value={updateBlog.dateTimePublish}
+              validation={dateTimePublishValid}
+              onChangeFunction={(value) =>
+                handleUpdateInputChange(
+                  "dateTimePublish",
+                  value,
+                  validateDateTimePublish
+                )
+              }
+            />
+
+            <button
+              type="button"
+              onClick={onUpdateDataToApi}
+              className={styles["buttonBlog"]}
+            >
+              Update Blog
+            </button>
+          </>
+        )}
       </form>
 
       {blogData ? (
@@ -202,19 +337,15 @@ const Blog = () => {
               <img src={blog.image} alt="Blog image" />
               <p>{blog.text}</p>
               <span>{blog.dateTimePublish}</span>
-              {/* <button
-                className={styles["buttonBlog"]}
-                onClick={() => onDeleteDataToApi(blog.id)}
-              >
-                Delete
-              </button> */}
               <button
                 className={styles["buttonBlog"]}
-                onClick={() => {
-                  console.log(blog.id);
-                  onDeleteDataToApi(blog.id);
-                }}
-                // onClick={() => console.log(blog.id)}
+                onClick={() => setUpdateBlog({ ...blog, id: blog.id })}
+              >
+                Update
+              </button>
+              <button
+                className={styles["buttonBlog"]}
+                onClick={() => onDeleteDataToApi(blog.id)}
               >
                 Delete
               </button>
