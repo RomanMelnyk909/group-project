@@ -13,7 +13,10 @@ import {
     BLOG_LENA_PATH,
     ADD_CATEGORIES_FORM_PATH,
     ADD_LERA_PRODUCTS_PATH,
-    PRODUCTS_LERA_PATH } from "../../constants/pathNames";
+    PRODUCTS_LERA_PATH, 
+    ADD_SASHA_PRODUCTS_PATH,
+    PRODUCTS_SASHA_PATH
+   } from "../../constants/pathNames";
 
 // export let dataCategories = createContext()
 const Navigation = () => {
@@ -76,6 +79,22 @@ const Navigation = () => {
          path: ADD_LERA_PRODUCTS_PATH,
          isCategiries: false,
       },
+
+      {
+         id: uuidv4(),
+         text: 'AddProdSasha',
+         isUppercasetext: true,
+         path: ADD_SASHA_PRODUCTS_PATH,
+         isCategiries: false,
+      },
+      {
+         id: uuidv4(),
+         text: 'ProdSasha',
+         isUppercasetext: true,
+         path: PRODUCTS_SASHA_PATH,
+         isCategiries: false,
+      },
+
       {
          id: uuidv4(),
          text: 'ProductsLera',
