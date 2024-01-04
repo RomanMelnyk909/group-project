@@ -11,6 +11,7 @@ import { ChangeIdContext } from "../../App"
 
 import { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router';
 
 import CategoriesValentine from '../CategoriesValentine';
 import Input from '../Input';
@@ -19,7 +20,7 @@ import Button from '../Button';
 const AddCategoriesFormValentine = () => {
 
     //// Default
-    // const navigator = useNavigate();
+    const navigator = useNavigate();
 
     // const mockCategories = {
     //     title: "Test text",
@@ -63,21 +64,25 @@ const AddCategoriesFormValentine = () => {
             body: JSON.stringify(category),
             headers: { "Content-Type": "application/json" },
         })
-            // .then(resp => resp.json())
-            // .then(() => navigator(CATEGIRIES_VALENTINE_PATH))
-            // .catch(err => console.log("ERROR =>", err))
             .then(resp => {
-                console.log('response => ', resp);
-                if (resp.status) {
-                    setRefetchId(uuidv4())
+                if(resp?.status === 200){
+                    navigator(CATEGIRIES_VALENTINE_PATH)
                 }
             })
+            // .then(() => navigator(CATEGIRIES_VALENTINE_PATH))
+            .catch(err => console.log("ERROR =>", err))
+            // .then(resp => {
+            //     console.log('response => ', resp);
+            //     if (resp.status) {
+            //         setRefetchId(uuidv4())
+            //     }
+            // })
     }
 
     const onAddCategory = () => {
         const category = {
             title,
-            image,
+            image: "string",
             priority,
             urlSlug,
             id: uuidv4()
@@ -122,11 +127,11 @@ const AddCategoriesFormValentine = () => {
                         onChangeFunction={onGetName}
                         value={title} />
 
-                    <Input
+                    {/* <Input
                         label="image: "
                         placeholder="Enter category's image url"
                         onChangeFunction={onGetImage}
-                        value={image} />
+                        value={image} /> */}
 
                     <Input
                         label="priority: "
