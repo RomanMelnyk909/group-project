@@ -17,11 +17,13 @@ import {
   ADD_CATEGORIES_FORM_VALENTINE_PATH,
   ADD_CATEGORIES_FORM_PATH,
   ADD_LERA_PRODUCTS_PATH,
-  PRODUCTS_LERA_PATH
+  PRODUCTS_LERA_PATH,
+  BLOG_UPDATE
 } from "./constants/pathNames";
 
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
 import AddVladBlogs from "./components/AddVladBlogs";
+import BlogUpdate from "./components/BlogUpdate/BlogUpdate";
 import AddProductFormLera from "./components/AddProductFormLera";
 import { createContext, useState } from 'react';
 import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/AddCategoriesFormValentine";
@@ -47,6 +49,7 @@ function App() {
         <Route path={PRODUCTS_PATH} element={<Products />} />
         <Route path={BLOG_PATH} element={<Blog />} />
         <Route path={ADD_VLAD_BLOGS_PATH} element={<AddVladBlogs />} />
+        <Route path={BLOG_UPDATE} element={<BlogUpdate />} />
         <Route path={CATEGIRIES_PATH} element={<Categories />} />
         <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
         <Route path={PRODUCTS_PATH} element={<Products />} />
