@@ -4,7 +4,8 @@ import Button from '../Button';
 import Input from '../Input';
 
 import { useState, useContext } from 'react';
-import { v4 as uuidv4 } from 'uuid'; 
+import { v4 as uuidv4 } from 'uuid';
+import { createPortal } from "react-dom";
 
 import { PRODUCTS_DELETE_ENDPOINT, PRODUCTS_EDIT_ENDPOINT } from '../../constants/endpoints';
 import { createRequestPath } from '../../helpers/helpers';
@@ -19,6 +20,11 @@ const ProductCardLera = (props) => {
 	const [priceEdit, setPriceEdit] = useState(price);
 	const [descriptionEdit, setDescriptionEdit] = useState(description);
 	const [idsEdit, setIdsEdit] = useState([ids]);
+
+    const [showModal, setShowModal] = useState(false)
+
+
+    let portalElement = document.querySelector('#portal') 
 
 	const [showFlag, setShowFlag] = useState(false);
 
@@ -51,17 +57,18 @@ const ProductCardLera = (props) => {
 				setRefetchId(uuidv4());
 			}
 		})
+		.catch(err => console.log('error => ', err))
 	}
 
 	const onEditProduct = () => {
 		const product = {
 			id:id,
 			name: nameEdit,
-			priority: parseInt(priorityEdit),
-			categoryId: parseInt(categoryIdEdit),
-			price: parseInt(priceEdit),
+			priority: priorityEdit,
+			categoryId: categoryIdEdit,
+			price: priceEdit,
 			description: descriptionEdit,
-			ids: [parseInt(idsEdit)],
+			ids: ids,
 		};
 		onEditDataToApi(product);
 		setShowFlag(false);
@@ -88,10 +95,28 @@ const ProductCardLera = (props) => {
 
 	const onCancel = () => {
 		setShowFlag(false);
+		setShowModal(false);
 	}
 	const onShow = () => {
 		setShowFlag(true);
 	}
+
+	const onShowDeleteModal = () => {
+		setShowModal(true);
+	}
+
+	let modalContent = (
+		<div className={styles['delete-modal']}>  
+        	<h2>You really want to delete it?</h2>
+                <Button 
+					type="button" 
+					onClickFunction={onDeleteDataToApi} title="Delete" />
+                <Button 
+					type="button" 
+					onClickFunction={onCancel} 
+					title="Cancel" />
+    	</div>
+	);
 
     return (
 		<>
@@ -100,13 +125,13 @@ const ProductCardLera = (props) => {
 				<h3>{name}</h3>
 				<p>{description}</p>
 				<p className={styles['price']}>Ціна: ${price.toFixed(2)}</p>
-				<Button
+				{/* <Button
 					type='button'
-					title='order' />
+					title='order' /> */}
 				<Button
 					type='button'
 					title='delete'
-					onClickFunction={onDeleteDataToApi} />
+					onClickFunction={onShowDeleteModal} />
 				<Button
 					type='button'
 					title='Edit'
@@ -144,12 +169,12 @@ const ProductCardLera = (props) => {
 					onChangeFunction={onGetDescription}
 					value={descriptionEdit}
 					validation={true} />
-				<Input
+				{/* <Input
 					label='Ids'
 					placeholder='Enter product ids'
 					onChangeFunction={onGetIds}
 					value={idsEdit}
-					validation={true} />
+					validation={true} /> */}
 				<Button 
 					type='button'
 					title='Add Changes'
@@ -159,6 +184,7 @@ const ProductCardLera = (props) => {
 					title='Cancel'
 					onClickFunction={onCancel} />
 			</div>
+			{showModal ? createPortal(modalContent, portalElement) : null}
 		</>
     )
 }
