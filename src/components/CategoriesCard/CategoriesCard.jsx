@@ -7,6 +7,7 @@ import backgroundImage from '../../images/sub-banner-1.jpg'
 import { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
 import { createPortal } from "react-dom";
+import ModalR from "../ModalR";
 
 const CategoriesCard = (props) => {
     const { title, image, string, id, onSetDeletedId, buttonFlag, priority } = props;
