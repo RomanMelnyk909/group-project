@@ -21,7 +21,8 @@
 }
 
 .common h3 {
-    width: 110px;
+    /* width: 110px; */
+    width: 200px;
     text-align: left;
     letter-spacing: 0;
     line-height: 29px;
@@ -67,4 +68,65 @@ a.demo-link:active {
     text-decoration: none;
     color: rgb(33, 33, 33);
     font-size: 20px;
+}
+button {
+    width: 110px;
+    /* margin: 0!important; */
+    margin: 0;
+    margin-top: 10px;
+
+}
+
+/* Видалення */
+.delete {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
+	width: 40%;
+	height: 45vh;
+    padding: 10px;
+	position: absolute;
+	top: 25%;
+	left: 29%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.delete h2 {
+    margin: 20px;
+    text-align: center;
+    text-decoration: underline;
+    color: #ee7560;
+}
+.delete button {
+    margin-top: 0;
+}
+
+/* Редагування */
+.edit{
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    z-index: 10;
+    padding: 20px;
+    top:20vh;
+    left: 40vw;
+    color: #ee7560;
+}
+.edit label {
+    font-size: 24px;
+    color: #4172DC;
+}
+.edit input {
+    font-size: 18px;
+    font-weight: 600;
+}
+.hidden {
+    display: none;
 }
