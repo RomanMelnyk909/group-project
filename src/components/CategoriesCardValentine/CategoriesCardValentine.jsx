@@ -17,11 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
 // Демо
 import backgroundImage from '../../images/sub-banner-2.jpg'
 import { createPortal } from 'react-dom';
-// import QueryLoader from '../QueryLoader';
-
-// import { useNavigate } from 'react-router';
-// import { ADD_CATEGORIES_FORM_VALENTINE_PATH } from '../../constants/pathNames';
-
+import QueryLoader from '../QueryLoader';
 
 
 const CategoriesCardValentine = (props) => {
@@ -42,10 +38,10 @@ const CategoriesCardValentine = (props) => {
     // const [ deleteCategory, setDeleteCategory ] = useState(false);
     const [showFlag, setShowFlag] = useState(false);
 
-    let { setRefetchId } = useContext(ChangeIdContext);
-
+    
     const [ fetching, setFetching ] = useState(false)
     const [ fetchError, setFetchError ] = useState(null);
+    let { setRefetchId } = useContext(ChangeIdContext);
 
     let portalElement = document.querySelector('#portal')
 
@@ -54,9 +50,8 @@ const CategoriesCardValentine = (props) => {
         const apiEndpoint = createRequestPath(CARTEGORIES_DELETE_ENDPOINT, id);
         fetch(apiEndpoint, { method: 'DELETE' ,
         headers: { "Content-Type": "application/json" },})
-        // .then(resp => resp.json())
             .then(resp => {
-                console.log("RESP=>",resp);
+                console.log("RESP DELETE=>",resp);
                 if (resp.status) {
                     onSetDeletedId(id)
                 }
@@ -77,8 +72,10 @@ const CategoriesCardValentine = (props) => {
             headers: { "Content-Type": "application/json" },
         })
         .then(resp => {
+            console.log("EDIT=>",resp);
             if (resp.status) {
                 setRefetchId(uuidv4())
+                // setFetching(false); // ????
             }
         })
         .catch(err => console.log("ERROR =>", err))
@@ -86,6 +83,11 @@ const CategoriesCardValentine = (props) => {
         //     setFetching(false)
         //     setFetchError(err)
         // })
+        // .catch(err => {
+        //     console.log("ERROR =>", err);
+        //     setFetching(false); // Устанавливаем fetching в false при возникновении ошибки
+        //     setFetchError(err)
+        // });
     }
 
     function onEditCategory () {
@@ -117,13 +119,13 @@ const CategoriesCardValentine = (props) => {
 
     const onCancel = () => {
 		setShowFlag(false);
-		// setShowModal(false);
         setShowModal(false)
-        // setDeleteCategory(false)
+		// setShowModal(true);
+
 	}
 	const onShow = () => {
 		setShowFlag(true);
-        // setDeleteCategory(true)
+        // setShowModal(false)
 	}
 
 	const onDelete = () => {
@@ -188,7 +190,7 @@ const CategoriesCardValentine = (props) => {
         // <div className={styles['common']} style={{ backgroundImage: `url(${backgroundImage})` }}>
         <>
         {/* <QueryLoader fetching={fetching} error={fetchError}> */}
-
+        {/* {(!fetching && !fetchError) && ( */}
             <div className={styles['common']} style={{ backgroundImage: imageUrl }}>
                 <h3>{title || `The title will be here`}</h3>
 
@@ -201,7 +203,6 @@ const CategoriesCardValentine = (props) => {
                     onClickFunction={onDelete} 
                     title={"delete"}/>
                 <Button 
-                    // className={styles["demos"]} 
                     type="button" 
                     title={"edit"} 
                     onClickFunction={onShow}/>
@@ -209,6 +210,7 @@ const CategoriesCardValentine = (props) => {
 
                 {/* <Modal title={title} deleteCategory={deleteCategory} setDeleteCategory={setDeleteCategory} onDeleteDataToApi={onDeleteDataToApi}/> */}
             </div>
+             {/* )} */}
             {/* </QueryLoader> */}
 
             <div className={showFlag?styles["edit"]:styles["hidden"]}>
