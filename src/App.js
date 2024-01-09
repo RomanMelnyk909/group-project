@@ -19,7 +19,8 @@ import {
   ADD_LERA_PRODUCTS_PATH,
   PRODUCTS_LERA_PATH,
   PRODUCTS_SASHA_PATH,
-  ADD_SASHA_PRODUCTS_PATH
+  ADD_SASHA_PRODUCTS_PATH,
+  BLOG_UPDATE
 } from "./constants/pathNames";
 
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
