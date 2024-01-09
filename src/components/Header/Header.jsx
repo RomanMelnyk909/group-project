@@ -13,7 +13,7 @@ const Header = () => {
 				</div>
 			</PageWrapper>
 		</div>
-	)
+	);
 };
 
 export default Header;

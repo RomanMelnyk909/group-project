@@ -11,6 +11,7 @@ import { ChangeIdContext } from "../../App"
 
 import { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router';
 
 import CategoriesValentine from '../CategoriesValentine';
 import Input from '../Input';
@@ -19,7 +20,7 @@ import Button from '../Button';
 const AddCategoriesFormValentine = () => {
 
     //// Default
-    // const navigator = useNavigate();
+    const navigator = useNavigate();
 
     // const mockCategories = {
     //     title: "Test text",
@@ -53,8 +54,8 @@ const AddCategoriesFormValentine = () => {
 
     const [title, setTitle] = useState();
     const [image, setImage] = useState();
-    const [priority, setpriority] = useState();
-    const [urlSlug, seturlSlug] = useState();
+    const [priority, setPriority] = useState();
+    const [urlSlug, setUrlSlug] = useState();
 
     const onSubmitDataToApi = (category) => {
         const apiEndpoint = createRequestPath(CARTEGORIES_ADD_ENDPOINT);
@@ -63,21 +64,25 @@ const AddCategoriesFormValentine = () => {
             body: JSON.stringify(category),
             headers: { "Content-Type": "application/json" },
         })
-            // .then(resp => resp.json())
-            // .then(() => navigator(CATEGIRIES_VALENTINE_PATH))
-            // .catch(err => console.log("ERROR =>", err))
             .then(resp => {
-                console.log('response => ', resp);
-                if (resp.status) {
-                    setRefetchId(uuidv4())
+                if(resp?.status === 200){
+                    navigator(CATEGIRIES_VALENTINE_PATH)
                 }
             })
+            // .then(() => navigator(CATEGIRIES_VALENTINE_PATH))
+            .catch(err => console.log("ERROR =>", err))
+            // .then(resp => {
+            //     console.log('response => ', resp);
+            //     if (resp.status) {
+            //         setRefetchId(uuidv4())
+            //     }
+            // })
     }
 
     const onAddCategory = () => {
         const category = {
             title,
-            image,
+            image: "string",
             priority,
             urlSlug,
             id: uuidv4()
@@ -85,8 +90,8 @@ const AddCategoriesFormValentine = () => {
         if (category.title && category.image && category.priority) {
             setTitle(``);
             setImage('');
-            setpriority('');
-            seturlSlug('');
+            setPriority('');
+            setUrlSlug('');
             onSubmitDataToApi(category)
 
         }
@@ -101,11 +106,11 @@ const AddCategoriesFormValentine = () => {
         setImage(value)
     }
 
-    const onGetpriority = (value) => {
-        setpriority(value)
+    const onGetPriority = (value) => {
+        setPriority(value)
     }
-    const onGeturlSlug = (value) => {
-        seturlSlug(value)
+    const onGetUrlSlug = (value) => {
+        setUrlSlug(value)
     };
 
     return (
@@ -120,34 +125,39 @@ const AddCategoriesFormValentine = () => {
                         label="name: "
                         placeholder="Enter category's name"
                         onChangeFunction={onGetName}
-                        value={title} />
+                        value={title}
+                        validation={true} />
 
                     <Input
                         label="image: "
                         placeholder="Enter category's image url"
                         onChangeFunction={onGetImage}
-                        value={image} />
+                        value={image}
+                        validation={true} />
 
                     <Input
                         label="priority: "
                         placeholder="Enter category's priority"
-                        onChangeFunction={onGetpriority} type='number'
-                        value={priority} />
+                        onChangeFunction={onGetPriority} type='number'
+                        value={priority}
+                        validation={true} />
 
                     <Input
                         label="urlSlug: "
                         placeholder="Enter category's urlSlug"
-                        onChangeFunction={onGeturlSlug}
-                        value={urlSlug} />
+                        onChangeFunction={onGetUrlSlug}
+                        value={urlSlug}
+                        validation={true} />
 
                     {/* <Button type={styles["buutonClassname"]} title="add" onClickFunction={onSubmitDataToApi} /> */}
                 </div>
-                <button
+                {/* <button
                     className={styles["btn-add"]}
                     type='submit'
                     onClick={onAddCategory}>
                     add
-                </button>
+                </button> */}
+                <Button type="button" onClickFunction={onAddCategory} title={"add"}/>
             </div>
 
         </PageWrapper>
