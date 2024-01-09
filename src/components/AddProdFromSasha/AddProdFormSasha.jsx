@@ -19,17 +19,6 @@ const AddProdFormSasha = () => {
 
 	let { refetchId, setRefetchId } = useContext(ChangeIdContext);
 
-	const mockProduct = {
-		name: "Cookie",
-		priority: 1,
-		categoryId: 1,
-		price: 120,
-		description: "just cookie",
-		ids: [
-		  5
-		],
-	};
-
 	const [name, setName] = useState('');
 	const [priority, setPriority] = useState('');
 	const [categoryId, setCategoryId] = useState('');
@@ -140,10 +129,8 @@ const AddProdFormSasha = () => {
 						value={ids}
 						type="number"
 						validation={error} />
-					<Button
-						className="addProducts"
-						type="submit"
-						title='Add' />
+						
+					<button type="submit" onClick={AddProduct}>Add</button>	
 				</div>
 			</form>
 		</PageWrapper>
