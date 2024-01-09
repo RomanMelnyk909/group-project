@@ -18,3 +18,4 @@ export const BLOGS_LIST_ENDPOINT = "Blogs/list";
 export const BLOGS_ADD_ENDPOINT = "Blogs/add";
 export const BLOGS_UPDATE_ENDPOINT = "Blogs/edit";
 export const BLOGS_DELETE_ENDPOINT = "Blogs/delete";
+export const BLOGS_UPDATE_ENDPOINT = "Blogs/edit";

@@ -24,6 +24,7 @@ import {
 
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
 import AddVladBlogs from "./components/AddVladBlogs";
+import BlogUpdate from "./components/BlogUpdate/BlogUpdate";
 import AddProductFormLera from "./components/AddProductFormLera";
 import AddProdFormSasha from "./components/AddProdFromSasha";
 import { createContext, useState } from 'react';
@@ -71,7 +72,8 @@ function App() {
           <Route path={PRODUCTS_PATH} element={<Products />} />
           <Route path={BLOG_PATH} element={<Blog />} />
           <Route path={ADD_VLAD_BLOGS_PATH} element={<AddVladBlogs />} />
-          <Route path={CATEGIRIES_PATH} element={<Categories />} />
+          <Route path={BLOG_UPDATE} element={<BlogUpdate />} />
+        <Route path={CATEGIRIES_PATH} element={<Categories />} />
           <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
           <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
           <Route path={ADD_CATEGORIES_FORM_VALENTINE_PATH} element={<AddCategoriesFormValentine />} />
