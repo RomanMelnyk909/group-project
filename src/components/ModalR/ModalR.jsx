@@ -2,6 +2,7 @@ import styles from './ModalR.module.css';
 import {createPortal} from "react-dom";
 
 const portalRoot = document.getElementById('modal');
+
 const ModalR = (props) => {
     const { children, showModal, openModalFunc } = props;
 

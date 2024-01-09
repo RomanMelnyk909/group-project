@@ -39,10 +39,12 @@ function App() {
         setIsModalOpened(val)
     }
 
-    const testPortalContent = <div style={{background: 'white'}}>
-        <div>Hello this is test component</div>
-        <button onClick={() => openModal(false)}>Close Modal</button>
-    </div>
+    const testPortalContent = (
+        <div style={{background: 'white'}}>
+            <div>Hello this is test component</div>
+            <button onClick={() => openModal(false)}>Close Modal</button>
+        </div>
+    );
 
 
   return (
