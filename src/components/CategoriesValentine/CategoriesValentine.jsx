@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 import styles from './categoriesValentine.module.css';
 import CategoriesCardValentine from '../CategoriesCardValentine';
 import { useEffect, useState } from 'react';
@@ -13,7 +15,7 @@ const CategoriesValentine = () => {
     const [fetching, setFetching] = useState(false);
     const [fetchError, setFetchError] = useState(null);
 
-    const [refetchId, setRefetchId] = useState(ChangeIdContext);
+    const { setRefetchId, refetchId } = useContext(ChangeIdContext);
 
     useEffect(() => {
         setFetching(true);

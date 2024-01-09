@@ -189,8 +189,6 @@ const CategoriesCardValentine = (props) => {
         // Коли картинка буде з api тодi замiнемо backgroundImage на props => image
         // <div className={styles['common']} style={{ backgroundImage: `url(${backgroundImage})` }}>
         <>
-        {/* <QueryLoader fetching={fetching} error={fetchError}> */}
-        {/* {(!fetching && !fetchError) && ( */}
             <div className={styles['common']} style={{ backgroundImage: imageUrl }}>
                 <h3>{title || `The title will be here`}</h3>
 
@@ -210,8 +208,6 @@ const CategoriesCardValentine = (props) => {
 
                 {/* <Modal title={title} deleteCategory={deleteCategory} setDeleteCategory={setDeleteCategory} onDeleteDataToApi={onDeleteDataToApi}/> */}
             </div>
-             {/* )} */}
-            {/* </QueryLoader> */}
 
             <div className={showFlag?styles["edit"]:styles["hidden"]}>
                 <h2>Edite Category</h2>
