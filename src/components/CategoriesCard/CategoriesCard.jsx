@@ -6,8 +6,8 @@ import {ChangeIdContext} from "../../App"
 import backgroundImage from '../../images/sub-banner-1.jpg'
 import { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
-import { createPortal } from "react-dom";
-import Modal from '../Modal/Modal';
+
+import ModalR from "../ModalR";
 
 const CategoriesCard = (props) => {
     const { title, image, string, id, onSetDeletedId, buttonFlag, priority } = props;
@@ -19,8 +19,9 @@ const CategoriesCard = (props) => {
     const [fetchError, setFetchError] = useState(null);
     const [showModal, setShowModal] = useState(false)
     const [deleteCategory, setDeleteCategory] = useState(false)
+
     let { setRefetchId}=useContext(ChangeIdContext)
-    let portalElement = document.querySelector('#portal') 
+
     const onDeleteDataToApi = () => {
         setDeleteCategory(false)
         const apiEndpoint = createRequestPath(CARTEGORIES_DELETE_ENDPOINT, id);
@@ -115,11 +116,10 @@ const CategoriesCard = (props) => {
             {buttonFlag?<button className='button' onClick={onDelete}>delete</button>:``}
             {buttonFlag?<button className='button' onClick={onShow}>Edit</button>:``}
            </div>
+            <ModalR showModal={showModal} openModalFunc={setShowModal} >
+                {modalContent}
+            </ModalR>
 
- 
-            {showModal ? createPortal(modalContent, portalElement) : null}
-
-          <Modal  title={title} deleteCategory={deleteCategory} setDeleteCategory={setDeleteCategory} onDeleteDataToApi={onDeleteDataToApi}/>
         </div>
     )
 };
