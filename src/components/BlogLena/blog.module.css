@@ -43,3 +43,7 @@
   );
   filter: drop-shadow(4px 4px 7px rgba(155, 182, 190, 0.75));
 }
+
+.modalWindow {
+  height: 100%;
+}

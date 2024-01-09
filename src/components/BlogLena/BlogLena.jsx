@@ -10,6 +10,7 @@ import {
 import PageWrapper from "../PageWrapper";
 import { createRequestPath } from "../../helpers/helpers";
 import Input from "../Input/Input";
+import ModalR from "../ModalR";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -39,6 +40,8 @@ const Blog = () => {
   const [dateTimePublishValid, setDateTimePublishValid] = useState(true);
 
   const apiUrl = `${BASE_URL}${BLOGS_LIST_ENDPOINT}`;
+
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -145,13 +148,15 @@ const Blog = () => {
   };
 
   const onDeleteDataToApi = async (id) => {
-    const shouldDelete = window.confirm(
-      "Are you sure you want to delete this blog?"
-    );
+    // const shouldDelete = window.confirm(
+    //   "Are you sure you want to delete this blog?"
+    // );
 
-    if (!shouldDelete) {
-      return;
-    }
+    // if (!shouldDelete) {
+    //   return;
+    // }
+
+    setShowModal(true);
 
     console.log(id);
     const apiEndpoint = createRequestPath(`${BLOGS_DELETE_ENDPOINT}/${id}`);
@@ -345,10 +350,27 @@ const Blog = () => {
               </button>
               <button
                 className={styles["buttonBlog"]}
-                onClick={() => onDeleteDataToApi(blog.id)}
+                onClick={() => setShowModal(true)}
               >
                 Delete
               </button>
+
+              <ModalR
+                showModal={showModal}
+                openModalFunc={setShowModal}
+                className={styles["modalWindow"]}
+              >
+                <h1>Are you sure you want to delete this blog?</h1>
+                <button
+                  onClick={() => {
+                    onDeleteDataToApi(blog.id);
+                    setShowModal(false);
+                  }}
+                >
+                  Yes
+                </button>
+                <button onClick={() => setShowModal(false)}>No</button>
+              </ModalR>
             </div>
           ))}
         </div>
