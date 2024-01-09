@@ -35,7 +35,7 @@ const Categories = (props) => {
         <div className={styles['categories']}>
 
             {
-                flagToReverse ?
+                !flagToReverse ?
                     data.slice(0).reverse().map((el) => {
                         return <CategoriesCard key={el.id} priority={el.priority} id={el.id} title={el.title} image={el.image} string={el.urlSlug} onSetDeletedId={setRefetchId} buttonFlag={buttonFlag}/>
                     }) :

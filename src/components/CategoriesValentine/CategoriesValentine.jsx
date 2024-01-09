@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 import styles from './categoriesValentine.module.css';
 import CategoriesCardValentine from '../CategoriesCardValentine';
 import { useEffect, useState } from 'react';
@@ -5,6 +7,7 @@ import { CARTEGORIES_LIST_ENDPOINT } from '../../constants/endpoints';
 import { createRequestPath } from '../../helpers/helpers';
 import { ChangeIdContext } from '../../App';
 import PageWrapper from '../PageWrapper'
+import QueryLoader from '../QueryLoader';
 
 
 const CategoriesValentine = () => {
@@ -12,7 +15,7 @@ const CategoriesValentine = () => {
     const [fetching, setFetching] = useState(false);
     const [fetchError, setFetchError] = useState(null);
 
-    const [refetchId, setRefetchId] = useState(ChangeIdContext);
+    const { setRefetchId, refetchId } = useContext(ChangeIdContext);
 
     useEffect(() => {
         setFetching(true);
@@ -32,25 +35,27 @@ const CategoriesValentine = () => {
 
     return (
         <PageWrapper>
-            <div className={styles['common']}>
+            <QueryLoader fetching={fetching} error={fetchError}>
+                <div className={styles['common']}>
 
-                {data.map((prod, index) => {
-                    // console.log("DATA=>", data)
-                    const { title, image, priority, urlSlug, id } = prod;
-                    return (
-                        <CategoriesCardValentine
-                            title={title}
-                            image={image}
-                            priority={priority}
-                            string={urlSlug}
-                            id={id}
-                            onSetDeletedId={setRefetchId}
-                            key={index}
-                        />
-                    )
-                })}
+                    {data.map((prod, index) => {
+                        // console.log("DATA=>", data)
+                        const { title, image, priority, urlSlug, id } = prod;
+                        return (
+                            <CategoriesCardValentine
+                                title={title}
+                                image={image}
+                                priority={priority}
+                                string={urlSlug}
+                                id={id}
+                                onSetDeletedId={setRefetchId}
+                                key={index}
+                            />
+                        )
+                    })}
 
-            </div>
+                </div>
+            </QueryLoader>
         </PageWrapper>
     )
 };

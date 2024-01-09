@@ -29,6 +29,7 @@ input {
 }
 
 .btn-add {
+    width: 155px;
     margin-top: 30px;
     background-color: #ee7560;
     cursor: pointer;

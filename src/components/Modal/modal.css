@@ -1,4 +1,5 @@
-.edit-card{
+.modal{
+   padding: 20px;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -6,11 +7,20 @@
    gap: 20px;
    position: absolute;
    z-index: 15;
-   width: 20vw;
-   height: 40vh;
-   border: 1px solid black;
-   top:30vh;
-   left: 40vw;
-   background: rgb(231, 229, 229);
+   width: 30vw;
+   height: 20vh;
+   border: 1px solid rgb(160, 193, 218);
+   top:40vh;
+   left: 35vw;
+   background: rgb(255, 215, 215);
+   border-radius: 10px;
+   box-shadow: 5px 5px 20px rgb(160, 193, 218);
   
+}
+.modal__button{
+   display: flex;
+   gap: 10px;
+}
+.modal p{
+   font-size: 20px;
 }

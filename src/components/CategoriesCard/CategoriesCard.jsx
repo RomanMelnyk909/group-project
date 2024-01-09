@@ -7,6 +7,7 @@ import backgroundImage from '../../images/sub-banner-1.jpg'
 import { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
 import { createPortal } from "react-dom";
+import Modal from '../Modal/Modal';
 
 const CategoriesCard = (props) => {
     const { title, image, string, id, onSetDeletedId, buttonFlag, priority } = props;
@@ -17,9 +18,11 @@ const CategoriesCard = (props) => {
     const [fetching, setFetching] = useState(false)
     const [fetchError, setFetchError] = useState(null);
     const [showModal, setShowModal] = useState(false)
+    const [deleteCategory, setDeleteCategory] = useState(false)
     let { setRefetchId}=useContext(ChangeIdContext)
     let portalElement = document.querySelector('#portal') 
     const onDeleteDataToApi = () => {
+        setDeleteCategory(false)
         const apiEndpoint = createRequestPath(CARTEGORIES_DELETE_ENDPOINT, id);
         fetch(apiEndpoint, { method: 'DELETE' })
             .then(resp => {
@@ -75,11 +78,18 @@ const CategoriesCard = (props) => {
 
     function onShow (){
         setShowModal(true)
+
     }
     function onCancel(){
         setShowModal(false)
+
     }
- 	
+    function onDelete(){
+        setDeleteCategory(true)
+
+    }
+
+
 	let modalContent = (
         <div className={styles['edit-card']}>  
         <h2>Edite caregory</h2>
@@ -102,12 +112,14 @@ const CategoriesCard = (props) => {
             <div><a className={styles["demo-link"]} href="#">{string || `There will be a link here`}</a></div>
             {/* <img src={image} alt={`${image}`} /> */}
             <div>
-            {buttonFlag?<button className='button' onClick={onDeleteDataToApi}>delete</button>:``}
+            {buttonFlag?<button className='button' onClick={onDelete}>delete</button>:``}
             {buttonFlag?<button className='button' onClick={onShow}>Edit</button>:``}
            </div>
-            
+
  
             {showModal ? createPortal(modalContent, portalElement) : null}
+
+          <Modal  title={title} deleteCategory={deleteCategory} setDeleteCategory={setDeleteCategory} onDeleteDataToApi={onDeleteDataToApi}/>
         </div>
     )
 };
