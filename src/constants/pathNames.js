@@ -15,4 +15,4 @@ export const ADD_LERA_PRODUCTS_PATH = "/add-lera-products";
 export const ADD_SASHA_PRODUCTS_PATH = "/add-sasha-products";
 export const ADD_VLAD_BLOGS_PATH = "/add-vlad-blogs";
 export const ADD_CATEGORIES_FORM_PATH = "/add-category";
-export const ADD_CATEGORIES_FORM_VALENTINE_PATH = "/add-categories-form-valentine"
+export const ADD_CATEGORIES_FORM_VALENTINE_PATH = "/add-categories-form-valentine/:id"
