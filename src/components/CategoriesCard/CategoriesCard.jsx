@@ -22,7 +22,7 @@ const CategoriesCard = (props) => {
     let { setRefetchId}=useContext(ChangeIdContext)
     let portalElement = document.querySelector('#portal') 
     const onDeleteDataToApi = () => {
-        setDeleteCategory(false) 
+        setDeleteCategory(false)
         const apiEndpoint = createRequestPath(CARTEGORIES_DELETE_ENDPOINT, id);
         fetch(apiEndpoint, { method: 'DELETE' })
             .then(resp => {
@@ -78,18 +78,18 @@ const CategoriesCard = (props) => {
 
     function onShow (){
         setShowModal(true)
-       
+
     }
     function onCancel(){
         setShowModal(false)
-       
+
     }
     function onDelete(){
         setDeleteCategory(true)
-       
+
     }
-    
- 	
+
+
 	let modalContent = (
         <div className={styles['edit-card']}>  
         <h2>Edite caregory</h2>
@@ -115,7 +115,7 @@ const CategoriesCard = (props) => {
             {buttonFlag?<button className='button' onClick={onDelete}>delete</button>:``}
             {buttonFlag?<button className='button' onClick={onShow}>Edit</button>:``}
            </div>
- 
+
  
             {showModal ? createPortal(modalContent, portalElement) : null}
 

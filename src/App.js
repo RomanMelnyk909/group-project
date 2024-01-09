@@ -30,6 +30,7 @@ import { createContext, useState } from 'react';
 import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/AddCategoriesFormValentine";
 import ProductsLera from "./components/ProductsLera";
 import ProdSasha from "./components/ProdSasha";
+import ModalR from "./components/ModalR";
 
 export let ChangeIdContext = createContext()
 
@@ -37,8 +38,25 @@ export let ChangeIdContext = createContext()
 function App() {
 	const [refetchId, setRefetchId] = useState(null);
 
+    const [isModalOpened, setIsModalOpened] = useState(false);
+    const openModal = (val) => {
+        setIsModalOpened(val)
+    }
+
+    const testPortalContent = (
+        <div style={{background: 'white'}}>
+            <div>Hello this is test component</div>
+            <button onClick={() => openModal(false)}>Close Modal</button>
+        </div>
+    );
+
+
   return (
     <div className="App">
+        <button onClick={() => openModal(true)}>Open Modal</button>
+      <ModalR showModal={isModalOpened} openModalFunc={openModal}>
+          { testPortalContent }
+      </ModalR>
       <Header />
       <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
         <Routes>
@@ -59,7 +77,7 @@ function App() {
           <Route path={ADD_CATEGORIES_FORM_VALENTINE_PATH} element={<AddCategoriesFormValentine />} />
         </Routes>
       </ChangeIdContext.Provider>
-      
+
       <Footer />
     </div>
   );
