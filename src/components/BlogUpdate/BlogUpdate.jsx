@@ -1,38 +1,62 @@
-import React, { useState } from "react";
-import { createRequestPath } from "../../helpers/helpers";
-import { BLOGS_ADD_ENDPOINT } from "../../constants/endpoints";
-
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router";
 import PageWrapper from "../PageWrapper";
-
-import { BLOG_PATH } from "../../constants/pathNames";
-
-import styles from "./addVladBlogs.module.css";
 import Button from "../Button";
-import { useNavigate } from "react-router";
+import { createRequestPath } from "../../helpers/helpers";
+import {
+  BLOGS_LIST_ENDPOINT,
+  BLOGS_UPDATE_ENDPOINT,
+} from "../../constants/endpoints";
+import { BLOG_PATH } from "../../constants/pathNames";
+import styles from "./blogUpdate.module.css";
 
-const AddVladBlogs = () => {
+const BlogUpdate = () => {
   const navigator = useNavigate();
+  const { id } = useParams();
+
+  const [fetching, setFetching] = useState(false);
+  const [error, setError] = useState(null);
 
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
-  const [isShow, setIsShow] = useState(true);
   const [dateTimePublish, setDateTimePublish] = useState("");
 
-  const onSubmitDataToApi = () => {
-    const apiEndpoint = createRequestPath(BLOGS_ADD_ENDPOINT);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(createRequestPath(BLOGS_LIST_ENDPOINT));
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const responseData = await response.json();
+        const blogData = responseData.filter((el) => el.id == id)[0];
+        
+        setName(blogData?.name);
+        setText(blogData?.text);
+        setImage(blogData?.image);
+        setDateTimePublish(blogData?.dateTimePublish);
+      } catch (err) {
+        setError(err);
+      }
+    };
 
+    fetchData();
+  }, []);
+
+  const onSubmitDataToApi = () => {
+    const apiEndpoint = createRequestPath(BLOGS_UPDATE_ENDPOINT);
     const newBlog = {
+      id,
       name,
       text,
       image,
-      isShow,
+      isShow: true,
       dateTimePublish,
     };
-
     if (name && text && image && dateTimePublish) {
       fetch(apiEndpoint, {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify(newBlog),
         headers: { "Content-Type": "application/json" },
       }).then((resp) => {
@@ -89,11 +113,14 @@ const AddVladBlogs = () => {
             </label>
           </div>
         </div>
-
-        <Button type="button" onClickFunction={onSubmitDataToApi} title="Add" />
+        <Button
+          type="button"
+          onClickFunction={onSubmitDataToApi}
+          title="Update Blog"
+        />
       </div>
     </PageWrapper>
   );
 };
 
-export default AddVladBlogs;
+export default BlogUpdate;

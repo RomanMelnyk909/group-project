@@ -19,18 +19,19 @@ import {
   ADD_LERA_PRODUCTS_PATH,
   PRODUCTS_LERA_PATH,
   PRODUCTS_SASHA_PATH,
-  ADD_SASHA_PRODUCTS_PATH
+  ADD_SASHA_PRODUCTS_PATH,
+  BLOG_UPDATE
 } from "./constants/pathNames";
 
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
 import AddVladBlogs from "./components/AddVladBlogs";
+import BlogUpdate from "./components/BlogUpdate/BlogUpdate";
 import AddProductFormLera from "./components/AddProductFormLera";
 import AddProdFormSasha from "./components/AddProdFromSasha";
 import { createContext, useState } from 'react';
 import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/AddCategoriesFormValentine";
 import ProductsLera from "./components/ProductsLera";
 import ProdSasha from "./components/ProdSasha";
-import ModalR from "./components/ModalR";
 import ClassComponentLera from "./components/ClassComponentLera/ClassComponentLera";
 
 export let ChangeIdContext = createContext()
@@ -39,26 +40,9 @@ export let ChangeIdContext = createContext()
 function App() {
 	const [refetchId, setRefetchId] = useState(null);
 
-    const [isModalOpened, setIsModalOpened] = useState(false);
-    const openModal = (val) => {
-        setIsModalOpened(val)
-    }
-
-    const testPortalContent = (
-        <div style={{background: 'white'}}>
-            <div>Hello this is test component</div>
-            <button onClick={() => openModal(false)}>Close Modal</button>
-        </div>
-    );
-
-
   return (
     <div className="App">
 		<ClassComponentLera />
-        <button onClick={() => openModal(true)}>Open Modal</button>
-      <ModalR showModal={isModalOpened} openModalFunc={openModal}>
-          { testPortalContent }
-      </ModalR>
       <Header />
       <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
         <Routes>
@@ -73,7 +57,8 @@ function App() {
           <Route path={PRODUCTS_PATH} element={<Products />} />
           <Route path={BLOG_PATH} element={<Blog />} />
           <Route path={ADD_VLAD_BLOGS_PATH} element={<AddVladBlogs />} />
-          <Route path={CATEGIRIES_PATH} element={<Categories />} />
+          <Route path={BLOG_UPDATE} element={<BlogUpdate />} />
+        <Route path={CATEGIRIES_PATH} element={<Categories />} />
           <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
           <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
           <Route path={ADD_CATEGORIES_FORM_VALENTINE_PATH} element={<AddCategoriesFormValentine />} />

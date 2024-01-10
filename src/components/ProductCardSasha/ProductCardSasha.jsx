@@ -11,7 +11,7 @@ import { createRequestPath } from '../../helpers/helpers';
 import { ChangeIdContext } from "../../App"
 
 const ProductCardSasha = (props) => {
-    const { image, name, description, priority, price, id, categoryId, SetDelitedId, ids } = props;
+    const { image, name, description, priority, price, id, categoryId, onSetDelitedId, ids } = props;
 
 	const [nameEdit, NameEdit] = useState(name);
 	const [priorityEdit, PriorityEdit] = useState(priority);
@@ -34,7 +34,7 @@ const ProductCardSasha = (props) => {
 		.then(resp => {
 			console.log(resp);
 			if(resp.status) {
-				SetDelitedId(id);
+				onSetDelitedId(id);
 			}
 			return resp;
 		})
