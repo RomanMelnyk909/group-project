@@ -31,6 +31,7 @@ import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/
 import ProductsLera from "./components/ProductsLera";
 import ProdSasha from "./components/ProdSasha";
 import ModalR from "./components/ModalR";
+import ClassComponentLera from "./components/ClassComponentLera/ClassComponentLera";
 
 export let ChangeIdContext = createContext()
 
@@ -53,6 +54,7 @@ function App() {
 
   return (
     <div className="App">
+		<ClassComponentLera />
         <button onClick={() => openModal(true)}>Open Modal</button>
       <ModalR showModal={isModalOpened} openModalFunc={openModal}>
           { testPortalContent }

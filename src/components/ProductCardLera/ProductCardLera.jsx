@@ -2,6 +2,7 @@ import styles from './product-card-lera.module.css';
 
 import Button from '../Button';
 import Input from '../Input';
+import ModalR from "../ModalR";
 
 import { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -107,7 +108,7 @@ const ProductCardLera = (props) => {
 
 	let modalContent = (
 		<div className={styles['delete-modal']}>  
-        	<h2>You really want to delete it?</h2>
+        	<p>You really want to delete it?</p>
                 <Button 
 					type="button" 
 					onClickFunction={onDeleteDataToApi} title="Delete" />
@@ -169,12 +170,6 @@ const ProductCardLera = (props) => {
 					onChangeFunction={onGetDescription}
 					value={descriptionEdit}
 					validation={true} />
-				{/* <Input
-					label='Ids'
-					placeholder='Enter product ids'
-					onChangeFunction={onGetIds}
-					value={idsEdit}
-					validation={true} /> */}
 				<Button 
 					type='button'
 					title='Add Changes'
@@ -184,7 +179,9 @@ const ProductCardLera = (props) => {
 					title='Cancel'
 					onClickFunction={onCancel} />
 			</div>
-			{showModal ? createPortal(modalContent, portalElement) : null}
+			<ModalR showModal={showModal} openModalFunc={setShowModal} >
+                {modalContent}
+            </ModalR>
 		</>
     )
 }
