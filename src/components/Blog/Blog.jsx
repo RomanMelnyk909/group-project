@@ -4,6 +4,7 @@ import BlogCard from "../BlogCard";
 import { BLOGS_LIST_ENDPOINT, BLOGS_DELETE_ENDPOINT } from "../../constants/endpoints";
 import { createRequestPath } from "../../helpers/helpers";
 import styles from "./blog.module.css";
+import ClassBasedVlad from "../ClassBasedVlad";
 
 const Blog = () => {
   const [data, setData] = useState([]);
@@ -56,14 +57,15 @@ const Blog = () => {
         <div className={styles.blogPost}>
           {data.map((blogPost) => (
             <BlogCard
-              key={blogPost.id}
-              id={blogPost.id}
-              name={blogPost.name}
-              text={blogPost.text}
-              dateTimePublish={blogPost.dateTimePublish}
-              onDelete={handleDeleteCard}
+            key={blogPost.id}
+            id={blogPost.id}
+            name={blogPost.name}
+            text={blogPost.text}
+            dateTimePublish={blogPost.dateTimePublish}
+            onDelete={handleDeleteCard}
             />
-          ))}
+            ))}
+            <ClassBasedVlad/>
         </div>
       )}
     </div>

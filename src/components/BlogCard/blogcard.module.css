@@ -20,5 +20,11 @@
 .blogPost img {
   width: 200px;
 }
-
+.wrapModal{
+  width: 300px;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  background-color: #aca9a9;
+}
 
