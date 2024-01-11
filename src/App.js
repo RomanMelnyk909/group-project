@@ -32,6 +32,7 @@ import { createContext, useState } from 'react';
 import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/AddCategoriesFormValentine";
 import ProductsLera from "./components/ProductsLera";
 import ProdSasha from "./components/ProdSasha";
+import ClassComponentLera from "./components/ClassComponentLera/ClassComponentLera";
 
 export let ChangeIdContext = createContext()
 
@@ -41,6 +42,7 @@ function App() {
 
   return (
     <div className="App">
+		<ClassComponentLera />
       <Header />
       <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
         <Routes>
