@@ -33,6 +33,7 @@ import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/
 import ProductsLera from "./components/ProductsLera";
 import ProdSasha from "./components/ProdSasha";
 import ModalR from "./components/ModalR";
+import ClassBasedComponentJu from "./components/ClassBasedComponentJu";
 
 export let ChangeIdContext = createContext()
 
@@ -59,6 +60,7 @@ function App() {
       <ModalR showModal={isModalOpened} openModalFunc={openModal}>
           { testPortalContent }
       </ModalR>
+      <ClassBasedComponentJu name="Jonh" age={25} />
       <Header />
       <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
         <Routes>
