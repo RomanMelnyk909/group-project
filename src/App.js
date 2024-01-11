@@ -5,12 +5,12 @@ import Blog from "./components/Blog";
 import BlogLena from "./components/BlogLena";
 import Categories from "./components/Categories";
 import CategoriesValentine from "./components/CategoriesValentine";
-import Products from "./components/Products";
+import ProductsJu from "./components/ProductsJu";
 import { Routes, Route } from "react-router";
 import {
   BLOG_PATH,
   BLOG_LENA_PATH,
-  PRODUCTS_PATH,
+  PRODUCTS_JU_PATH,
   CATEGIRIES_PATH,
   CATEGIRIES_VALENTINE_PATH,
   ADD_VLAD_BLOGS_PATH,
@@ -54,7 +54,7 @@ function App() {
           <Route path={BLOG_PATH} element={<Blog />} />
           <Route path={BLOG_LENA_PATH} element={<BlogLena />} />
           <Route path={CATEGIRIES_PATH} element={<Categories />} />
-          <Route path={PRODUCTS_PATH} element={<Products />} />
+          <Route path={PRODUCTS_JU_PATH} element={<ProductsJu />} />
           <Route path={BLOG_PATH} element={<Blog />} />
           <Route path={ADD_VLAD_BLOGS_PATH} element={<AddVladBlogs />} />
           <Route path={BLOG_UPDATE} element={<BlogUpdate />} />
