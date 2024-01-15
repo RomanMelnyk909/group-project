@@ -1,14 +1,17 @@
+
 import React, { useState, useEffect } from "react";
-import { BLOGS_LIST_ENDPOINT } from "../../constants/endpoints";
+import BlogCard from "../BlogCard";
+import { BLOGS_LIST_ENDPOINT, BLOGS_DELETE_ENDPOINT } from "../../constants/endpoints";
 import { createRequestPath } from "../../helpers/helpers";
 import styles from "./blog.module.css";
-
+import ClassBasedVlad from "../ClassBasedVlad";
 
 const Blog = () => {
   const [data, setData] = useState([]);
+  const [refetchId, setRefetchId] = useState();
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       setFetching(true);
@@ -25,34 +28,46 @@ const Blog = () => {
         setFetching(false);
       }
     };
-
+    
     fetchData();
-  }, []);
+  }, [refetchId]);
+  
+  const handleDeleteCard = async (id) => {
+      const apiEndpoint = createRequestPath(BLOGS_DELETE_ENDPOINT, id);
+      const response = await fetch(apiEndpoint, { method: 'DELETE' });
+
+    fetch(apiEndpoint, { method: "DELETE" })
+      .then((resp) => {
+        console.log("Response status:", resp.status);
+        if (resp.status) {
+          setRefetchId(id);
+        }
+        return resp;
+      })
+      .catch((error) => {
+        console.error("Error deleting blog:", error);
+      });
+  };
 
   return (
-      <div className={styles.blogContainer}>
+    <div className={styles.blogContainer}>
       {fetching && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {!fetching && !error && (
-        <div>
+        <div className={styles.blogPost}>
           {data.map((blogPost) => (
-            <div key={blogPost.id} className={styles.blogPost}>
-              <img src="https://thelongfortgroup.com/public/img/default/no-image-icon.jpg" alt="" />
-              <h2>{blogPost.name}</h2>
-              <p>{blogPost.text}</p>
-              <p>Date: {blogPost.dateTimePublish}</p>
-              <button type="submit">Order</button>
-            </div>
-          ))}
+            <BlogCard
+            key={blogPost.id}
+            id={blogPost.id}
+            name={blogPost.name}
+            text={blogPost.text}
+            dateTimePublish={blogPost.dateTimePublish}
+            onDelete={handleDeleteCard}
+            />
+            ))}
+            <ClassBasedVlad/>
         </div>
       )}
-
-      {/* <div className={styles.newBlogFields}>
-        <img src="https://thelongfortgroup.com/public/img/default/no-image-icon.jpg" alt="" />
-        <h2>{newBlog.name}</h2>
-        <p>{newBlog.text}</p>
-        <p>Date: {newBlog.dateTimePublish}</p>
-      </div> */}
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { ChangeIdContext } from "../../App";
 
 import PageWrapper from '../PageWrapper';
 import ProductCardLera from "../ProductCardLera";
+import ClassCompProdLera from "../ClassCompProdLera/ClassCompProdLera";
 
 const ProductsLera = () => {
 	const [data, setData] = useState([]);
@@ -44,6 +45,7 @@ const ProductsLera = () => {
 							onSetDelitedId={setRefetchId} />
 					))}
 				</div>
+				<ClassCompProdLera />
 			</div>
 		</PageWrapper>
 	);
