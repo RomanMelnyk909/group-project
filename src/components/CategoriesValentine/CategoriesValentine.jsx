@@ -9,6 +9,7 @@ import { ChangeIdContext } from '../../App';
 import PageWrapper from '../PageWrapper'
 import QueryLoader from '../QueryLoader';
 
+import ClassValentineComponent from '../ClassValentineComponent/ClassValentineComponent';
 
 const CategoriesValentine = () => {
     const [data, setData] = useState([]);
@@ -53,6 +54,7 @@ const CategoriesValentine = () => {
                             />
                         )
                     })}
+                                    <ClassValentineComponent />
 
                 </div>
             </QueryLoader>
