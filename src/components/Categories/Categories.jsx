@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from 'react';
 import { createRequestPath } from "../../helpers/helpers";
 import { CARTEGORIES_LIST_ENDPOINT } from "../../constants/endpoints";
 import {ChangeIdContext} from "../../App"
+import {useDispatch, useSelector} from "react-redux";
 
  
 const Categories = (props) => {
@@ -12,7 +13,15 @@ const Categories = (props) => {
     const [data, setData] = useState([])
     const [fetching, setFetching] = useState(false)
     const [fetchError, setFetchError] = useState(null);
-    
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        setTimeout(() => { dispatch({ type: 'INCERMENT' }) }, 2000)
+    }, [dispatch])
+
+    const test = useSelector(state => state)
+    console.log(test)
 
     useEffect(function () {
         setFetching(true)

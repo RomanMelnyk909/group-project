@@ -42,7 +42,6 @@ function App() {
 
   return (
     <div className="App">
-		<ClassComponentLera />
       <Header />
       <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
         <Routes>
@@ -64,7 +63,6 @@ function App() {
           <Route path={ADD_CATEGORIES_FORM_VALENTINE_PATH} element={<AddCategoriesFormValentine />} />
         </Routes>
       </ChangeIdContext.Provider>
-
       <Footer />
     </div>
   );
