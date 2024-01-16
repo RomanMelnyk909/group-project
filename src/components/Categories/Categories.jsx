@@ -4,6 +4,9 @@ import { useEffect, useState, useContext } from 'react';
 import { createRequestPath } from "../../helpers/helpers";
 import { CARTEGORIES_LIST_ENDPOINT } from "../../constants/endpoints";
 import {ChangeIdContext} from "../../App"
+import { DECREMENT, INCREMENT, PLUS_NUMBER, RESET } from '../../constants/actions';
+import { counterReducer } from '../../reducers/counterReducer';
+import { useDispatch, useSelector } from 'react-redux';
 
  
 const Categories = (props) => {
@@ -29,10 +32,23 @@ const Categories = (props) => {
     }, [refetchId])
 
 
-    let flagToReverse = flagReverse || false
+    let flagToReverse = flagReverse || false;
+    let dispath=useDispatch();
+
+    let [number, setNumber] = useState(0)
+    let redux =useSelector(state=>state)
+    console.log(redux);
     return (
 
         <div className={styles['categories']}>
+            <button onClick={()=>
+            {
+                dispath({type:INCREMENT});
+            }}>+</button>
+			<button onClick={()=> dispath({type:DECREMENT})}>-</button>
+            <input type={'number'} onChange={(e)=>setNumber(+e.target.value) }/>
+            <button onClick={()=> dispath({type:PLUS_NUMBER, payload:number})}>plus num</button>
+            <button onClick={()=> dispath({type:RESET})}>reset</button>
 
             {
                 !flagToReverse ?

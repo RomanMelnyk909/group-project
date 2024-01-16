@@ -11,6 +11,7 @@ import PageWrapper from "../PageWrapper";
 import { createRequestPath } from "../../helpers/helpers";
 import Input from "../Input/Input";
 
+
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
   const [refetchId, setRefetchId] = useState();
@@ -39,6 +40,7 @@ const Blog = () => {
   const [dateTimePublishValid, setDateTimePublishValid] = useState(true);
 
   const apiUrl = `${BASE_URL}${BLOGS_LIST_ENDPOINT}`;
+
 
   useEffect(() => {
     const fetchData = async () => {
