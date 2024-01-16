@@ -48,7 +48,7 @@ const Blog = () => {
         console.error("Error deleting blog:", error);
       });
   };
-
+  console.log(data)
   return (
     <div className={styles.blogContainer}>
       {fetching && <p>Loading...</p>}
@@ -61,6 +61,7 @@ const Blog = () => {
             id={blogPost.id}
             name={blogPost.name}
             text={blogPost.text}
+            image={blogPost.image}
             dateTimePublish={blogPost.dateTimePublish}
             onDelete={handleDeleteCard}
             />

@@ -32,7 +32,6 @@ import { createContext, useState } from 'react';
 import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/AddCategoriesFormValentine";
 import ProductsLera from "./components/ProductsLera";
 import ProdSasha from "./components/ProdSasha";
-import ClassComponentLera from "./components/ClassComponentLera/ClassComponentLera";
 
 export let ChangeIdContext = createContext()
 
@@ -42,8 +41,8 @@ function App() {
 
   return (
     <div className="App">
-		<ClassComponentLera />
       <Header />
+      <image />
       <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
         <Routes>
           <Route path={ADD_LERA_PRODUCTS_PATH} element={<AddProductFormLera />} />
@@ -58,7 +57,7 @@ function App() {
           <Route path={BLOG_PATH} element={<Blog />} />
           <Route path={ADD_VLAD_BLOGS_PATH} element={<AddVladBlogs />} />
           <Route path={BLOG_UPDATE} element={<BlogUpdate />} />
-        <Route path={CATEGIRIES_PATH} element={<Categories />} />
+          <Route path={CATEGIRIES_PATH} element={<Categories />} />
           <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
           <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
           <Route path={ADD_CATEGORIES_FORM_VALENTINE_PATH} element={<AddCategoriesFormValentine />} />

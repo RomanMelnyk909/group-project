@@ -9,6 +9,7 @@ import { BLOG_PATH } from "../../constants/pathNames";
 import styles from "./addVladBlogs.module.css";
 import Button from "../Button";
 import { useNavigate } from "react-router";
+import ImageUploader from "../ImageUploader";
 
 const AddVladBlogs = () => {
   const navigator = useNavigate();
@@ -29,7 +30,7 @@ const AddVladBlogs = () => {
       isShow,
       dateTimePublish,
     };
-
+    console.log(newBlog)
     if (name && text && image && dateTimePublish) {
       fetch(apiEndpoint, {
         method: "POST",
@@ -68,15 +69,17 @@ const AddVladBlogs = () => {
             </label>
           </div>
           <div className={styles.blogPanel}>
-            <label>
-              Image:
-              <input
-                className={styles.list}
-                placeholder="Image url"
-                onChange={(e) => setImage(e.target.value)}
-                value={image}
-              />
-            </label>
+            {/*<label>*/}
+            {/*  Image:*/}
+            {/*  */}
+            {/*  <input*/}
+            {/*    className={styles.list}*/}
+            {/*    placeholder="Image url"*/}
+            {/*    onChange={(e) => setImage(e.target.value)}*/}
+            {/*    value={image}*/}
+            {/*  />*/}
+            {/*</label>*/}
+            <ImageUploader setImageFunction={setImage} />
             <label htmlFor="">
               Date Time Publish:
               <input

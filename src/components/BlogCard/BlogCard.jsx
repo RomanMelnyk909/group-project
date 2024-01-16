@@ -5,7 +5,7 @@ import ModalR from "../ModalR";
 import { createRequestPath } from "../../helpers/helpers";
 import { BLOGS_DELETE_ENDPOINT } from "../../constants/endpoints";
 
-const BlogCard = ({ id, name, text, dateTimePublish, onDelete }) => {
+const BlogCard = ({ id, name, text, image, dateTimePublish, onDelete }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDeleteCard = async () => {
@@ -33,11 +33,13 @@ const BlogCard = ({ id, name, text, dateTimePublish, onDelete }) => {
     setIsModalOpen(false);
   };
 
+  const imgageUrl = `https://roman.itstep.click/images/300_${image}`
+
   return (
     <div key={id} className={styles.blogPost}>
       <img
-        src="https://thelongfortgroup.com/public/img/default/no-image-icon.jpg"
-        alt=""
+        src={imgageUrl}
+        alt="blogImage"
       />
       <h2>{name}</h2>
       <p>{text}</p>

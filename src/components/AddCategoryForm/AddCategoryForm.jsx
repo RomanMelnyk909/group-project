@@ -1,6 +1,6 @@
 import Input from "../Input";
 import styles from './addCategoryForm.module.css'
-import { useState, useContext } from 'react';
+import {useState, useContext, useCallback} from 'react';
 import { createRequestPath } from "../../helpers/helpers";
 import { CARTEGORIES_ADD_ENDPOINT } from "../../constants/endpoints";
 import Categories from "../Categories";

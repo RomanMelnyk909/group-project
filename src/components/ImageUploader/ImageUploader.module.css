@@ -1,0 +1,12 @@
+.common {
+    display: flex;
+}
+
+.previev {
+
+}
+
+.image {
+    height: 100px;
+    width: 100px;
+}
