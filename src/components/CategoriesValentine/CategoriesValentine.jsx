@@ -8,9 +8,14 @@ import { createRequestPath } from '../../helpers/helpers';
 import { ChangeIdContext } from '../../App';
 import PageWrapper from '../PageWrapper'
 import QueryLoader from '../QueryLoader';
-
+import { useSelector } from 'react-redux';
 
 const CategoriesValentine = () => {
+    const { count } = useSelector(store => store.counter)
+    const reduxsState = useSelector(store => store.users.usersCount)
+    console.log(reduxsState)
+    // console.log(users)
+
     const [data, setData] = useState([]);
     const [fetching, setFetching] = useState(false);
     const [fetchError, setFetchError] = useState(null);
@@ -36,6 +41,8 @@ const CategoriesValentine = () => {
     return (
         <PageWrapper>
             <QueryLoader fetching={fetching} error={fetchError}>
+                <h1>{ count }</h1>
+
                 <div className={styles['common']}>
 
                     {data.map((prod, index) => {
