@@ -9,12 +9,18 @@ import { ChangeIdContext } from "../../App";
 import PageWrapper from '../PageWrapper';
 import ProductCardLera from "../ProductCardLera";
 import ClassCompProdLera from "../ClassCompProdLera/ClassCompProdLera";
+import { useSelector, useDispatch } from "react-redux";
+import { MULT_BY_TWO } from "../../constants/actions";
 
 const ProductsLera = () => {
 	const [data, setData] = useState([]);
 	const [fetching, setFetching] = useState(false);
 	const [error, setError] = useState(null);
-	let {refetchId, setRefetchId } = useContext(ChangeIdContext) 
+	let {refetchId, setRefetchId } = useContext(ChangeIdContext);
+
+	const dispatch = useDispatch();
+
+	const {count} = useSelector(state => state.counter);
 
 	useEffect(function(){
 		setFetching(true);
@@ -29,10 +35,16 @@ const ProductsLera = () => {
 			setError(err);
 		})
 	}, [refetchId]);
+
+	const onMultProductsHandler = () => {
+		dispatch({ type: MULT_BY_TWO, payload: data.length })
+	}
   
 	return (
 		<PageWrapper>
 			<div className={styles['products']}>
+				<h1>{count}</h1>
+				<button onClick={onMultProductsHandler}>mult by 2</button>
 				<div className={styles['desserts-list']}>
 					{data.map((dessert, index) => (
 						<ProductCardLera 

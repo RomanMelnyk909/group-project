@@ -22,14 +22,14 @@ class ClassComponentLera extends Component {
 	}
 	render() {
 		const { name, age } = this.props;
-		console.log(this.state);
+		// console.log(this.state);
 		return (
 			<div>
 				<div>{`Props ${name}, ${age}`}</div>
 				<button onClick={this.onClickHandler.bind(this)}>Button</button>
 				<div>{this.state.count}</div>
 				{ this.state?.users?.map(user => (
-					<div>{user?.name}</div>
+					<div key={user.id}>{user?.name}</div>
 				))}
 			</div>
 		)

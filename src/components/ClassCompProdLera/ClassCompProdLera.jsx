@@ -23,7 +23,7 @@ class ClassCompProdLera extends Component {
 		return(
 			<div>
 				{ this.state?.products?.map(product => (
-					<div>{product?.name}</div>
+					<div key={product.id}>{product?.name}</div>
 				))}
 			</div>
 		)
