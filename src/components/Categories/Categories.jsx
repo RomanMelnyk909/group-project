@@ -1,5 +1,6 @@
 import styles from './categories.module.css';
 import CategoriesCard from '../CategoriesCard';
+import ClassPokotyloComponent from '../ClassPokotyloComponent';
 import { useEffect, useState, useContext } from 'react';
 import { createRequestPath } from "../../helpers/helpers";
 import { CARTEGORIES_LIST_ENDPOINT } from "../../constants/endpoints";
@@ -31,9 +32,10 @@ const Categories = (props) => {
 
     let flagToReverse = flagReverse || false
     return (
-
+        <>
+        <ClassPokotyloComponent/>
         <div className={styles['categories']}>
-
+            
             {
                 !flagToReverse ?
                     data.slice(0).reverse().map((el) => {
@@ -45,7 +47,7 @@ const Categories = (props) => {
             }
 
         </div>
-
+</>
     )
 };
 
