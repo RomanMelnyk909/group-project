@@ -8,7 +8,7 @@ const ModalR = (props) => {
 
 
     const portalContent = (
-        <div className={styles['common']} onClick={() => {openModalFunc(false)}}>
+        <div className={styles['common']} onClick={() => {openModalFunc(false)}}> 
             <div className={styles['content']} onClick={(e) => { e.stopPropagation() }}>
                 { children }
             </div>

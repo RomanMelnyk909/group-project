@@ -8,6 +8,7 @@ import { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
 
 import ModalR from "../ModalR";
+import Modal from '../Modal/Modal';
 
 const CategoriesCard = (props) => {
     const { title, image, string, id, onSetDeletedId, buttonFlag, priority } = props;
@@ -17,7 +18,8 @@ const CategoriesCard = (props) => {
     const [priorityEdit, setPriorityEdit] = useState(priority);
     const [fetching, setFetching] = useState(false)
     const [fetchError, setFetchError] = useState(null);
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false);
+    const [DelOrEdit, setDelOrEdit] = useState(true)
     const [deleteCategory, setDeleteCategory] = useState(false)
 
     let { setRefetchId}=useContext(ChangeIdContext)
@@ -79,6 +81,7 @@ const CategoriesCard = (props) => {
 
     function onShow (){
         setShowModal(true)
+        setDelOrEdit(true)
 
     }
     function onCancel(){
@@ -86,8 +89,10 @@ const CategoriesCard = (props) => {
 
     }
     function onDelete(){
-        setDeleteCategory(true)
-
+        setShowModal(true)
+        setDelOrEdit(false)
+        onDeleteDataToApi()
+       
     }
 
 
@@ -117,7 +122,10 @@ const CategoriesCard = (props) => {
             {buttonFlag?<button className='button' onClick={onShow}>Edit</button>:``}
            </div>
             <ModalR showModal={showModal} openModalFunc={setShowModal} >
-                {modalContent}
+                {
+                DelOrEdit?     modalContent:
+                <Modal onDeleteDataToApi={onDeleteDataToApi} deleteCategory={deleteCategory} setDeleteCategory={setDeleteCategory} />
+}
             </ModalR>
 
         </div>

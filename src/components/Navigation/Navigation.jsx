@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 
 import {
-    PRODUCTS_PATH,
+    PRODUCTS_JU_PATH,
     BLOG_PATH,
     CATEGIRIES_PATH,
     CATEGIRIES_VALENTINE_PATH,
@@ -66,9 +66,9 @@ const Navigation = () => {
       },
       {
          id: uuidv4(),
-         text: 'Product',
+         text: 'Products Ju',
          isUppercasetext: true,
-         path: PRODUCTS_PATH,
+         path: PRODUCTS_JU_PATH,
          isCategiries: false,
       },
 
