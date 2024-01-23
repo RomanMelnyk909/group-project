@@ -10,6 +10,7 @@ import {
 import PageWrapper from "../PageWrapper";
 import { createRequestPath } from "../../helpers/helpers";
 import Input from "../Input/Input";
+import ClassBasedLena from "../ClassBasedLena/ClassBasedLena";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -330,28 +331,31 @@ const Blog = () => {
       </form>
 
       {blogData ? (
-        <div className={styles["blogs"]}>
-          {blogData.map((blog) => (
-            <div key={blog.id}>
-              <h1>{blog.name}</h1>
-              <img src={blog.image} alt="Blog image" />
-              <p>{blog.text}</p>
-              <span>{blog.dateTimePublish}</span>
-              <button
-                className={styles["buttonBlog"]}
-                onClick={() => setUpdateBlog({ ...blog, id: blog.id })}
-              >
-                Update
-              </button>
-              <button
-                className={styles["buttonBlog"]}
-                onClick={() => onDeleteDataToApi(blog.id)}
-              >
-                Delete
-              </button>
-            </div>
-          ))}
-        </div>
+        <>
+          <div className={styles["blogs"]}>
+            {blogData.map((blog) => (
+              <div key={blog.id}>
+                <h1>{blog.name}</h1>
+                <img src={blog.image} alt="Blog image" />
+                <p>{blog.text}</p>
+                <span>{blog.dateTimePublish}</span>
+                <button
+                  className={styles["buttonBlog"]}
+                  onClick={() => setUpdateBlog({ ...blog, id: blog.id })}
+                >
+                  Update
+                </button>
+                <button
+                  className={styles["buttonBlog"]}
+                  onClick={() => onDeleteDataToApi(blog.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
+          <ClassBasedLena />
+        </>
       ) : (
         <p>Loading...</p>
       )}
