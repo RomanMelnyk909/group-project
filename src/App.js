@@ -38,13 +38,13 @@ export let ChangeIdContext = createContext()
 
 
 function App() {
-	const [refetchId, setRefetchId] = useState(null);
+  const [refetchId, setRefetchId] = useState(null);
 
   return (
     <div className="App">
-		<ClassComponentLera />
+
       <Header />
-      <ChangeIdContext.Provider value={{refetchId, setRefetchId}}>
+      <ChangeIdContext.Provider value={{ refetchId, setRefetchId }}>
         <Routes>
           <Route path={ADD_LERA_PRODUCTS_PATH} element={<AddProductFormLera />} />
           <Route path={ADD_SASHA_PRODUCTS_PATH} element={<AddProdFormSasha />} />
@@ -58,8 +58,8 @@ function App() {
           <Route path={BLOG_PATH} element={<Blog />} />
           <Route path={ADD_VLAD_BLOGS_PATH} element={<AddVladBlogs />} />
           <Route path={BLOG_UPDATE} element={<BlogUpdate />} />
-        <Route path={CATEGIRIES_PATH} element={<Categories />} />
-          <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine/>} />
+          <Route path={CATEGIRIES_PATH} element={<Categories />} />
+          <Route path={CATEGIRIES_VALENTINE_PATH} element={<CategoriesValentine />} />
           <Route path={ADD_CATEGORIES_FORM_PATH} element={<AddCategoryForm />} />
           <Route path={ADD_CATEGORIES_FORM_VALENTINE_PATH} element={<AddCategoriesFormValentine />} />
         </Routes>

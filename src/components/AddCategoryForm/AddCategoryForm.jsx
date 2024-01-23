@@ -5,18 +5,15 @@ import { createRequestPath } from "../../helpers/helpers";
 import { CARTEGORIES_ADD_ENDPOINT } from "../../constants/endpoints";
 import Categories from "../Categories";
 import PageWrapper from "../PageWrapper";
-import { v4 as uuidv4 } from 'uuid'; 
-import {ChangeIdContext} from "../../App"
+import { v4 as uuidv4 } from 'uuid';
+import { ChangeIdContext } from "../../App"
 import { useSelector } from "react-redux";
-import { counterReducer } from "../../reducers/counterReducer";
-import { DECREMENT, INCREMENT } from "../../constants/actions";
 
 
 
 const AddCategoryForm = () => {
-	let {refetchId, setRefetchId}=useContext(ChangeIdContext) 
-	const {count} = useSelector(state=>state.counter)
-	console.log(count);
+	let { refetchId, setRefetchId } = useContext(ChangeIdContext)
+	const { count } = useSelector(state => state.counter)
 	const [title, settitle] = useState();
 	const [image, setImage] = useState();
 	const [priority, setpriority] = useState();
@@ -33,8 +30,8 @@ const AddCategoryForm = () => {
 			.then(resp => {
 				console.log('response => ', resp);
 				if (resp.status) {
-					setRefetchId(uuidv4())	
-                }
+					setRefetchId(uuidv4())
+				}
 			})
 	}
 
@@ -52,7 +49,7 @@ const AddCategoryForm = () => {
 			seturlSlug('');
 			setredClassFlag(false)
 			onSubmitDataToApi(category)
-		
+
 		}
 		else {
 			setredClassFlag(true)
@@ -79,7 +76,7 @@ const AddCategoryForm = () => {
 			<h1>{count}</h1>
 			<div className={styles['add-new-category']}>
 				{
-				 	<h2>Add new category</h2>
+					<h2>Add new category</h2>
 				}
 				<div className={styles["add-new-category-panel"]}>
 					<Input classNameFlag={redClassFlag} label="name: " placeholder="Enter category's name" onChangeFunction={onGetName} value={title} />
@@ -89,7 +86,7 @@ const AddCategoryForm = () => {
 				</div>
 				<button className={styles["add-category-item"]} type="button" onClick={onAddcategory}>add new category</button>
 				<hr />
-				<Categories flagReverse={true} buttonFlag={true}/>
+				<Categories flagReverse={true} buttonFlag={true} />
 			</div >
 		</PageWrapper>
 	);
