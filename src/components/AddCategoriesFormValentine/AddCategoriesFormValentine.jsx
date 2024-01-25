@@ -65,18 +65,18 @@ const AddCategoriesFormValentine = () => {
             headers: { "Content-Type": "application/json" },
         })
             .then(resp => {
-                if(resp?.status === 200){
+                if (resp?.status === 200) {
                     navigator(CATEGIRIES_VALENTINE_PATH)
                 }
             })
             // .then(() => navigator(CATEGIRIES_VALENTINE_PATH))
             .catch(err => console.log("ERROR =>", err))
-            // .then(resp => {
-            //     console.log('response => ', resp);
-            //     if (resp.status) {
-            //         setRefetchId(uuidv4())
-            //     }
-            // })
+        // .then(resp => {
+        //     console.log('response => ', resp);
+        //     if (resp.status) {
+        //         setRefetchId(uuidv4())
+        //     }
+        // })
     }
 
     const onAddCategory = () => {
@@ -157,7 +157,7 @@ const AddCategoriesFormValentine = () => {
                     onClick={onAddCategory}>
                     add
                 </button> */}
-                <Button type="button" onClickFunction={onAddCategory} title={"add"}/>
+                <Button type="button" onClickFunction={onAddCategory} title={"add"} />
             </div>
 
         </PageWrapper>

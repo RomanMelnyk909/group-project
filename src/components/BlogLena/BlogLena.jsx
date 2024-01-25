@@ -10,6 +10,7 @@ import {
 import PageWrapper from "../PageWrapper";
 import { createRequestPath } from "../../helpers/helpers";
 import Input from "../Input/Input";
+import { useSelector } from "react-redux";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -37,6 +38,15 @@ const Blog = () => {
   const [textValid, setTextValid] = useState(true);
   const [imageValid, setImageValid] = useState(true);
   const [dateTimePublishValid, setDateTimePublishValid] = useState(true);
+
+const {count} = useSelector (state => state.counter)
+
+
+const reduxState = useSelector (store => store);
+
+
+console.log(reduxState)
+
 
   const apiUrl = `${BASE_URL}${BLOGS_LIST_ENDPOINT}`;
 
@@ -219,6 +229,7 @@ const Blog = () => {
 
   return (
     <PageWrapper>
+      <h1> {count}</h1>
       <h2>Blog</h2>
       <form className={styles["formblog"]}>
         {!updateBlog.id ? (

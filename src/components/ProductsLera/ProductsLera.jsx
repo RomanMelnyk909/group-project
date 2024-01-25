@@ -33,6 +33,7 @@ const ProductsLera = () => {
 	return (
 		<PageWrapper>
 			<div className={styles['products']}>
+		
 				<div className={styles['desserts-list']}>
 					{data.map((dessert, index) => (
 						<ProductCardLera 
