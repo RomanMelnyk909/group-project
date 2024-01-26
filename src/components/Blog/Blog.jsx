@@ -4,7 +4,9 @@ import BlogCard from "../BlogCard";
 import { BLOGS_LIST_ENDPOINT, BLOGS_DELETE_ENDPOINT } from "../../constants/endpoints";
 import { createRequestPath } from "../../helpers/helpers";
 import styles from "./blog.module.css";
-import ClassBasedVlad from "../ClassBasedVlad";
+// import ClassBasedVlad from "../ClassBasedVlad";
+import { useDispatch, useSelector } from "react-redux";
+import { setCardCount } from "../../constants/actions";
 
 const Blog = () => {
   const [data, setData] = useState([]);
@@ -12,6 +14,8 @@ const Blog = () => {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(null);
   
+  const dispatch =  useDispatch()
+
   useEffect(() => {
     const fetchData = async () => {
       setFetching(true);
@@ -21,6 +25,8 @@ const Blog = () => {
           throw new Error("Failed to fetch data");
         }
         const responseData = await response.json();
+        const cardCount = data.length;
+        dispatch(setCardCount(cardCount))
         setData(responseData);
       } catch (err) {
         setError(err);
@@ -32,13 +38,34 @@ const Blog = () => {
     fetchData();
   }, [refetchId]);
   
+
+
+
+
+
+
+  // const { countCard } = useSelector(state => state.counter)
+  // console.log(countCard, 'redux')
+
+  // const reduxState = useSelector(users => users)
+  // console.log(reduxState, '222')
+
+  const cardCount = useSelector((state) => state.cardCount);
+  console.log(cardCount)
+
+
+
+
+
+
+
   const handleDeleteCard = async (id) => {
       const apiEndpoint = createRequestPath(BLOGS_DELETE_ENDPOINT, id);
       const response = await fetch(apiEndpoint, { method: 'DELETE' });
 
     fetch(apiEndpoint, { method: "DELETE" })
       .then((resp) => {
-        console.log("Response status:", resp.status);
+        // console.log("Response status:", resp.status);
         if (resp.status) {
           setRefetchId(id);
         }
@@ -51,6 +78,8 @@ const Blog = () => {
 
   return (
     <div className={styles.blogContainer}>
+      <h2>{cardCount}</h2>
+      
       {fetching && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {!fetching && !error && (
@@ -65,7 +94,7 @@ const Blog = () => {
             onDelete={handleDeleteCard}
             />
             ))}
-            <ClassBasedVlad/>
+            {/* <ClassBasedVlad/> */}
         </div>
       )}
     </div>
