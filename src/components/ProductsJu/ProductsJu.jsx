@@ -8,7 +8,7 @@ import { PRODUCTS_LIST_ENDPOINT } from '../../constants/endpoints';
 import PageWrapper from "../PageWrapper";
 import ProductCardJu from "../ProductCardJu";
 import { ChangeIdContext } from "../../App";
-
+import ClassBasedJulia from "../ClassBasedJulia";
 
 const ProductsJu = () => {
 	const [data, setData] = useState([]);
@@ -43,8 +43,10 @@ const ProductsJu = () => {
 							price={dessert.price}
 							id={dessert.id} 
 							onSetDelitedId={setRefetchId}/>
-					))}
+					))} 
+					<ClassBasedJulia />
 				</div>
+				
 			</div>
 		</PageWrapper>
 	);
