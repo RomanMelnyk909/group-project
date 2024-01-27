@@ -21,6 +21,8 @@ import {
   PRODUCTS_SASHA_PATH,
   ADD_SASHA_PRODUCTS_PATH,
   BLOG_UPDATE,
+  ADD_CATEGORIES_JU_PATH,
+  CATEGORIES_JU_PATH,
 } from "./constants/pathNames";
 
 import AddCategoryForm from "./components/AddCategoryForm/AddCategoryForm";
@@ -33,6 +35,8 @@ import AddCategoriesFormValentine from "./components/AddCategoriesFormValentine/
 import ProductsLera from "./components/ProductsLera";
 import ProdSasha from "./components/ProdSasha";
 import ClassComponentLera from "./components/ClassComponentLera/ClassComponentLera";
+import AddCategoriesJu from "./components/AddCategoriesJu";
+import CategoriesJu from "./components/CategoriesJu";
 
 export let ChangeIdContext = createContext();
 
@@ -67,6 +71,14 @@ function App() {
           <Route
             path={CATEGIRIES_VALENTINE_PATH}
             element={<CategoriesValentine />}
+          />
+          <Route
+            path={ADD_CATEGORIES_JU_PATH}
+            element={<AddCategoriesJu />}
+          />
+          <Route
+            path={CATEGORIES_JU_PATH}
+            element={<CategoriesJu />}
           />
           <Route
             path={ADD_CATEGORIES_FORM_PATH}

@@ -1,0 +1,118 @@
+.common {
+    width: 350px;
+    height: 199px;
+    padding: 15px;
+    margin-top: 50px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
+    background-color: silver;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.common h3 {
+    width: 200px;
+    text-align: left;
+    letter-spacing: 0;
+    line-height: 29px;
+    font-size: 24px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+a.demo-link {
+    display: inline-block;
+    color: #ee7560;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+a.demo-link:hover {
+    text-decoration: none;
+    color: rgb(33, 33, 33);
+}
+a.demo-link:active {
+    color: rgb(118, 61, 61);
+}
+
+.btn-card {
+    width: 76px;
+    padding: 0;
+    font-size: 16px;
+    background-color: rgba(28,28,28,0);
+    color: #ee7560;
+    text-decoration-line: underline;
+    transition: color 0.3s ease-in-out, font-size 0.3s ease-in-out;
+}
+.btn-card:hover {
+    background-color: rgba(28,28,28,0);
+    text-decoration: none;
+    color: rgb(33, 33, 33);
+    font-size: 20px;
+}
+button {
+    width: 110px;
+    margin: 0;
+    margin-top: 10px;
+
+}
+
+.delete {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
+	width: 40%;
+	height: 45vh;
+    padding: 10px;
+	position: absolute;
+	top: 25%;
+	left: 29%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.delete h2 {
+    margin: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: rgba(123, 120, 126, 0.89);
+}
+.delete button {
+    margin-bottom: 5px;
+}
+.edit{
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px rgba(123, 120, 126, 0.89);
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    padding: 20px;
+    font-size: 25px;
+    top:20vh;
+    left: 40vw;
+    color: rgba(123, 120, 126, 0.89);
+}
+.edit label {
+    font-size: 20px;
+    color: rgba(123, 120, 126, 0.89);
+}
+.edit input {
+    font-size: 18px;
+    font-weight: 600;
+}
+.hidden {
+    display: none;
+}
