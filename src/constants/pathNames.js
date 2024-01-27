@@ -16,3 +16,5 @@ export const ADD_SASHA_PRODUCTS_PATH = "/add-sasha-products";
 export const ADD_VLAD_BLOGS_PATH = "/add-vlad-blogs";
 export const ADD_CATEGORIES_FORM_PATH = "/add-category";
 export const ADD_CATEGORIES_FORM_VALENTINE_PATH = "/add-categories-form-valentine/:id"
+export const ADD_CATEGORIES_JU_PATH = "/add-categories-ju";
+export const CATEGORIES_JU_PATH = "/categories-ju"
