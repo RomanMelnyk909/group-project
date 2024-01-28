@@ -8,7 +8,8 @@ import { createRequestPath } from '../../helpers/helpers';
 import { ChangeIdContext } from '../../App';
 import PageWrapper from '../PageWrapper'
 import QueryLoader from '../QueryLoader';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { DOUBLE_IT } from "../../constants/actions";
 
 const CategoriesValentine = () => {
     const { count } = useSelector(store => store.counter)
@@ -21,6 +22,8 @@ const CategoriesValentine = () => {
     const [fetchError, setFetchError] = useState(null);
 
     const { setRefetchId, refetchId } = useContext(ChangeIdContext);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setFetching(true);
@@ -37,11 +40,16 @@ const CategoriesValentine = () => {
             });
     }, [refetchId])
 
+    const onMultCategoriesHandler = () => {
+        dispatch({ type: DOUBLE_IT, play: data.length})
+    }
 
     return (
         <PageWrapper>
             <QueryLoader fetching={fetching} error={fetchError}>
                 <h1>{ count }</h1>
+
+                <button onClick={onMultCategoriesHandler}>multiply by 2</button>
 
                 <div className={styles['common']}>
 

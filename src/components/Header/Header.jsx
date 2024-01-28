@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DECERMENT, INCERMENT, RESET, PLUS_NUMBER } from "../../constants/actions";
 import { useState } from "react";
 const Header = () => {
+	const { categories } = useSelector(state => state.categories);
 
 	const [number, setNumber] = useState(0)
 
@@ -27,16 +28,19 @@ const Header = () => {
 	const onPlusNumberHandler = () => {
 		dispatch({type: PLUS_NUMBER, payload: number})
 	}
-
+	// console.log(categories)
 	return (
 		<div className="header">
 			<PageWrapper>
 				<div className="head">
+					{/* REDUX */}
+					<h1>Catecories count: { categories }</h1>
 				<button onClick={onPlusHandler}>+</button>
                 <button onClick={onMinusHandler}>-</button>
 				<input type="number" onChange={(e) => setNumber(+e.target.value)} />
 				<button onClick={onPlusNumberHandler}>Plus number</button>
                 <button onClick={onResetHandler}>reset</button>
+
 				<Logo />
 				<Navigation />
 				</div>
