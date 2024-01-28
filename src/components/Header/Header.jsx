@@ -4,7 +4,7 @@ import "./header.css";
 
 import PageWrapper from "../PageWrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { DECERMENT, INCERMENT, NUL, PLUS_NUMBER } from "../../constants/actions";
+import { DECERMENT, INCERMENT, RESET, PLUS_NUMBER } from "../../constants/actions";
 import { useState } from "react";
 const Header = () => {
 
@@ -21,7 +21,7 @@ const Header = () => {
 	}
 
 	const onResetHandler = () => {
-		dispatch({type: NUL})
+		dispatch({type: RESET})
 	}
 
 	const onPlusNumberHandler = () => {

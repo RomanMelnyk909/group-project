@@ -1,6 +1,7 @@
-import { DECERMENT, INCERMENT, NUL, PLUS_NUMBER } from "../constants/actions"
+import { RESET } from "../constants/actions"
 
 const initialState  = { usersCount: 0 }
+// const initialState  = { users: 0 }
 
 // {
 //     type: "",
@@ -11,7 +12,7 @@ const initialState  = { usersCount: 0 }
 export const usersReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case NUL: return { ...state, users: 0}
+        case RESET: return { ...state, users: 0}
 
         default: return state;
     }

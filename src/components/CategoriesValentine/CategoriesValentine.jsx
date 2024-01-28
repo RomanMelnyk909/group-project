@@ -12,8 +12,8 @@ import { useSelector } from 'react-redux';
 
 const CategoriesValentine = () => {
     const { count } = useSelector(store => store.counter)
-    const reduxsState = useSelector(store => store.users.usersCount)
-    console.log(reduxsState)
+    const reduxStore = useSelector(store => store.users.usersCount)
+    console.log(reduxStore)
     // console.log(users)
 
     const [data, setData] = useState([]);

@@ -1,6 +1,7 @@
-import { DECERMENT, INCERMENT, NUL, PLUS_NUMBER } from "../constants/actions"
+import { DECERMENT, INCERMENT, RESET, PLUS_NUMBER } from "../constants/actions"
 
-const initialState  = { count: 0 }
+const initialState  = { count: 0 };
+
 
 // {
 //     type: "",
@@ -16,7 +17,7 @@ export const counnterReducer = (state = initialState, action) => {
 
         case PLUS_NUMBER: return { ...state, count: state.count + action.payload}
         
-        case NUL: return { ...state, count: 0}
+        case RESET: return { ...state, count: 0}
 
         default: return state;
     }
