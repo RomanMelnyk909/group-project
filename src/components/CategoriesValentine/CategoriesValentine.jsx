@@ -10,6 +10,7 @@ import PageWrapper from '../PageWrapper'
 import QueryLoader from '../QueryLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { DOUBLE_IT } from "../../constants/actions";
+import ClassValentineComponent from '../ClassValentineComponent/ClassValentineComponent';
 
 const CategoriesValentine = () => {
     const { count } = useSelector(store => store.counter)
@@ -68,6 +69,7 @@ const CategoriesValentine = () => {
                             />
                         )
                     })}
+                                    <ClassValentineComponent />
 
                 </div>
             </QueryLoader>

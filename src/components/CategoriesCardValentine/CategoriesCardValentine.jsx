@@ -17,7 +17,8 @@ import { v4 as uuidv4 } from 'uuid';
 // Демо
 import backgroundImage from '../../images/sub-banner-2.jpg'
 import { createPortal } from 'react-dom';
-import QueryLoader from '../QueryLoader';
+
+import ModalR from '../ModalR';
 
 
 const CategoriesCardValentine = (props) => {
@@ -35,15 +36,15 @@ const CategoriesCardValentine = (props) => {
 
 
     const [ showModal, setShowModal ] = useState(false);
-    // const [ deleteCategory, setDeleteCategory ] = useState(false);
-    const [showFlag, setShowFlag] = useState(false);
+    const [ deleteCategory, setDeleteCategory ] = useState(false);
+    // const [showFlag, setShowFlag] = useState(false);
 
     
     const [ fetching, setFetching ] = useState(false)
     const [ fetchError, setFetchError ] = useState(null);
     let { setRefetchId } = useContext(ChangeIdContext);
 
-    let portalElement = document.querySelector('#portal')
+    // let portalElement = document.querySelector('#portal')
 
 
     const onDeleteDataToApi = () => {
@@ -99,7 +100,8 @@ const CategoriesCardValentine = (props) => {
 			urlSlug:urlSlugEdit,
 		};
         onEditDataToApi(category);
-        setShowFlag(false);
+        // setShowFlag(false);
+        setShowModal(false)
     }
 
     const onGetName = (value) => {
@@ -118,26 +120,26 @@ const CategoriesCardValentine = (props) => {
 
 
     const onCancel = () => {
-		setShowFlag(false);
-        setShowModal(false)
-		// setShowModal(true);
+		// setShowFlag(false);
+        // setShowModal(false)
+		setShowModal(false);
 
 	}
 	const onShow = () => {
-		setShowFlag(true);
-        // setShowModal(false)
+		// setShowFlag(true);
+        setShowModal(true)
 	}
 
 	const onDelete = () => {
-		setShowModal(true);
-        // setDeleteCategory(true)
+		// setShowModal(true);
+        setDeleteCategory(true)
 	}
 
     let modalContent = (
         <div className={styles['delete']}>  
-            <h2>Are you sure you want to delete {title} ?</h2>
-            {/* <h2>Edite caregory</h2> */}
-                {/* <Input 
+            {/* <h2>Are you sure you want to delete {title} ?</h2> */}
+            <h2>Edite caregory</h2>
+                <Input 
                     label="Name " 
                     placeholder="Enter category name" 
                     onChangeFunction={onGetName} 
@@ -170,15 +172,15 @@ const CategoriesCardValentine = (props) => {
                 <Button 
                     type='button'
                     title='Cancel'
-                    onClickFunction={onCancel}/> */}
-                <Button 
+                    onClickFunction={onCancel}/>
+                {/* <Button 
                     type='reset'
                     title='Delete'
                     onClickFunction={onDeleteDataToApi}/>
                 <Button 
                     type='button'
                     title='Cancel'
-                    onClickFunction={onCancel}/>
+                    onClickFunction={onCancel}/> */}
 
 
         </div>
@@ -204,12 +206,16 @@ const CategoriesCardValentine = (props) => {
                     type="button" 
                     title={"edit"} 
                     onClickFunction={onShow}/>
+                    
+                    <ModalR showModal={showModal} openModalFunc={setShowModal} >
+                        {modalContent}
+                    </ModalR>
                 
 
                 {/* <Modal title={title} deleteCategory={deleteCategory} setDeleteCategory={setDeleteCategory} onDeleteDataToApi={onDeleteDataToApi}/> */}
             </div>
 
-            <div className={showFlag?styles["edit"]:styles["hidden"]}>
+            {/* <div className={showFlag?styles["edit"]:styles["hidden"]}>
                 <h2>Edite Category</h2>
                 <Input 
                     label="Name " 
@@ -246,8 +252,8 @@ const CategoriesCardValentine = (props) => {
                     title='Cancel'
                     onClickFunction={onCancel}/>
 
-            </div>
-                {showModal ? createPortal(modalContent, portalElement) : null}
+            </div> */}
+                {/* {showModal ? createPortal(modalContent, portalElement) : null} */}
 
        
         </>
