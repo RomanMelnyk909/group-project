@@ -1,6 +1,16 @@
 import { createStore } from 'redux';
-import blogReducer from '../reducers/blogReducer';
+import { counnterReducer } from "../reducerc/counterReducer"; 
+import { usersReducer } from "../reducerc/usersReducer"; 
 
-const store = createStore(blogReducer);
+import { categoriesValReducer } from "../constants/categoriesValReducer";
+
+
+const rootReducer = combineReducers({
+    counter: counnterReducer,
+    users: usersReducer,
+    categories: categoriesValReducer,
+})
+
+const store = createStore(rootReducer);
 
 export default store;
