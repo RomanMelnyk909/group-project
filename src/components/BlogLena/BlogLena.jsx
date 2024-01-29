@@ -11,6 +11,8 @@ import PageWrapper from "../PageWrapper";
 import { createRequestPath } from "../../helpers/helpers";
 import Input from "../Input/Input";
 import ClassBasedLena from "../ClassBasedLena/ClassBasedLena";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_BLOG_COUNT } from "../../constants/actions";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -39,6 +41,14 @@ const Blog = () => {
   const [imageValid, setImageValid] = useState(true);
   const [dateTimePublishValid, setDateTimePublishValid] = useState(true);
 
+  const { count, blogCount } = useSelector((state) => state);
+  const reduxState = useSelector((state) => state);
+
+  const dispatch = useDispatch();
+
+  console.log(reduxState);
+  // console.log(count);
+
   const apiUrl = `${BASE_URL}${BLOGS_LIST_ENDPOINT}`;
 
   useEffect(() => {
@@ -47,6 +57,7 @@ const Blog = () => {
         const response = await fetch(apiUrl);
         const blog = await response.json();
         setBlogData(blog);
+        dispatch({ type: SET_BLOG_COUNT, payload: blog.length });
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -220,6 +231,10 @@ const Blog = () => {
 
   return (
     <PageWrapper>
+      <h1>Count: {count}</h1>
+      <h1>Blog count: {blogCount}</h1>
+      {/* <button></button>
+      <button></button> */}
       <h2>Blog</h2>
       <form className={styles["formblog"]}>
         {!updateBlog.id ? (
