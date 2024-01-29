@@ -41,7 +41,7 @@ const CategoriesValentine = () => {
     }, [refetchId])
 
     const onMultCategoriesHandler = () => {
-        dispatch({ type: DOUBLE_IT, play: data.length})
+        dispatch({ type: DOUBLE_IT, payload: data.length})
     }
 
     return (
